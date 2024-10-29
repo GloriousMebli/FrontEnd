@@ -1,0 +1,391 @@
+.header {
+  padding: 24px 40px;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.title-glorious {
+  color: #E8E4D9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.button-contact {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: #E8E4D9 1px solid;
+  display: flex;
+  height: 60px;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #E8E4D9;
+  transition: all 0.3s ease;
+}
+
+.button-contact:hover {
+  background: #352F2A;
+  color: #E8E4D9;
+}
+
+// MAIN
+
+.blog-info {
+  background-color: #E8E4D9;
+  padding: 76px 40px;
+  padding-bottom: 160px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 32px;
+}
+
+.block-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-blog-info-arrow {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 12px;
+  transform: rotate(224deg);
+}
+
+.title-blog-info {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.image-x {
+  position: absolute;
+}
+
+.text-blog-info {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// FOOTER
+
+.footer {
+  padding: 80px;
+  background: #352F2A;
+}
+
+.container-footer-top {
+  display: flex;
+  align-items: start;
+}
+
+.title-footer {
+  color: #DAD5C9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.block-footer {
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.list-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title-text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.container-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 80px;
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  // header
+  .header {
+    padding: 24px 32px;
+  }
+  .title-glorious {
+    font-size: 32px;
+  }
+  .button-contact {
+    font-size: 20px;
+    height: 48px;
+    padding: 11px 32px;
+  }
+  // main
+  .blog-info {
+    padding: 50px 32px;
+    padding-bottom: 128px;
+  }
+  .title-blog-info {
+    font-size: 36px;
+  }
+  .text-blog-info {
+    font-size: 20px;
+  }
+  .image-blog-info {
+    width: 750px;
+  }
+   // footer
+   .footer {
+    padding: 64px;
+    padding-bottom: 32px;
+  }
+  .title-footer {
+    font-size: 48px;
+  }
+  .block-footer {
+    gap: 48px;
+  }
+  .title-text-footer {
+    font-size: 20px;
+  }
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+  .header {
+    padding: 30px 16px;
+  }
+  .title-glorious {
+      color: #E8E4D9;
+      font-family: "SONGER SemiExpanded";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 100px;
+  }
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E8E4D9;
+    width: 130px;
+    height: 36px;
+    padding: 0;
+  }
+  // main
+  .image-blog-info {
+    width: 600px;
+  }
+  .image-x {
+    width: 48px;
+    height: 48px;
+  }
+  .title-blog-info {
+    font-size: 32px;
+  }
+  .text-blog-info {
+    font-size: 18px;
+  }
+  // footer
+  .footer {
+    padding: 40px;
+  }
+  .title-footer {
+    font-size: 36px;
+  }
+  .title-text-footer,
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 800px) {
+  .header {
+    padding: 30px 16px;
+  }
+  .title-glorious {
+      color: #E8E4D9;
+      font-family: "SONGER SemiExpanded";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 100px;
+  }
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E8E4D9;
+    width: 130px;
+    height: 36px;
+    padding: 0;
+  }
+  // main
+  .blog-info {
+    padding: 16px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .image-blog-info {
+    width: 100%;
+    height: auto;
+  }
+  .container-text {
+    margin-left: 0;
+  }
+  .block-text {
+    gap: 0;
+  }
+  .title-blog-info {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136.498%;
+    margin: 8px 0;
+    margin-right: auto;
+  }
+  .text-blog-info {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136.498%;
+  }
+  // footer
+  .footer {
+    padding: 16px;
+    height: auto;
+}
+.container-footer-top {
+    flex-direction: column;
+}
+.title-footer {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+.block-footer {
+    flex-direction: column;
+    margin: 0;
+    gap: 16px;
+}
+.title-text-footer {
+    margin-bottom: 4px;
+    margin-top: 24px;
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.list-footer {
+    gap: 8px;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.container-footer-bottom {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-footer-bottom-mobile {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+}

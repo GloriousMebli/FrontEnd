@@ -1,0 +1,476 @@
+.header {
+  padding: 24px 40px;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.title-glorious {
+  color: #E8E4D9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.button-contact {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: #E8E4D9 1px solid;
+  display: flex;
+  height: 60px;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #E8E4D9;
+  transition: all 0.3s ease;
+}
+
+.button-contact:hover {
+  background: #352F2A;
+  color: #E8E4D9;
+}
+
+// MAIN
+
+.title-blog {
+  color: #352F2A;
+  font-family: "SONGER SemiExpanded";
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.block-blog {
+  background-color: #E8E4D9;
+  padding: 62px 40px;
+  padding-bottom: 160px;
+}
+
+.list-blog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 41px;
+}
+
+.item-blog {
+  cursor: pointer;
+}
+
+.container-blog-text{
+  width: 586px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 0 0 16px 16px;
+  background: #DAD5C9;
+  padding: 16px 32px;
+}
+
+.title-container-text-blog {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136.498%; /* 49.139px */
+  letter-spacing: -1.44px;
+}
+
+.text-container-blog {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136.498%; /* 32.759px */
+  letter-spacing: -0.96px;
+}
+
+.container-blog-arrow {
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+  align-items: center;
+  margin-top: 58px;
+}
+
+.title-container-text-blog-arrow {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136.498%; /* 49.139px */
+  letter-spacing: -1.44px;
+}
+
+.image-blog-arrow {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+// FOOTER
+
+.footer {
+  padding: 80px;
+  background: #352F2A;
+}
+
+.container-footer-top {
+  display: flex;
+  align-items: start;
+}
+
+.title-footer {
+  color: #DAD5C9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.block-footer {
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.list-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title-text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.container-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 80px;
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .header {
+    padding: 24px 32px;
+  }
+  .title-glorious {
+    font-size: 32px;
+  }
+  .button-contact {
+    font-size: 20px;
+    height: 48px;
+    padding: 11px 32px;
+  }
+  // main
+  .block-blog {
+    padding: 32px;
+    padding-bottom: 128px;
+  }
+  .list-blog {
+    gap: 32px;
+    justify-content: space-between;
+  }
+  .title-blog {
+    font-size: 96px;
+  }
+  .item-blog {
+    width: 31%;
+  }
+  .image-blog {
+    width: 100%;
+  }
+  .container-blog-text {
+    width: 100%;
+  }
+  .title-container-text-blog {
+    font-size: 32px;
+  }
+  .text-container-blog {
+    font-size: 20px;
+  }
+  .title-container-text-blog-arrow {
+    font-size: 32px;
+  }
+  // footer
+  .footer {
+    padding: 64px;
+    padding-bottom: 32px;
+  }
+  .title-footer {
+    font-size: 48px;
+  }
+  .block-footer {
+    gap: 48px;
+  }
+  .title-text-footer {
+    font-size: 20px;
+  }
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+  .header {
+    padding: 30px 16px;
+  }
+  .title-glorious {
+      color: #E8E4D9;
+      font-family: "SONGER SemiExpanded";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 100px;
+  }
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E8E4D9;
+    width: 130px;
+    height: 36px;
+    padding: 0;
+  }
+  // main
+  .block-blog {
+    padding: 20px 32px;
+    padding-bottom: 120px;
+  }
+  .title-blog {
+    font-size: 80px;
+    margin-bottom: 8px;
+  }
+  .item-blog {
+    width: 32%;
+  }
+  .image-blog{
+    max-width: 100%;
+  }
+  .container-blog-text {
+    max-width: 100%;
+  }
+  .list-blog {
+    gap: 16px;
+    justify-content: space-between;
+  }
+  .title-container-text-blog {
+    font-size: 24px;
+  }
+  .text-container-blog {
+    font-size: 16px;
+  }
+  .title-container-text-blog-arrow {
+    font-size: 24px;
+  }
+  .container-blog-arrow {
+    gap: 8px;
+  }
+  .image-blog-arrow {
+    width: 20px;
+    height: 20px;
+  }
+    // footer
+  .footer {
+    padding: 40px;
+  }
+  .title-footer {
+    font-size: 36px;
+  }
+  .title-text-footer,
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 800px) {
+  .header {
+    padding: 30px 16px;
+  }
+  .title-glorious {
+      color: #E8E4D9;
+      font-family: "SONGER SemiExpanded";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 100px;
+  }
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E8E4D9;
+    width: 130px;
+    height: 36px;
+    padding: 0;
+  }
+  // main
+  .block-blog {
+    padding: 40px 16px;
+  }
+  .title-blog {
+    color: #352F2A;
+    font-family: "SONGER SemiExpanded";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 16px;
+  }
+  .list-blog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .item-blog {
+    width: 100%;
+  }
+  .image-blog {
+    width: 100%;
+  }
+  .container-blog-text {
+    width: 100%;
+    padding: 8px;
+    height: auto;
+  }
+  .title-container-text-blog {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136.498%;
+  }
+  .text-container-blog {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136.498%;
+  }
+  .title-container-text-blog-arrow {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136.498%;
+  }
+  .image-blog-arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  // footer
+  .footer {
+    padding: 16px;
+}
+.container-footer-top {
+    flex-direction: column;
+}
+.title-footer {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+.block-footer {
+    flex-direction: column;
+    margin: 0;
+    gap: 16px;
+}
+.title-text-footer {
+    margin-bottom: 4px;
+    margin-top: 24px;
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.list-footer {
+    gap: 8px;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.container-footer-bottom {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-footer-bottom-mobile {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+}

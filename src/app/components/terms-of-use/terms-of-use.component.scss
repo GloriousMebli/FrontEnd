@@ -1,0 +1,379 @@
+.header {
+    padding: 24px 40px;
+  }
+
+  .container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .title-glorious {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+
+  .button-contact-contact,
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: #E8E4D9 1px solid;
+    display: flex;
+    height: 60px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 40px;
+    background: #E8E4D9;
+    transition: all 0.3s ease;
+  }
+
+  .button-contact-contact:hover,
+  .button-contact:hover {
+    background: #352F2A;
+    color: #E8E4D9;
+  }
+
+// TERMS OF USE
+
+.container-terms-of-use {
+    background-color: #E8E4D9;
+    padding: 40px;
+}
+
+.title-terms-of-use {
+    color: #352F2A;
+    font-family: "SONGER SemiExpanded";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.text-terms-of-use {
+    color: #000;
+    font-family: Manrope;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.12px;
+}
+
+.title-terms-of-use-list {
+    color: #000;
+    font-family: Manrope;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.12px;
+    margin: 32px  0;
+}
+
+.text-list {
+    color: #000;
+    font-family: Manrope;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.12px;
+}
+
+// FOOTER
+
+.footer {
+    padding: 80px;
+    background: #352F2A;
+  }
+
+  .container-footer-top {
+    display: flex;
+    align-items: start;
+  }
+
+  .title-footer {
+    color: #DAD5C9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .block-footer {
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  .list-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .title-text-footer {
+    color: #DAD5C9;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .text-footer {
+    color: #DAD5C9;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .container-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 80px;
+  }
+
+  @media screen and (min-width: 1440px) and (max-width: 1919px) {
+    .header {
+      padding: 30px 32px;
+    }
+    .title-glorious {
+      font-size: 32px;
+    }
+    .button-contact-contact,
+    .button-contact {
+      font-size: 20px;
+      height: 48px;
+      padding: 11px 32px;
+    }
+  // main
+  .container-terms-of-use {
+    padding: 32px;
+  }
+  .title-terms-of-use {
+    font-size: 72px;
+  }
+  .text-terms-of-use,
+  .title-terms-of-use-list,
+  .text-list {
+    margin-bottom: 6px;
+    font-size: 20px;
+  }
+    // footer
+  .footer {
+    padding: 64px;
+    padding-bottom: 32px;
+  }
+  .title-footer {
+    font-size: 48px;
+  }
+  .block-footer {
+    gap: 48px;
+  }
+  .title-text-footer {
+    font-size: 20px;
+  }
+  .text-footer {
+    font-size: 20px;
+  }
+  }
+
+  @media screen and (min-width: 1200px) and (max-width: 1439px) {
+    // header
+  .header {
+    padding: 26px 32px;
+  }
+  .title-glorious {
+    font-size: 28px;
+  }
+  .button-contact,
+  .button-contact-contact {
+    font-size: 18px;
+    padding: 8px 32px;
+    height: auto;
+  }
+  // main
+  .container-terms-of-use {
+    padding: 24px;
+  }
+  .title-terms-of-use {
+    font-size: 58px;
+    margin-bottom: 16px;
+  }
+  .text-terms-of-use,
+  .title-terms-of-use-list,
+  .text-list {
+    font-size: 18px;
+  }
+  // footer
+  .footer {
+    padding: 40px;
+  }
+  .title-footer {
+    font-size: 36px;
+  }
+  .title-text-footer,
+  .text-footer {
+    font-size: 20px;
+  }
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 800px) {
+    .header {
+      padding: 30px 16px;
+    }
+    .title-glorious {
+        color: #E8E4D9;
+        font-family: "SONGER SemiExpanded";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        width: 100px;
+    }
+    .button-contact {
+      color: #352F2A;
+      font-family: Manrope;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      border-radius: 40px;
+      background: #E8E4D9;
+      width: 130px;
+      height: 36px;
+      padding: 0;
+    }
+    .button-contact-contact {
+      display: none;
+    }
+    // TERMS OF USE
+    .container-terms-of-use {
+      padding: 16px;
+    }
+    .title-terms-of-use {
+      color: #352F2A;
+      font-family: "SONGER SemiExpanded";
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .text-terms-of-use {
+      color: #000;
+      font-family: Manrope;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.52px;
+    }
+    .title-terms-of-use-list {
+      color: #000;
+      font-family: Manrope;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin: 16px 0;
+    }
+    .text-list {
+      color: #000;
+      font-family: Manrope;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.52px;
+    }
+       // footer
+   .footer {
+    padding: 16px;
+}
+.container-footer-top {
+    flex-direction: column;
+}
+.title-footer {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+.block-footer {
+    flex-direction: column;
+    margin: 0;
+    gap: 16px;
+}
+.title-text-footer {
+    margin-bottom: 4px;
+    margin-top: 24px;
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.list-footer {
+    gap: 8px;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.container-footer-bottom {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-footer-bottom-mobile {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+.title-main {
+  display: none;
+}
+  }

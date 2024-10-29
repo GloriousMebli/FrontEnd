@@ -1,0 +1,1152 @@
+.header {
+  padding: 24px 40px;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-glorious {
+  color: #E8E4D9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.button-contact {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: #E8E4D9 1px solid;
+  display: flex;
+  height: 60px;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  background: #E8E4D9;
+  transition: all 0.3s ease;
+}
+
+.button-contact:hover {
+  background: #352F2A;
+  color: #E8E4D9;
+}
+
+// MAIN
+
+.container-product {
+  background-color: #E8E4D9;
+  padding: 0 40px;
+  padding-top: 32px;
+  padding-bottom: 80px;
+}
+
+.container-swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #DAD5C9;
+  width: 976px;
+  height: 836px;
+  flex-shrink: 0;
+  padding: 0 16px;
+}
+
+.swiper-pagination {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.swiper-pagination-photo {
+  width: 140px;
+  height: auto;
+  flex-shrink: 0;
+  background: #DAD5C9;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-photo:hover {
+  transform: scale(1.1);
+}
+
+.swiper-product-image {
+  width: 800px;
+  height: auto;
+  flex-shrink: 0;
+  margin: 0 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.container-arrow {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8E4D9;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.container-swiper-pagination-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 146px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #DAD5C9;
+}
+
+.block-product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-title-product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-main {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.title-main-span {
+  color: #63574E;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.title-change {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+.image-change {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.title-product {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-product-span-price {
+  font-weight: 600;
+}
+
+.title-product-text {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.96px;
+  margin-top: 290px;
+  margin-bottom: 8px;
+}
+
+.image-color {
+  padding: 6px;
+}
+
+.image-color:active {
+  border: #352F2A 3px solid;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.line {
+  width: 808px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #352F2A;
+  margin-bottom: 8px;
+}
+
+.text-product {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+  width: 809px;
+  margin-bottom: 32px;
+}
+
+.title-product-text-garanty {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.96px;
+  margin-bottom: 32px;
+}
+
+.button-product {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: #352F2A 1px solid;display: flex;
+  width: 350px;
+  padding: 16px 120px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: 2px solid #352F2A;
+  transition: all 0.3s ease;
+  margin-top: 64px;
+  background: #E8E4D9;
+}
+
+.button-product:hover {
+  background: #352F2A;
+  color: #E8E4D9;
+}
+
+.buttons-product {
+  display: flex;
+  gap: 16px;
+}
+
+.button-products {
+  color: #E8E4D9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: 2px solid #352F2A;
+  background: #352F2A;
+  transition: all 0.3s ease;
+}
+
+.button-products:hover {
+  background: #E8E4D9;
+  color: #352F2A;
+}
+
+.title-info-product {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.92px;
+}
+
+.line-info {
+  width: 889px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #352F2A;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.lists-info-product {
+  display: flex;
+  gap: 64px;
+}
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 410px;
+}
+
+.item-info-title {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.block-info-left {
+  margin-top: 8px;
+}
+
+.item-info {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.block-info-product {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line-info-left {
+  width: 840px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #352F2A;
+}
+
+.list-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 16px;
+  width: 840px;
+}
+
+.title-popular {
+  color: #352F2A;
+  font-family: "SONGER SemiExpanded";
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 90px;
+  margin-bottom: 32px;
+}
+
+.item-info-left {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+.item-info-left-garanty {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.96px;
+  cursor: pointer;
+}
+
+.item-info-left-garanty-line {
+  width: 522px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #352F2A;
+}
+
+.item-info-left-span {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+.item-info-left-span {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+.list-popular {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.item-popular {
+  cursor: pointer;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  height: 698px;
+  border-radius: 8px;
+  background: #DAD5C9;
+}
+
+.image-popular-arrow {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  margin-left: auto;
+}
+
+.text-popular {
+  color: #5C544C;
+  font-family: Manrope;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.8px;
+}
+
+.text-popular-price {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.96px;
+}
+
+// FOOTER
+
+.footer {
+  padding: 80px;
+  background: #352F2A;
+}
+
+.container-footer-top {
+  display: flex;
+  align-items: start;
+}
+
+.title-footer {
+  color: #DAD5C9;
+  font-family: "SONGER SemiExpanded";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.block-footer {
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.list-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title-text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.text-footer {
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.container-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 80px;
+}
+
+.title-main-mobile,
+.block-product-text-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .header {
+    padding: 24px 32px;
+  }
+  .title-glorious {
+    font-size: 32px;
+  }
+  .button-contact {
+    font-size: 20px;
+    height: 48px;
+    padding: 11px 32px;
+  }
+  // main
+  .container-product {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .container-swiper {
+    width: 756px;
+    height: 648px;
+    padding: 0 8px;
+  }
+  .swiper-product-image {
+    width: 648px;
+    margin: 0;
+    margin: 0 8px;
+  }
+  .container-arrow {
+    height: 48px;
+    height: 40px;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+  }
+  .container-swiper-pagination-photo {
+    width: 160px;
+    height: 137px;
+    flex-shrink: 0;
+  }
+  .title-main,
+  .title-main-span {
+    font-size: 16px;
+  }
+  .title-change {
+    font-size: 16px;
+  }
+  .image-change {
+    width: 20px;
+    height: 20px;
+  }
+  .title-product {
+    font-size: 36px;
+  }
+  .title-product-text {
+    font-size: 36px;
+  }
+  .line {
+    width: 100%;
+  }
+  .text-product {
+    font-size: 20px;
+    width: 558px;
+  }
+  .title-product-text-garanty {
+    font-size: 20px;
+  }
+  .button-product {
+    font-size: 20px;
+    width: 242px;
+    padding: 0;
+    height: 48px;
+  }
+  .button-products {
+    font-size: 20px;
+    height: 48px;
+  }
+  .title-info-product {
+    font-size: 40px;
+  }
+  .line-info {
+    width: 708px;
+  }
+  .line-info-left {
+    width: 612px;
+  }
+  .lists-info-product {
+      font-size: 24px;
+      gap: 16px;
+  }
+  .list-info {
+    gap: 34px;
+    width: 322px;
+  }
+  .item-info-title {
+    font-size: 20px;
+  }
+  .item-info {
+    font-size: 20px;
+  }
+  .list-info-left {
+    width: 612px;
+  }
+  .item-info-left {
+    font-size: 20px;
+  }
+  .item-popular {
+    height: 530px;
+  }
+  .title-popular {
+    font-size: 96px;
+  }
+  // footer
+  .footer {
+    padding: 64px;
+    padding-bottom: 32px;
+  }
+  .title-footer {
+    font-size: 48px;
+  }
+  .block-footer {
+    gap: 48px;
+  }
+  .title-text-footer {
+    font-size: 20px;
+  }
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+    // header
+  .header {
+    padding: 26px 32px;
+  }
+  .title-glorious {
+    font-size: 28px;
+  }
+  .button-contact {
+    font-size: 18px;
+    padding: 8px 32px;
+    height: auto;
+  }
+  // main
+  .title-main,
+  .title-main-span {
+    font-size: 16px;
+  }
+  .container-swiper {
+    width: 613px;
+    height: 518px;
+    flex-shrink: 0;
+  }
+  .swiper-product-image {
+    width: 84%;
+  }
+  .container-arrow {
+    width: 38px;
+    height: 38px;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 24px;
+    height: 24px;
+  }
+  .container-swiper-pagination-photo {
+    width: 137px;
+    height: 116px;
+  }
+  .swiper-pagination-photo {
+    width: 90%;
+  }
+  .title-product-text {
+    font-size: 32px;
+    margin-top: 70px;
+    margin-bottom: 0px;
+  }
+  .text-product {
+    font-size: 18px;
+    margin-bottom: 8px;
+    width: 483px;
+  }
+  .line {
+    width: 100%;
+  }
+  .image-change {
+    width: 24px;
+    height: 24px;
+  }
+  .title-change {
+    font-size: 18px;
+  }
+  .title-product {
+    font-size: 32px;
+  }
+  .title-product-text-garanty {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  .button-products {
+    font-size: 18px;
+    padding: 8px 32px;
+  }
+  .title-info-product{
+    font-size: 32px;
+  }
+  .lists-info-product {
+    gap: 16px;
+  }
+  .list-info {
+    width: 270px;
+  }
+  .list-info-left {
+    width: 442px;
+  }
+  .line-info,
+  .line-info-left {
+    width: 100%;
+  }
+  .item-info-title,
+  .item-info,
+  .item-info-left,
+  .item-info-left-span {
+    font-size: 18px;
+  }
+  .item-info-left-garanty {
+    font-size: 18px;
+  }
+  .item-info-left-garanty-line{
+    width: 384px;
+  }
+  .item-popular {
+    height: 439px;
+  }
+  .title-popular {
+    font-size: 80px;
+  }
+  .image-popular-arrow {
+    width: 32px;
+    height: 32px;
+  }
+  .text-popular {
+    font-size: 24px;
+  }
+  .text-popular-price {
+    font-size: 18px;
+  }
+  // footer
+  .footer {
+    padding: 40px;
+  }
+  .title-footer {
+    font-size: 36px;
+  }
+  .title-text-footer,
+  .text-footer {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 800px) {
+  .header {
+    padding: 30px 16px;
+  }
+  .title-glorious {
+      color: #E8E4D9;
+      font-family: "SONGER SemiExpanded";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 100px;
+  }
+  .button-contact {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 40px;
+    background: #E8E4D9;
+    width: 130px;
+    height: 36px;
+    padding: 0;
+  }
+  .block-product {
+    display: flex;
+    flex-direction: column;
+  }
+  .container-product {
+    padding: 24px 16px;
+  }
+  .container-swiper {
+    width: 100%;
+    height: auto;
+  }
+  .swiper-pagination {
+    display: none;
+  }
+  .container-swiper {
+    width: 100%;
+    height: 247px;
+    padding: 0 4px;
+  }
+  .swiper-product-image {
+    width: 80%;
+    height: auto;
+    margin: 0;
+  }
+  .container-arrow {
+    width: 32px;
+    height: 28px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 20px;
+    height: 24px;
+  }
+  .title-main-mobile {
+    display: flex;
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .title-main-span-mobile {
+    color: #63574E;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-product-text-mobile {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .title-change-mobile {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+  }
+  .image-change-mobile {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .title-change {
+    display: none;
+  }
+  .title-product {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    flex-direction: row;
+  }
+  .title-product-span-price {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.64px;
+  }
+  .title-product-text {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.52px;
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    flex-shrink: 0;
+    margin-bottom: 4px;
+  }
+  .text-product {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .title-product-text-garanty {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+  .buttons-product {
+    gap: 4px;
+  }
+  .button-product,
+  .button-products {
+    color: #DAD5C9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 148px;
+    height: 36px;
+    padding: 0;
+  }
+  .lists-info-product {
+    gap: 8px;
+  }
+  .list-info {
+    gap: 16px;
+    width: 100%;
+  }
+  .block-info-product {
+    flex-direction: column;
+  }
+  .block-info-right {
+    flex-direction: column;
+  }
+  .lists-info-product {
+    flex-direction: column;
+  }
+  .title-info-product {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 16px;
+  }
+  .line-info {
+    margin: 4px 0;
+    width: 100%;
+  }
+  .item-info-title {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.52px;
+  }
+  .item-info {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.52px;
+  }
+  .block-info-left {
+    flex-direction: column;
+  }
+  .title-info-product {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+  .line-info-left {
+    width: 100%;
+  }
+  .list-info-left {
+    width: 100%;
+    gap: 16px;
+  }
+  .item-info-left-garanty {
+    font-size: 13px;
+  }
+  .item-info-left-garanty-line {
+    width: 100%;
+  }
+  .item-info-left {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .item-info-left-span {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .title-popular {
+    color: #352F2A;
+    font-family: "SONGER SemiExpanded";
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 16px 0;
+  }
+  .list-popular {
+    margin: 0;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .item-popular {
+    width: 100%;
+    height: 358px;
+  }
+  .image-popular-arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .text-popular,
+  .text-popular-price {
+    color: #5C544C;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.52px;
+  }
+  .item-popular-span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+   // footer
+   .footer {
+    padding: 16px;
+}
+.container-footer-top {
+    flex-direction: column;
+}
+.title-footer {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+.block-footer {
+    flex-direction: column;
+    margin: 0;
+    gap: 16px;
+}
+.title-text-footer {
+    margin-bottom: 4px;
+    margin-top: 24px;
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.list-footer {
+    gap: 8px;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.container-footer-bottom {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-footer-bottom-mobile {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+.title-main {
+  display: none;
+}
+}

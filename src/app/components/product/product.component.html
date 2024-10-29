@@ -1,0 +1,142 @@
+<div class="header">
+  <div class="container-header">
+      <p class="title-glorious" routerLink="">GLORIOUS</p>
+      <button class="button-contact" routerLink="/catalog">Каталог</button>
+  </div>
+</div>
+<div class="container-product">
+  <div class="block-product">
+    <div class="block-product-text-mobile">
+      <p class="title-main-mobile"><span class="title-main-span-mobile">Каталог/</span>Дивани</p>
+      <p *ngIf="isAdmin" routerLink="/admins" class="title-change-mobile"><img class="image-change-mobile" src="../../../assets/change.svg" alt=""><p class="text-change-mobile">Редагувати товар</p></p>
+    </div>
+    <div class="swiper-product">
+      <div class="container-swiper">
+        <div class="container-arrow" (click)="prevImage()">
+          <img class="swiper-button-prev" src="../../../assets/arrow-left.svg" alt="Prev">
+        </div>
+        <img class="swiper-product-image" [src]="currentImage" alt="Product Image" width="847" height="465" draggable="false">
+        <div class="container-arrow" (click)="nextImage()">
+          <img class="swiper-button-next" src="../../../assets/arrow-right.svg" alt="Next">
+        </div>
+      </div>
+      <div class="swiper-pagination">
+        <div *ngFor="let image of images" class="container-swiper-pagination-photo" (click)="selectImage(image)">
+          <img class="swiper-pagination-photo" [src]="image" alt="Thumbnail" draggable="false">
+        </div>
+      </div>
+    </div>
+    <div class="block-product-text">
+      <div class="block-title-product">
+        <p class="title-main"><span class="title-main-span">Каталог/</span>Дивани</p>
+        <p *ngIf="isAdmin" routerLink="/catalog" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
+      </div>
+      <p class="title-product">ДЖЕК 160 <span class="title-product-span-price"> 10 000 грн</span></p>
+      <p class="title-product-text">Опис</p>
+      <div class="line"></div>
+      <p class="text-product">Диван Джек 160, розкладний, елегантний, вишуканий, створений прикрасити будь-яке помешкання. Завдяки спеціальному механізму трансформації  "Єврокнижка" і  якісному матеріалу, посиленому пружинному блоку, може використовуватися як для офісних приміщень так і для комфортного повсякденного сну.  Виготовляється в двох розмірах і може йти в комплекті з кріслом.</p>
+      <p class="title-product-text-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
+      <!-- Якщо користувач не адмін, показуємо кнопку ЗВ'ЯЗОК -->
+      <button *ngIf="!isAdmin" class="button-product">ЗВ’ЯЗОК</button>
+      <!-- Якщо користувач адмін, показуємо дві кнопки -->
+      <div *ngIf="isAdmin" class="buttons-product">
+        <button class="button-products" (click)="addToPopular()">ДОДАТИ В ПОПУЛЯРНІ</button>
+        <button class="button-products" (click)="deleteProduct()">ВИДАЛИТИ ТОВАР</button>
+      </div>
+    </div>
+  </div>
+  <div class="block-info-product">
+    <div class="block-info-right">
+      <p class="title-info-product">Про товар</p>
+      <div class="line-info"></div>
+      <div class="lists-info-product">
+        <ul class="list-info">
+          <li class="item-info-title">Розмір дивана:</li>
+          <li class="item-info">Габаритний розмір: 235 см x 103 см.</li>
+          <li class="item-info">Спальне місце - 195 см х 160 см.</li>
+          <li class="item-info">Глибина сидіння - 49 см.</li>
+          <li class="item-info">Висота сидіння - 48 см.</li>
+          <li class="item-info">Висота виробу зі спинкою- 78 см.</li>
+          <li class="item-info">Додатково: В дивані під сидінням знаходиться ніша для постільної білизни.</li>
+        </ul>
+        <ul class="list-info">
+          <li class="item-info-title">Матеріали:</li>
+          <li class="item-info">Екологічно чисті матеріали, які пройшли перевірку і мають сертифікат.</li>
+          <li class="item-info">Тканина має назву Forever 66-61.</li>
+          <li class="item-info">Вартість дивана в іншій тканині, можна дізнатися у менеджера.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="block-info-left">
+      <p class="title-info-product">Умови доставки та оплати</p>
+      <div class="line-info-left"></div>
+      <ul class="list-info-left">
+        <li class="item-info-left-garanty" routerLink="/terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ ДІЙСНОЇ ГАРАНТІЇ <div class="item-info-left-garanty-line"></div></li>
+        <li class="item-info-left">Для купівлі товару необхідно зателефонувати за вказаним контактом.</li>
+        <li class="item-info-left">Передоплата або оплата при отриманні.</li>
+        <li class="item-info-left"><span class="item-info-left-span">Доставка здійснюється кур'єром</span> (авто виробника), попутним транспортом або Новою Поштою в будь-яку точку України, окрім окупованих і де відбуваються військові дії.</li>
+        <li class="item-info-left-span">Термін доставки від 3 днів, в залежності від замовлення і відстані.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="title-popular">РЕКОМЕНДУЄМО</p>
+  <ul class="list-popular">
+    <li class="item-popular">
+      <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
+      <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+      <span class="item-popular-span">
+        <p class="text-popular">ДЖЕК 160</p>
+        <p class="text-popular-price">10 000 грн</p>
+      </span>
+    </li>
+    <li class="item-popular">
+      <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
+      <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+      <span class="item-popular-span">
+        <p class="text-popular">ДЖЕК 160</p>
+        <p class="text-popular-price">10 000 грн</p>
+      </span>
+    </li>
+    <li class="item-popular">
+      <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
+      <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+      <span class="item-popular-span">
+        <p class="text-popular">ДЖЕК 160</p>
+        <p class="text-popular-price">10 000 грн</p>
+      </span>
+    </li>
+  </ul>
+</div>
+<div class="footer" id="contact">
+  <div class="container-footer-top">
+      <p class="title-footer">GLORIOUS</p>
+      <div class="block-footer">
+        <div class="list-footer">
+          <p class="title-text-footer">ПРО НАС</p>
+          <p class="text-footer">КОМФОРТ НА РОКИ</p>
+          <p class="text-footer">ПОПУЛЯРНІ ТОВАРИ</p>
+          <p class="text-footer">НАШІ ПЕРЕВАГИ</p>
+        </div>
+        <div class="list-footer">
+          <p class="title-text-footer">ЗВ’ЯЗОК</p>
+          <a href="tel:+380 73 800 4410" class="text-footer">+380 73 800 4410</a>
+          <a href="tel:+380 68 800 4410" class="text-footer">+380 68 800 4410</a>
+          <a href="mailto:gloriousmebel&#64;gmail.com" class="text-footer">gloriousmebel&#64;gmail.com</a>
+        </div>
+        <div class="list-footer">
+          <p class="title-text-footer">СЛІДКУЙ ЗА НАМИ</p>
+          <a href="https://www.facebook.com/profile.php?id=61563935930922" class="text-footer" target="_blank">FACEBOOK</a>
+          <a href="https://www.instagram.com/glorious_sofa/" class="text-footer" target="_blank">INSTAGRAM</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-footer-bottom">
+      <div class="block-footer-bottom">
+        <p class="title-text-footer">НАША АДРЕСА</p>
+        <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
+      </div>
+      <div>
+        <p class="text-footer">Всі права захищені All rights reserved</p>
+      </div>
+    </div>
+</div>

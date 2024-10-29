@@ -1,0 +1,199 @@
+<div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
+<!-- HEADER -->
+<header class="header">
+    <div class="container-header">
+      <nav class="nav-header">
+        <div class="block-nav-header-mobile" *ngIf="!isMenuOpen">
+          <button class="button-contact-mobile" routerLink="/catalog">КАТАЛОГ</button>
+          <img (click)="toggleMenu()" class="image-burger-mobile" src="../../../assets/burger.svg" alt="">
+        </div>
+        <!-- <span class="burger" (click)="toggleMenu()" [class.menu-opened]="menuOpened">
+          <span class="burger-line-top"></span>
+          <span class="burger-line-middle"></span>
+          <span class="burger-line-bottom"></span>
+        </span> *ngIf="menuOpened" -->
+        <ul class="nav-menu">
+          <li><a (click)="scrollToSection('popular')" class="link-menu">ПОПУЛЯРНІ ТОВАРИ</a></li>
+          <li><a (click)="scrollToSection('advantages')" class="link-menu">НАШІ ПЕРЕВАГИ</a></li>
+          <li><a (click)="scrollToSection('history')" class="link-menu">НАША ІСТОРІЯ</a></li>
+        </ul>
+        <ul class="menu-buttons">
+          <li><a class="blog" routerLink="/blog">БЛОГ</a></li>
+          <li><a (click)="openContact()" class="contact">КОНТАКТ З НАМИ</a></li>
+          <li><a class="catalog" routerLink="/catalog">КАТАЛОГ</a></li>
+        </ul>
+      </nav>
+      <h1 class="title-glorious">GLORIOUS</h1>
+      <p class="subtitle">ЗАТИШОК ПОЧИНАЄТЬСЯ З МЕБЛІВ</p>
+      <img class="sofa" src="../assets/sofa.png" alt="" draggable="false">
+    </div>
+  </header>
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container-main">
+      <section class="popular-products" id="popular">
+        <div class="container-popular">
+          <p class="title-popular">ПОПУЛЯРНІ ТОВАРИ</p>
+          <ul class="list-popular">
+            <li class="item-popular" routerLink="/catalog/1">
+              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+              <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+              <p class="text-popular">ДЖЕК 160</p>
+            </li>
+
+            <li class="item-popular" routerLink="/catalog/1">
+              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+              <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+              <p class="text-popular">ДЖЕК 160</p>
+            </li>
+
+            <li class="item-popular" routerLink="/catalog/1">
+              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+              <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
+              <p class="text-popular">ДЖЕК 160</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="section-our-advantages" id="advantages">
+        <div class="container-our-advantages">
+          <p class="title-our-advantages">НАШІ ПЕРЕВАГИ</p>
+          <div class="block-our-advantages">
+            <div class="list-block-our-advantages">
+              <div
+                class="item-block-our-advantages"
+                *ngFor="let advantage of advantages"
+                (mouseenter)="selectAdvantage(advantage)"
+              >
+                <p class="title-item-block-our-advantages">{{ advantage.title }}</p>
+                <img
+                  [ngClass]="{
+                    'arrow-right': selectedAdvantage === advantage,
+                    'arrow-down': selectedAdvantage !== advantage
+                  }"
+                  class="image-item-block-our-advantages"
+                  src="../assets/arrow-down-right.svg"
+                  alt="">
+              </div>
+            </div>
+            <div>
+              <p class="text-our-advantages">{{ selectedAdvantage.text }}</p>
+            </div>
+            <div>
+              <img class="image-our-advantages" [src]="selectedAdvantage.image" alt="" width="782" height="659">
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- MOBILE SECTION OUR ADVANTAGES -->
+      <div class="block-our-advantages-mobile" id="advantages-mobile">
+        <p class="title-our-advantages-mobile">НАШІ ПЕРЕВАГИ</p>
+
+        <div class="list-block-our-advantages-mobile"
+             *ngFor="let advantage of advantages"
+             (click)="selectAdvantage(advantage)">
+
+          <p class="text-our-advantages-mobile-title">{{ advantage.title }}</p> <!-- Використовуємо advantage.title -->
+
+          <img
+            [ngClass]="{
+              'arrow-right': selectedAdvantage === advantage,
+              'arrow-down': selectedAdvantage !== advantage
+            }"
+            class="image-item-block-our-advantages-mobile"
+            src="../assets/arrow-down-right.svg"
+            alt="">
+        </div>
+
+        <div class="line-our-advantages-mobile"></div>
+
+        <img class="image-our-advantages-mobile" [src]="selectedAdvantage?.image" alt="">
+        <p class="text-our-advantages-mobile">{{ selectedAdvantage?.text }}</p> <!-- Використовуємо оператор ?. -->
+      </div>
+      <section class="section-history" id="history">
+        <div class="container-history">
+          <p class="title-history">наша історія</p>
+          <div class="block-history">
+            <div class="text-block-history">
+              <p class="text-history">Історія нашої компанії розпочалася з великого бажання змінити погляд наших клієнтів на свої місця відпочинку. Засновники компанії вірили, що меблі - це не просто предмети, а місця, де народжується спокій і відновлюються сили. Для цього вони об'єднали свої таланти та ентузіазм, починаючи виробництво унікальних ліжок на металевих каркасах.</p>
+              <div class="image-block-history-mobile"><img class="image-history" src="../../../assets/people.png" alt=""></div>
+              <button class="button-history" routerLink="/catalog">НАШІ ТОВАРИ</button>
+            </div>
+            <div class="image-block-history"><img class="image-history" src="../../../assets/people.png" alt=""></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container-footer-top">
+      <p class="title-footer">GLORIOUS</p>
+      <div class="block-footer">
+        <div class="list-footer">
+          <p class="title-text-footer">ПРО НАС</p>
+          <p class="text-footer">КОМФОРТ НА РОКИ</p>
+          <p class="text-footer">ПОПУЛЯРНІ ТОВАРИ</p>
+          <p class="text-footer">НАШІ ПЕРЕВАГИ</p>
+        </div>
+        <div class="list-footer">
+          <p class="title-text-footer">ЗВ’ЯЗОК</p>
+          <a href="tel:+380 73 800 4410" class="text-footer">+380 73 800 4410</a>
+          <a href="tel:+380 68 800 4410" class="text-footer">+380 68 800 4410</a>
+          <a href="mailto:gloriousmebel&#64;gmail.com" class="text-footer">gloriousmebel&#64;gmail.com</a>
+        </div>
+        <div class="list-footer">
+          <p class="title-text-footer">СЛІДКУЙ ЗА НАМИ</p>
+          <a href="https://www.facebook.com/profile.php?id=61563935930922" class="text-footer" target="_blank">FACEBOOK</a>
+          <a href="https://www.instagram.com/glorious_sofa/" class="text-footer" target="_blank">INSTAGRAM</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-footer-bottom">
+      <div class="block-footer-bottom">
+        <p class="title-text-footer">НАША АДРЕСА</p>
+        <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
+      </div>
+      <div>
+        <p class="text-footer text-footer-bottom-mobile">Всі права захищені All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- contact for me -->
+ <div class="contact-me" [ngClass]="{'open': isContactOpen}">
+  <div class="container-contact-me">
+    <div class="block-contact-me">
+      <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
+      <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
+    </div>
+    <div class="block-input-contact-me">
+      <input class="input-contact" type="text" placeholder="Ім’я">
+      <input class="input-contact" type="text" placeholder="Номер телефону">
+    </div>
+    <button class="button-contact-me">ВІДПРАВИТИ</button>
+  </div>
+ </div>
+
+ <!-- mobile menu -->
+ <div class="mobail-menu" [ngClass]="{'open': isMenuOpen}">
+  <div class="block-mobail-menu">
+    <div class="list-mobail-menu-block">
+      <button class="button-mobail-menu" routerLink="/blog">БЛОГ</button>
+      <div class="block-mobail-menu-contact">
+        <button class="button-mobail-menu-contact" (click)="openContact()">КОНТАКТ З НАМИ</button>
+        <div class="block-button-mobail-menu-contact">
+          <p class="title-button-mobail-menu-contact">ЗАТЕЛЕФОНУВАТИ</p>
+          <p class="text-button-mobail-menu-contact">ЗАЛИШИТИ НОМЕР</p>
+        </div>
+      </div>
+      <img (click)="closeMenu()" class="image-mobail-menu" src="../../../assets/KRESTIK.svg" alt="">
+    </div>
+    <ul class="list-mobail-menu">
+      <li (click)="navigateToSection('popular')" class="item-mobile-mebu">ПОПУЛЯРНІ ТОВАРИ</li>
+      <li (click)="navigateToSection('advantages-mobile')" class="item-mobile-mebu">НАШІ ПЕРЕВАГИ</li>
+      <li (click)="navigateToSection('history')" class="item-mobile-mebu">НАША ІСТОРІЯ</li>
+    </ul>
+  </div>
+</div>

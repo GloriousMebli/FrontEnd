@@ -1,0 +1,108 @@
+<div class="header">
+    <div>
+        <p class="title-glorious" routerLink="/">GLORIOUS</p>
+    </div>
+</div>
+<div class="admin-panel">
+    <div class="container-admin-panel">
+        <div class="block-admin-products">
+            <div class="photos-admin-product">
+                <div class="photos-admin-product">
+                  <div class="title-admin-product-mobile">
+                    <p class="title-admin-product-text-mobile">
+                      <span class="title-admin-product-span-mobile">Каталог/</span>
+                      <select class="select-admin-product" [(ngModel)]="productCategory">
+                          <option value="sofas">Дивани</option>
+                          <option value="corners">Кути</option>
+                          <option value="chairs">Крісла</option>
+                      </select>
+                  </p>
+                  </div>
+                    <div class="photo-admin-product" (click)="onPhotoClick('main')">
+                      <img 
+                        [src]="mainPhotoUrl || '../../../assets/plus.svg'"
+                        [ngClass]="{'plus-photo': !mainPhotoUrl, 'main-photo': mainPhotoUrl}" 
+                        alt="Main Photo"
+                      >
+                      <input type="file" id="file-input-main" (change)="onFileSelected($event, 'main')" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="small-photos-admin-product">
+                    <div *ngFor="let smallPhoto of smallPhotos; let i = index" class="small-photo-admin-product" (click)="onPhotoClick('small', i)">
+                      <img 
+                        [src]="smallPhoto.url || '../../../assets/plus.svg'"
+                        [ngClass]="{'plus-photo-small': !smallPhoto.url, 'small-photo': smallPhoto.url}" 
+                        alt="Small Photo"
+                      >
+                      <input type="file" [id]="'file-input-small-' + i" (change)="onFileSelected($event, 'small', i)" accept="image/*" style="display: none;">
+                    </div>
+                    </div>
+                  </div>
+            </div>                 
+            <div class="text-admin-product">
+                <p class="title-admin-product">
+                    <span class="title-admin-product-span">Каталог/</span>
+                    <select class="select-admin-product" [(ngModel)]="productCategory">
+                        <option value="sofas">Дивани</option>
+                        <option value="corners">Кути</option>
+                        <option value="chairs">Крісла</option>
+                    </select>
+                </p>
+                <input class="input-admin-product-name" [(ngModel)]="productName" type="text" placeholder="Додати назву...">
+                <input class="input-admin-product-price" type="text" [(ngModel)]="productPrice" placeholder="Додати ціну...">
+                <p class="text-admin-product-description">Опис</p>
+                <div class="line-admin-product"></div>
+                <input class="input-admin-product-description" [(ngModel)]="productDescription" type="text" placeholder="Додати опис...">
+                <p class="text-admin-product-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
+                <button class="button-admin-product" (click)="submitProduct()">ДОДАТИ ТОВАР</button>
+            </div>
+        </div>
+        <div class="block-admin-product">
+            <div class="text-admin-product">
+                <p class="title-admin-product-text">Про товар</p>
+                <div class="line-admin-product-info"></div>
+                <div class="block-admin-product-info">
+                    <input class="input-admin-product-info" [(ngModel)]="productSize" type="text" placeholder="Додати про розмір...">
+                    <input class="input-admin-product-info" [(ngModel)]="productMaterials" type="text" placeholder="Додати про матеріали...">
+                </div>
+            </div>
+            <div class="text-admin-product">
+                <p class="title-admin-product-text">Умови доставки та оплати</p>
+                <div class="line-admin-product-info"></div>
+                <input class="input-admin-product-info" [(ngModel)]="productDelivery" type="text" placeholder="Додати про умови доставки та оплати...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer" id="contact">
+    <div class="container-footer-top">
+        <p class="title-footer">GLORIOUS</p>
+        <div class="block-footer">
+          <div class="list-footer">
+            <p class="title-text-footer">ПРО НАС</p>
+            <p class="text-footer">КОМФОРТ НА РОКИ</p>
+            <p class="text-footer">ПОПУЛЯРНІ ТОВАРИ</p>
+            <p class="text-footer">НАШІ ПЕРЕВАГИ</p>
+          </div>
+          <div class="list-footer">
+            <p class="title-text-footer">ЗВ’ЯЗОК</p>
+            <a href="tel:+380 73 800 4410" class="text-footer">+380 73 800 4410</a>
+            <a href="tel:+380 68 800 4410" class="text-footer">+380 68 800 4410</a>
+            <a href="mailto:gloriousmebel&#64;gmail.com" class="text-footer">gloriousmebel&#64;gmail.com</a>
+          </div>
+          <div class="list-footer">
+            <p class="title-text-footer">СЛІДКУЙ ЗА НАМИ</p>
+            <a href="https://www.facebook.com/profile.php?id=61563935930922" class="text-footer" target="_blank">FACEBOOK</a>
+            <a href="https://www.instagram.com/glorious_sofa/" class="text-footer" target="_blank">INSTAGRAM</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-footer-bottom">
+        <div class="block-footer-bottom">
+          <p class="title-text-footer">НАША АДРЕСА</p>
+          <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
+        </div>
+        <div>
+          <p class="text-footer text-footer-bottom-mobile">Всі права захищені All rights reserved</p>
+        </div>
+      </div>
+</div>

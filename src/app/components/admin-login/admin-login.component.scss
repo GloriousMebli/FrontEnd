@@ -1,0 +1,125 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 96px;
+    font-family: 'SONGER SemiExpanded';
+    color: #E8E4D9;
+    margin-top: 32px;
+}
+
+.form {
+    margin-top: 170px;
+    display: flex;
+    gap: 42px;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    gap: 8px;
+    align-items: start;
+    flex-direction: column;
+
+}
+
+.label {
+    font-size: 24px;
+    font-family: 'Roboto';
+    color: #E8E4D9;
+}
+
+.input {
+    width: 320px;
+    height: 64px;
+    border-radius: 8px;
+    background-color: #E8E4D9;
+    border: #352F2A 1px solid;
+    color: #352F2A;
+    padding: 24px;
+    font-size: 24px;
+    transition: all 0.3s;
+    font-family: 'Roboto';
+}
+
+.input::placeholder {
+    font-size: 24px;
+    font-family: 'Roboto';
+}
+
+.input:hover {
+    background-color: #352F2A;
+    border: #E8E4D9 1px solid ;
+    color: #E8E4D9;
+}
+
+.button-login {
+    display: flex;
+    margin: 0 auto;
+    width: 240px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    background-color: #E8E4D9;
+    border: #352F2A 1px solid;
+    color: #352F2A;
+    font-size: 24px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.button-login:hover {
+    background-color: #352F2A;
+    color: #E8E4D9;
+    border: #E8E4D9 1px solid;
+}
+
+.error {
+    font-size: 24px;
+    color: rgb(247, 61, 61);
+    display: flex;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+    .title {
+        font-size: 64px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 800px) {
+    .title {
+        font-size: 20px;
+    }
+    .form {
+        margin-top: 100px;
+        align-items: center;
+    }
+    .label {
+        font-size: 20px;
+    }
+    .input {
+        width: 200px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .input::placeholder {
+        font-size: 14px;
+    }
+    .button-login {
+        width: 150px;
+        height: 52px;
+        font-size: 20px;
+    }
+    .error {
+        font-size: 18px;
+    }
+}
