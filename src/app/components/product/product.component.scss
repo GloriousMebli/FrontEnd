@@ -1581,6 +1581,12 @@
   justify-content: space-between;
 }
 
+.block-admin-product-info-text{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .photo-admin-product {
   width: 976px;
   height: 836px;
