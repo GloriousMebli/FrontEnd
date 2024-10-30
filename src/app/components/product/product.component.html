@@ -59,8 +59,8 @@
           </ul>
           <ul class="list-info">
             <span class="item-info-title">Матеріали:</span>
-            <p class="textarea-info-info" placeholder="Додати про матеріали..." name="" id="">Екологічно чисті матеріали, які пройшли перевірку і мають сертифікат. Тканина має назву Forever 66-61. Вартість дивана в іншій тканині, можна дізнатися у менеджера.
-            </p>
+            <textarea class="textarea-info-info" placeholder="Додати про матеріали..." name="" id="">Екологічно чисті матеріали, які пройшли перевірку і мають сертифікат. Тканина має назву Forever 66-61. Вартість дивана в іншій тканині, можна дізнатися у менеджера.
+            </textarea>
           </ul>
         </div>
       </div>
@@ -147,14 +147,17 @@
             <div class="photos-admin-product">
                 <div class="photos-admin-product">
                   <div class="title-admin-product-mobile">
-                    <p class="title-admin-product-text-mobile">
-                      <span class="title-admin-product-span-mobile">Каталог/</span>
-                      <select class="select-admin-product">
-                          <option value="sofas">Дивани</option>
-                          <option value="corners">Кути</option>
-                          <option value="chairs">Крісла</option>
-                      </select>
-                  </p>
+                    <div class="title-admin-product-text-mobile">
+                      <div>
+                        <span class="title-admin-product-span-mobile">Каталог/</span>
+                        <select class="select-admin-product">
+                            <option value="sofas">Дивани</option>
+                            <option value="corners">Кути</option>
+                            <option value="chairs">Крісла</option>
+                        </select>
+                      </div>
+                      <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                    </div>
                   </div>
                     <div class="photo-admin-product" (click)="onPhotoClick('main')">
                       <img 

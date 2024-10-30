@@ -350,16 +350,11 @@
   resize: none;
 }
 
-.block-admin-product-info-text {
-  display: flex;
-  flex-direction: column;
-  gap: 32px; 
-}
-
 .textarea-info-info-left {
   max-width: 840px;
   min-height: 330px;
-  background-color: #E8E4D9;
+  background-color: transparent;
+  resize: none;
 }
 
 .textarea-info-info-left-text {
@@ -418,7 +413,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  letter-spacing: -0.96px;
   cursor: pointer;
 }
 
@@ -1670,7 +1664,8 @@
   justify-content: space-between;
 }
 
-.input-admin-product-info-materials {
+.input-admin-product-info-materials,
+.input-admin-product-info-materials::placeholder {
   max-width: 434px;
   width: 100%;
   min-height: 301px;
@@ -1952,7 +1947,7 @@
 }
 .text-admin-product-description,
 .text-admin-product-description::placeholder {
-  margin-top: 80px;
+  margin-top: 30px;
   font-size: 28px;
 }
 .button-admin-product {
@@ -1968,6 +1963,7 @@
 .input-admin-product-info,
 .input-admin-product-info::placeholder {
   font-size: 20px;
+  min-width: 272px;
 }
 // footer
 .footer {
@@ -2016,6 +2012,22 @@
 .title-admin-product-span,
 .select-admin-product {
   font-size: 16px;
+}
+.input-admin-product-info-materials,
+.input-admin-product-info-materials::placeholder {
+  font-size: 16px;
+  min-width: 162px;
+}
+.textarea-info-info-left-text{
+  font-size: 18px;
+}
+.title-admin-product-span-reg{
+  font-size: 18px;
+}
+.input-admin-product-info,
+.input-admin-product-info::placeholder {
+  font-size: 16px;
+  min-width: 256px;
 }
 .input-admin-product-name,
 .input-admin-product-name::placeholder {
@@ -2103,6 +2115,10 @@
   display: flex;
 }
 .title-admin-product-text-mobile {
+  width: 100%;
+  display: flex;
+}
+.title-admin-product-text-mobile {
   color: #352F2A;
   font-family: Manrope;
   font-size: 20px;
@@ -2117,6 +2133,14 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.input-admin-product-info-materials,
+.input-admin-product-info-materials::placeholder {
+  font-size: 20px;
+}
+.title-admin-product-span-reg {
+  font-size: 20px;
+  margin-left: auto;
 }
 .select-admin-product {
   color: #352F2A;
@@ -2249,7 +2273,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-bottom: 200px;
   width: 100%;
 }
 .input-admin-product-info::placeholder {
@@ -2331,6 +2354,14 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+  }
+  .title-admin-product-text-mobile{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .title-admin-product-span-reg {
+    font-size: 10px;
   }
   .photos-admin-product {
       gap: 4px;
@@ -2432,8 +2463,16 @@
       background: #352F2A;
       margin-top: 8px;
   }
+  .block-admin-product-info {
+    display: flex;
+    flex-direction: column;
+  }
   .block-admin-product {
+    gap: 0;
       flex-direction: column;
+  }
+  .textarea-info-info-left-text {
+    font-size: 13px;
   }
   .title-admin-product-text {
       color: #352F2A;
@@ -2456,10 +2495,14 @@
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      margin-bottom: 200px;
       width: 100%;
   }
-  .input-admin-product-info::placeholder {
+  .input-admin-product-info-materials {
+    height: 160px;
+    height: 100%;
+  }
+  .input-admin-product-info::placeholder,
+  .input-admin-product-info-materials::placeholder {
       color: #352F2A;
       font-family: Manrope;
       font-size: 13px;
@@ -2467,4 +2510,67 @@
       font-weight: 500;
       line-height: normal;
   }
+  // footer
+  .footer {
+    padding: 16px;
+}
+.container-footer-top {
+    flex-direction: column;
+}
+.title-footer {
+    color: #E8E4D9;
+    font-family: "SONGER SemiExpanded";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+.block-footer {
+    flex-direction: column;
+    margin: 0;
+    gap: 16px;
+}
+.title-text-footer {
+    margin-bottom: 4px;
+    margin-top: 24px;
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.list-footer {
+    gap: 8px;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.container-footer-bottom {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+.text-footer {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.text-footer-bottom-mobile {
+    color: #E8E4D9;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 auto;
+    margin-top: 32px;
+}
 }
