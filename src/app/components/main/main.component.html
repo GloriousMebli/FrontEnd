@@ -7,13 +7,10 @@
           <button class="button-contact-mobile" routerLink="/catalog">КАТАЛОГ</button>
           <img (click)="toggleMenu()" class="image-burger-mobile" src="../../../assets/burger.svg" alt="">
         </div>
-        <!-- <span class="burger" (click)="toggleMenu()" [class.menu-opened]="menuOpened">
-          <span class="burger-line-top"></span>
-          <span class="burger-line-middle"></span>
-          <span class="burger-line-bottom"></span>
-        </span> *ngIf="menuOpened" -->
         <ul class="nav-menu">
-          <li><a (click)="scrollToSection('popular')" class="link-menu">ПОПУЛЯРНІ ТОВАРИ</a></li>
+          @if(popularProducts?.length > 0){
+            <li><a (click)="scrollToSection('popular')" class="link-menu">ПОПУЛЯРНІ ТОВАРИ</a></li>
+          }
           <li><a (click)="scrollToSection('advantages')" class="link-menu">НАШІ ПЕРЕВАГИ</a></li>
           <li><a (click)="scrollToSection('history')" class="link-menu">НАША ІСТОРІЯ</a></li>
         </ul>
@@ -31,20 +28,22 @@
   <!-- MAIN -->
   <main class="main">
     <div class="container-main">
-      <section class="popular-products" id="popular">
-        <div class="container-popular">
-          <p class="title-popular">ПОПУЛЯРНІ ТОВАРИ</p>
-          <ul class="list-popular">
-            @for(product of popularProducts; track $index){
-              <li class="item-popular" [routerLink]="'/catalog/' + product._id">
-                <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-                <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
-                <p class="text-popular">{{product?.name}}</p>
-              </li>
-            }
-          </ul>
-        </div>
-      </section>
+      @if(popularProducts?.length > 0){
+        <section class="popular-products" id="popular">
+          <div class="container-popular">
+            <p class="title-popular">ПОПУЛЯРНІ ТОВАРИ</p>
+            <ul class="list-popular">
+              @for(product of popularProducts; track $index){
+                <li class="item-popular" [routerLink]="'/catalog/' + product._id">
+                  <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+                  <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
+                  <p class="text-popular">{{product?.name}}</p>
+                </li>
+              }
+            </ul>
+          </div>
+        </section>
+      }
       <section class="section-our-advantages" id="advantages">
         <div class="container-our-advantages">
           <p class="title-our-advantages">НАШІ ПЕРЕВАГИ</p>

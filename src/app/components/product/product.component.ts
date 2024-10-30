@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Product from '../../product.model';
 
 @Component({
@@ -10,7 +10,7 @@ import Product from '../../product.model';
 })
 export class ProductComponent implements OnInit {
 
-  product: Product | undefined 
+  product: Product
 
   isAdmin: boolean = false;
 
@@ -23,9 +23,54 @@ export class ProductComponent implements OnInit {
   mainPhotoUrl: string | ArrayBuffer | null = null;
   mainPhotoFile: File | null = null;
 
-  smallPhotos: { url: string | ArrayBuffer | null, file: File | null }[] = [
-    { url: null, file: null }
-  ]; // Масив для збереження всіх маленьких фото
+  smallPhotos: { url: string  }[] = []
+
+
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef){}
+
+  ngOnInit(): void {
+    const adminToken = localStorage.getItem('adminToken');
+    this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
+
+    const productId = this.route.snapshot.paramMap.get('id');
+    if(productId !== 'new') {
+      this.productsService.getProductById(productId || '').subscribe((data: any) => {
+        this.product = data;
+        this.product?.images?.map((image: any) => {
+          if (image.isMain) {
+            this.mainPhotoUrl = image.url;
+          }else{
+            this.smallPhotos.push({url: image.url})
+          }
+        })
+      })
+    }else{
+      this.EDIT_VIEW = true
+      this.product = {_id: 'new'}
+    }
+  }
+
+
+  setValue(event: Event, key: string): void {
+    this.product[key] = (event.target as HTMLInputElement).value
+  }
+
+
+  saveProduct(){
+    if(this.product?._id === 'new'){
+      delete this.product?._id
+      this.productsService.createProduct(this.product).subscribe((data: any) => {
+        this.product = data;
+        this.EDIT_VIEW = false
+      })
+    }else{
+      this.productsService.updateProduct(this.product?._id||'', this.product).subscribe((data: any) => {
+        this.product = data;
+        this.EDIT_VIEW = false
+      })
+    }
+    
+  }
 
   onPhotoClick(photoType: string, index?: number): void {
     const inputElement = document.getElementById(
@@ -36,54 +81,37 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event, photoType: string, index?: number): void {
+  onFileSelected(event: Event, isMain: boolean): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
 
-      this.productsService.uploadProductImage('670e6fccedcc21d7cdab7f00', file, 'main').subscribe(res=>{
-        console.log(res);
+      this.productsService.uploadProductImage(this.product?._id||'', file, isMain).subscribe(res=>{
+        this.smallPhotos = [];
+        res.images?.map((image: any) => {
+          if (image.isMain) {
+            this.mainPhotoUrl = image.url;
+          }else{
+            this.smallPhotos.push({url: image.url})
+          }
+        })
       })
 
     }
   }
-  
-
-  constructor(private productsService: ProductsService, private route: ActivatedRoute){}
-
-  ngOnInit(): void {
-    const adminToken = localStorage.getItem('adminToken');
-    this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
-
-    const productId = this.route.snapshot.paramMap.get('id');
-    this.productsService.getProductById(productId || '').subscribe((data: any) => {
-      this.product = data;
-    })
-  }
 
   addToPopular(): void {
-    // Отримуємо вже існуючі популярні товари з localStorage
-    const popularProducts = JSON.parse(localStorage.getItem('popularProducts') || '[]');
-
-    // Перевіряємо, чи товар вже є в популярних
-    const isAlreadyPopular = popularProducts.some((p: any) => p._id === this.product?._id);
-
-    if (!isAlreadyPopular) {
-      // Додаємо товар у список популярних
-      popularProducts.push(this.product);
-
-      // Оновлюємо localStorage
-      localStorage.setItem('popularProducts', JSON.stringify(popularProducts));
-
-      console.log("Товар додано до популярних");
-    } else {
-      console.log("Товар вже є в популярних");
-    }
+    this.product.popular = !this.product.popular
+    this.saveProduct()
   }
 
   deleteProduct(): void {
-    // Логіка для видалення товару
-    console.log("Товар видалено");
+    if(confirm('Ви впевнені, що хочете видалити цей продукт?')){
+      this.productsService.deleteProduct(this.product?._id||'').subscribe((data: any) => {
+        this.router.navigate(['/catalog']);
+      })
+    }
+    
   }
 
   scrollToSection(sectionId: string) {
@@ -101,24 +129,20 @@ export class ProductComponent implements OnInit {
   ];
 
   // Поточне зображення
-  currentImage: string = this.images[0];
   currentIndex: number = 0;
 
   // Метод для переходу до попереднього зображення
   prevImage(): void {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length - 1;
-    this.currentImage = this.images[this.currentIndex];
   }
 
   // Метод для переходу до наступного зображення
   nextImage(): void {
     this.currentIndex = (this.currentIndex < this.images.length - 1) ? this.currentIndex + 1 : 0;
-    this.currentImage = this.images[this.currentIndex];
   }
 
   // Метод для вибору конкретного зображення
-  selectImage(image: string): void {
-    this.currentImage = image;
-    this.currentIndex = this.images.indexOf(image);
+  selectImage(index:number): void {
+    this.currentIndex = index
   }
 }

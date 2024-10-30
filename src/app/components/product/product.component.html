@@ -1,31 +1,32 @@
-@if(EDIT_VIEW) {
-  <div class="header">
-    <div class="container-header">
-        <p class="title-glorious" routerLink="">GLORIOUS</p>
-        <button class="button-contact" routerLink="/catalog">Каталог</button>
-    </div>
+<div class="header">
+  <div>
+      <p class="title-glorious" routerLink="/">GLORIOUS</p>
   </div>
+</div>
+@if(!EDIT_VIEW) {
   <div class="container-product">
     <div class="block-product">
       <div class="block-product-text-mobile">
-        <p class="title-main-mobile"><span class="title-main-span-mobile">Каталог/</span>Дивани</p>
+        <p class="title-main-mobile"><span class="title-main-span-mobile">Каталог/</span>{{product?.category?.label}}</p>
         <p></p>
         <p *ngIf="isAdmin" (click)="toggleEditView()" class="title-change-mobile"><img class="image-change-mobile" src="../../../assets/change.svg" alt=""><p class="text-change-mobile">Редагувати товар</p></p>
       </div>
       <div class="swiper-product">
         <div class="container-swiper">
-          <div class="container-arrow" (click)="prevImage()">
+          <button class="container-arrow" (click)="prevImage()" [disabled]="currentIndex === 0">
             <img class="swiper-button-prev" src="../../../assets/arrow-left.svg" alt="Prev">
-          </div>
-          <img class="swiper-product-image" [src]="currentImage" alt="Product Image" width="847" height="465" draggable="false">
-          <div class="container-arrow" (click)="nextImage()">
+          </button>
+          <img class="swiper-product-image" [src]="this.product?.images?.[currentIndex]?.url" alt="Product Image" width="847" height="465" draggable="false">
+          <button class="container-arrow" (click)="nextImage()" [disabled]="currentIndex === (this.product?.images?.length||0) - 1">
             <img class="swiper-button-next" src="../../../assets/arrow-right.svg" alt="Next">
-          </div>
+          </button>
         </div>
         <div class="swiper-pagination">
-          <div *ngFor="let image of images" class="container-swiper-pagination-photo" (click)="selectImage(image)">
-            <img class="swiper-pagination-photo" [src]="image" alt="Thumbnail" draggable="false">
-          </div>
+          @for(image of this.product?.images; track $index){
+            <div class="container-swiper-pagination-photo" (click)="selectImage($index)">
+              <img class="swiper-pagination-photo" [src]="image?.url" alt="Thumbnail" draggable="false">
+            </div>
+          }
         </div>
       </div>
       <div class="block-product-text">
@@ -33,16 +34,19 @@
           <p class="title-main"><span class="title-main-span">Каталог/</span>Дивани</p>
           <p *ngIf="isAdmin" (click)="EDIT_VIEW = true" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
         </div>
-        <p class="title-product">ДЖЕК 160 <span class="title-product-span-price"> 10 000 грн</span></p>
+        <p class="title-product">{{product?.name || 'Назва товару'}} <span class="title-product-span-price"> {{product?.price}}</span></p>
         <p class="title-product-text">Опис</p>
         <div class="line"></div>
-        <p class="text-product">Диван Джек 160, розкладний, елегантний, вишуканий, створений прикрасити будь-яке помешкання. Завдяки спеціальному механізму трансформації  "Єврокнижка" і  якісному матеріалу, посиленому пружинному блоку, може використовуватися як для офісних приміщень так і для комфортного повсякденного сну.  Виготовляється в двох розмірах і може йти в комплекті з кріслом.</p>
+        <p class="text-product" [innerText]="product?.desc">
+        </p>
         <p class="title-product-text-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
         <!-- Якщо користувач не адмін, показуємо кнопку ЗВ'ЯЗОК -->
         <button *ngIf="!isAdmin" class="button-product">ЗВ’ЯЗОК</button>
         <!-- Якщо користувач адмін, показуємо дві кнопки -->
         <div *ngIf="isAdmin" class="buttons-product">
-          <button class="button-products" (click)="addToPopular()">ДОДАТИ В ПОПУЛЯРНІ</button>
+          <button class="button-products" (click)="addToPopular()">
+            {{product?.popular ? 'ВИДАЛИТИ З ПОПУЛЯРНИХ' : 'ДОДАТИ В ПОПУЛЯРНІ'}}
+          </button>
           <button class="button-products" (click)="deleteProduct()">ВИДАЛИТИ ТОВАР</button>
         </div>
       </div>
@@ -54,13 +58,13 @@
         <div class="lists-info-product">
           <ul class="list-info">
             <span class="item-info-title">Розмір дивана:</span>
-            <div><p class="textarea-info" placeholder="Додати про розмір..." name="" id="">Габаритний розмір: 235 см x 103 см. Спальне місце - 195 см х 160 см. Глибина сидіння - 49 см. Висота сидіння - 48 см. Висота виробу зі спинкою- 78 см.Додатково: В дивані під сидінням знаходиться ніша для постільної білизни.
-            </p></div>
+            <div>
+              <p class="textarea-info" [innerText]="product?.sizeInfo"></p>
+            </div>
           </ul>
           <ul class="list-info">
             <span class="item-info-title">Матеріали:</span>
-            <textarea class="textarea-info-info" placeholder="Додати про матеріали..." name="" id="">Екологічно чисті матеріали, які пройшли перевірку і мають сертифікат. Тканина має назву Forever 66-61. Вартість дивана в іншій тканині, можна дізнатися у менеджера.
-            </textarea>
+            <p class="textarea-info-info" [innerText]="product?.materialInfo"></p>
           </ul>
         </div>
       </div>
@@ -136,11 +140,6 @@
       </div>
   </div>
 } @else {
-  <div class="header">
-    <div>
-        <p class="title-glorious" routerLink="/">GLORIOUS</p>
-    </div>
-</div>
 <div class="admin-panel">
     <div class="container-admin-panel">
         <div class="block-admin-products">
@@ -156,26 +155,48 @@
                             <option value="chairs">Крісла</option>
                         </select>
                       </div>
-                      <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                      @if(product?._id !== 'new'){
+                        <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                      }
                     </div>
                   </div>
-                    <div class="photo-admin-product" (click)="onPhotoClick('main')">
-                      <img 
-                        [src]="mainPhotoUrl || '../../../assets/plus.svg'"
-                        [ngClass]="{'plus-photo': !mainPhotoUrl, 'main-photo': mainPhotoUrl}" 
-                        alt="Main Photo"
-                      >
-                      <input type="file" id="file-input-main" (change)="onFileSelected($event, 'main')" accept="image/*" style="display: none;">
-                    </div>
+                    @if(mainPhotoUrl){
+                      <div class="photo-admin-product">
+                        <img 
+                          [src]="mainPhotoUrl"
+                          class="main-photo"
+                          alt="Main Photo"
+                        >
+                      </div>
+                    }@else{
+                      <div class="photo-admin-product">
+                        <img 
+                          [src]="'../../../assets/plus.svg'"
+                          class="plus-photo"
+                          alt="Main Photo"
+                        >
+                        <input type="file" id="file-input-main" (change)="onFileSelected($event, true)" accept="image/*" style="opacity: 0; position: absolute; height: 100%; cursor: pointer;">
+                      </div>
+                    }
+                    
                     <div class="small-photos-admin-product">
-                    <div *ngFor="let smallPhoto of smallPhotos; let i = index" class="small-photo-admin-product" (click)="onPhotoClick('small', i)">
-                      <img 
-                        [src]="smallPhoto.url || '../../../assets/plus.svg'"
-                        [ngClass]="{'plus-photo-small': !smallPhoto.url, 'small-photo': smallPhoto.url}" 
-                        alt="Small Photo"
-                      >
-                      <input type="file" [id]="'file-input-small-' + i" (change)="onFileSelected($event, 'small', i)" accept="image/*" style="display: none;">
-                    </div>
+                      @for(photo of smallPhotos; track $index){
+                        <div class="small-photo-admin-product">
+                          <img 
+                            [src]="photo.url"
+                            class="small-photo"
+                            alt="Small Photo"
+                          >
+                        </div>
+                      }
+                      <div  class="small-photo-admin-product" (click)="onPhotoClick('small')">
+                        <img 
+                          [src]=" '../../../assets/plus.svg'"
+                          class="plus-photo-small"
+                          alt="Small Photo"
+                        >
+                        <input type="file" [id]="'file-input-small'" (change)="onFileSelected($event, false)" accept="image/*" style="opacity: 0; position: absolute; height: 100%; cursor: pointer;">
+                      </div>
                     </div>
                   </div>
             </div>                 
@@ -189,15 +210,18 @@
                         <option value="chairs">Крісла</option>
                     </select>
                   </div>
+                  @if(product?._id !== 'new'){
                     <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                  }
                 </div>
-                <input class="input-admin-product-name"  type="text" placeholder="Додати назву...">
-                <input class="input-admin-product-price" type="text"  placeholder="Додати ціну...">
+                <input class="input-admin-product-name" [value]="product?.name || ''" (change)="setValue($event, 'name')" type="text" placeholder="Додати назву...">
+                <input class="input-admin-product-price" type="text" [value]="product?.price || ''" (change)="setValue($event, 'price')" placeholder="Додати ціну...">
+                
                 <p class="text-admin-product-description">Опис</p>
                 <div class="line-admin-product"></div>
-                <textarea class="input-admin-product-description"  type="text" rows="8" placeholder="Додати опис..."></textarea>
+                <textarea class="input-admin-product-description" autogrow [value]="product?.desc || ''" (change)="setValue($event, 'desc')"  type="text" rows="8" placeholder="Додати опис..."></textarea>
                 <p class="text-admin-product-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
-                <button class="button-admin-product" >ЗБЕРЕГТИ</button>
+                <button class="button-admin-product" (click)="saveProduct()">ЗБЕРЕГТИ</button>
             </div>
         </div>
         <div class="block-admin-product">
@@ -205,8 +229,8 @@
                 <p class="title-admin-product-text">Про товар</p>
                 <div class="line-admin-product-info"></div>
                 <div class="block-admin-product-info">
-                    <textarea class="input-admin-product-info" rows="10"  type="text"  placeholder="Додати про розмір..."></textarea>
-                    <textarea  class="input-admin-product-info-materials" rows="10"  type="text"  placeholder="Додати про матеріали..."></textarea>
+                    <textarea class="input-admin-product-info" rows="10" autogrow type="text" [value]="product?.sizeInfo || ''" (change)="setValue($event, 'sizeInfo')" placeholder="Додати про розмір..."></textarea>
+                    <textarea  class="input-admin-product-info-materials" autogrow [value]="product?.materialInfo || ''" (change)="setValue($event, 'materialInfo')"  type="text"  placeholder="Додати про матеріали..."></textarea>
                 </div>
             </div>
             <div class="text-admin-product">

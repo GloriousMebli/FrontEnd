@@ -90,7 +90,6 @@
 }
 
 .container-arrow {
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,6 +97,11 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
+}
+
+.container-arrow:disabled{
+  cursor: default;
+  opacity: 0.5;
 }
 
 .container-swiper-pagination-photo {
@@ -331,7 +335,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  max-width: 391px;
   min-height: 387px;
   background-color: #E8E4D9;
   resize: none;
@@ -1598,6 +1601,7 @@
 }
 
 .small-photo-admin-product {
+  position: relative;
   width: 170px;
   height: 146px;
   flex-shrink: 0;

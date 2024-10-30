@@ -1,10 +1,17 @@
 <div class="header">
     <div class="container-header">
         <p class="title-glorious" routerLink="">GLORIOUS</p>
-        <button class="button-contact" (click)="navigateToAdmin()">
-          {{ isAdmin ? 'ДОДАТИ ТОВАР' : 'КОНТАКТ З НАМИ' }}
-        </button>
-            </div>
+        @if(isAdmin){
+          <a class="button-contact" routerLink="/catalog/new">
+            ДОДАТИ ТОВАР
+          </a>
+        }@else {
+          <button class="button-contact">
+            КОНТАКТ З НАМИ
+          </button>
+        }
+        
+    </div>
 </div>
 <div class="main">
     <div class="container-main">

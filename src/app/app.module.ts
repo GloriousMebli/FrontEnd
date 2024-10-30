@@ -13,11 +13,11 @@ import { ProductComponent } from './components/product/product.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from './services/admin.service';
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogInfoComponent } from './components/blog-info/blog-info.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AutoGrowDirective } from './directives/auto-gorw.directive';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { ErrorComponent } from './components/error/error.component';
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [ RouterModule ],
   declarations: [
@@ -37,11 +37,11 @@ import { ErrorComponent } from './components/error/error.component';
     CatalogComponent,
     ProductComponent,
     AdminLoginComponent,
-    AdminPanelComponent,
     TermsOfUseComponent,
     BlogComponent,
     BlogInfoComponent,
-    ErrorComponent
+    ErrorComponent,
+    AutoGrowDirective
    ],
   providers: [ ProductsService, AdminService ],
   bootstrap:    [ AppComponent ]
