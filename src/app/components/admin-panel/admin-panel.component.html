@@ -51,7 +51,7 @@
                 <input class="input-admin-product-price" type="text" [(ngModel)]="productPrice" placeholder="Додати ціну...">
                 <p class="text-admin-product-description">Опис</p>
                 <div class="line-admin-product"></div>
-                <input class="input-admin-product-description" [(ngModel)]="productDescription" type="text" placeholder="Додати опис...">
+                <textarea class="input-admin-product-description" [(ngModel)]="productDescription" type="text" rows="8" placeholder="Додати опис..."></textarea>
                 <p class="text-admin-product-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
                 <button class="button-admin-product" (click)="submitProduct()">ДОДАТИ ТОВАР</button>
             </div>
@@ -61,8 +61,8 @@
                 <p class="title-admin-product-text">Про товар</p>
                 <div class="line-admin-product-info"></div>
                 <div class="block-admin-product-info">
-                    <input class="input-admin-product-info" [(ngModel)]="productSize" type="text" placeholder="Додати про розмір...">
-                    <input class="input-admin-product-info" [(ngModel)]="productMaterials" type="text" placeholder="Додати про матеріали...">
+                    <textarea class="input-admin-product-info" [(ngModel)]="productSize" type="text" rows="8" placeholder="Додати про розмір..."></textarea>
+                    <textarea  class="input-admin-product-info" [(ngModel)]="productMaterials" type="text" rows="8" placeholder="Додати про матеріали..."></textarea>
                 </div>
             </div>
             <div class="text-admin-product">

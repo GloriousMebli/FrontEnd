@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PopularProductsService } from '../../services/popular-product.service';
+import { ProductsService } from '../../services/products.service';
+import { ActivatedRoute } from '@angular/router';
+import Product from '../../product.model';
 
 @Component({
   selector: 'app-product',
@@ -8,14 +10,22 @@ import { PopularProductsService } from '../../services/popular-product.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private popularProductsService: PopularProductsService) {}
-  product = { id: 1, name: 'ДЖЕК 160', image: '../../../assets/sofa-list.png' }; // Поточний товар
+  product: Product | undefined 
 
   isAdmin: boolean = false;
+
+  EDIT_VIEW = false
+
+  constructor(private productsService: ProductsService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     const adminToken = localStorage.getItem('adminToken');
     this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
+
+    const productId = this.route.snapshot.paramMap.get('id');
+    this.productsService.getProductById(productId || '').subscribe((data: any) => {
+      this.product = data;
+    })
   }
 
   addToPopular(): void {
@@ -23,7 +33,7 @@ export class ProductComponent implements OnInit {
     const popularProducts = JSON.parse(localStorage.getItem('popularProducts') || '[]');
 
     // Перевіряємо, чи товар вже є в популярних
-    const isAlreadyPopular = popularProducts.some((p: any) => p.id === this.product.id);
+    const isAlreadyPopular = popularProducts.some((p: any) => p._id === this.product?._id);
 
     if (!isAlreadyPopular) {
       // Додаємо товар у список популярних

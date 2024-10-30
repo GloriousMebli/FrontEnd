@@ -29,7 +29,7 @@
     <div class="block-product-text">
       <div class="block-title-product">
         <p class="title-main"><span class="title-main-span">Каталог/</span>Дивани</p>
-        <p *ngIf="isAdmin" routerLink="/catalog" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
+        <p *ngIf="isAdmin" (click)="EDIT_VIEW = true" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
       </div>
       <p class="title-product">ДЖЕК 160 <span class="title-product-span-price"> 10 000 грн</span></p>
       <p class="title-product-text">Опис</p>
@@ -61,9 +61,7 @@
         </ul>
         <ul class="list-info">
           <li class="item-info-title">Матеріали:</li>
-          <li class="item-info">Екологічно чисті матеріали, які пройшли перевірку і мають сертифікат.</li>
-          <li class="item-info">Тканина має назву Forever 66-61.</li>
-          <li class="item-info">Вартість дивана в іншій тканині, можна дізнатися у менеджера.</li>
+          <li></li>
         </ul>
       </div>
     </div>
@@ -86,7 +84,7 @@
       <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
       <span class="item-popular-span">
         <p class="text-popular">ДЖЕК 160</p>
-        <p class="text-popular-price">10 000 грн</p>
+        <p class="text-popular-price">{{product?.price}} грн</p>
       </span>
     </li>
     <li class="item-popular">

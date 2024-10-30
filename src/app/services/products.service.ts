@@ -12,7 +12,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   // Отримати всі продукти
-  getProducts(): Observable<any[]> {
+  getProducts(filters?: {popular?: boolean}): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
   }
 

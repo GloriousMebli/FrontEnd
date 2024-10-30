@@ -41,27 +41,13 @@
         </ul>               
         <div class="block-popular">
         <ul class="list-popular">
-            <li class="item-popular" routerLink="/catalog/1">
-              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-              <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
-              <p class="text-popular">ДЖЕК 160</p>
-            </li>
-            <!-- DELETE -->
-            <li class="item-popular" routerLink="/catalog/2">
-              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-              <img class="image-popular" src="../assets/sofa-list.png" alt="">
-              <p class="text-popular">ДЖЕК 160</p>
-            </li>
-            <li class="item-popular" routerLink="/catalog/3">
-              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-              <img class="image-popular" src="../assets/sofa-list.png" alt="">
-              <p class="text-popular">ДЖЕК 160</p>
-            </li>
-            <li class="item-popular" routerLink="/catalog/4">
-              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-              <img class="image-popular" src="../assets/123.jpg" alt="">
-              <p class="text-popular">ДЖЕК 160</p>
-            </li>
+            @for(product of products; track $index){
+              <li class="item-popular" [routerLink]="product._id">
+                <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+                <img class="image-popular" [src]="product.images?.[0]?.url" alt="" draggable="false">
+                <p class="text-popular">{{product.name}}</p>
+              </li>
+            }
           </ul>
         </div>
     </div>

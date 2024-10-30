@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { PopularProductsService } from '../../services/popular-product.service';
+import { ProductsService } from '../../services/products.service';
+import Product from '../../product.model';
 
 @Component({
   selector: 'app-main',
@@ -8,15 +9,34 @@ import { PopularProductsService } from '../../services/popular-product.service';
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
-  constructor(private renderer: Renderer2, private router: Router, private popularProductsService: PopularProductsService ) { }
+  constructor(private renderer: Renderer2, private productsService: ProductsService, private router: Router) { }
 
-  popularProducts: any[] = [];
+  popularProducts: Product[] = [];
 
   photos:any = []
 
   menuOpened = false;
 
   isContactOpen = false;
+
+  ngOnInit() {
+    this.selectedAdvantage = this.advantages[0]; // Встановлюємо першу перевагу як вибрану
+
+    this.productsService.getProducts({popular:true}).subscribe((data: Product[]) => {
+      this.popularProducts = data;
+    })
+
+    // Підписуємося на подію NavigationEnd
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Прокручуємо до верху сторінки
+        window.scrollTo(0, 0);
+        // Закриваємо мобільне меню після переходу на іншу сторінку
+        this.closeMenu();
+      }
+    });
+
+  }
 
   openContact() {
     this.isContactOpen = true;
@@ -78,21 +98,6 @@ export class MainComponent implements OnInit {
     this.selectedAdvantage = advantage;
   }
 
-  ngOnInit() {
-    this.selectedAdvantage = this.advantages[0]; // Встановлюємо першу перевагу як вибрану
-
-    // Підписуємося на подію NavigationEnd
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Прокручуємо до верху сторінки
-        window.scrollTo(0, 0);
-        // Закриваємо мобільне меню після переходу на іншу сторінку
-        this.closeMenu();
-      }
-    });
-
-    this.popularProducts = this.popularProductsService.getPopularProducts();
-  }
 
   // MOBILE MENU
   isMenuOpen = false;

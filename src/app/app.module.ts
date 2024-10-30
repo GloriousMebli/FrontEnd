@@ -18,7 +18,6 @@ import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.comp
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogInfoComponent } from './components/blog-info/blog-info.component';
 import { ErrorComponent } from './components/error/error.component';
-import { PopularProductsService } from './services/popular-product.service';
 
 @NgModule({
   imports: [
@@ -44,7 +43,7 @@ import { PopularProductsService } from './services/popular-product.service';
     BlogInfoComponent,
     ErrorComponent
    ],
-  providers: [ ProductsService, AdminService, PopularProductsService ],
+  providers: [ ProductsService, AdminService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {
