@@ -15,6 +15,39 @@ export class ProductComponent implements OnInit {
   isAdmin: boolean = false;
 
   EDIT_VIEW = false
+  
+  toggleEditView() {
+    this.EDIT_VIEW = !this.EDIT_VIEW;
+  }
+
+  mainPhotoUrl: string | ArrayBuffer | null = null;
+  mainPhotoFile: File | null = null;
+
+  smallPhotos: { url: string | ArrayBuffer | null, file: File | null }[] = [
+    { url: null, file: null }
+  ]; // Масив для збереження всіх маленьких фото
+
+  onPhotoClick(photoType: string, index?: number): void {
+    const inputElement = document.getElementById(
+      photoType === 'main' ? 'file-input-main' : `file-input-small-${index}`
+    ) as HTMLInputElement;
+    if (inputElement) {
+      inputElement.click();
+    }
+  }
+
+  onFileSelected(event: Event, photoType: string, index?: number): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      this.productsService.uploadProductImage('670e6fccedcc21d7cdab7f00', file, 'main').subscribe(res=>{
+        console.log(res);
+      })
+
+    }
+  }
+  
 
   constructor(private productsService: ProductsService, private route: ActivatedRoute){}
 
