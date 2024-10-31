@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  // https://backend-production-5fe1.up.railway.app/api/products
-  // http://localhost:3313/api/products
-  private baseUrl = 'http://localhost:3313/api/products'; // Базовий URL
+  apiUrl = environment.apiUrl
+  private baseUrl = this.apiUrl + '/products'; // Базовий URL
   headers 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('adminToken'); // Replace 'token' with your actual token key
