@@ -2,9 +2,9 @@
     <div class="container-header">
         <p class="title-glorious" routerLink="">GLORIOUS</p>
         @if(isAdmin){
-          <a class="button-contact" routerLink="/catalog/new">
+          <button class="button-contact" (click)="addProduct()" >
             ДОДАТИ ТОВАР
-          </a>
+          </button>
         }@else {
           <button class="button-contact">
             КОНТАКТ З НАМИ
@@ -52,7 +52,7 @@
               <li class="item-popular" [routerLink]="product._id">
                 <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
                 <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
-                <p class="text-popular">{{product.name}}</p>
+                <p class="text-popular">{{product.name || 'Новий Товар'}}</p>
               </li>
             }
           </ul>

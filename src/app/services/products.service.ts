@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
+  // https://backend-production-5fe1.up.railway.app/api/products
+  // http://localhost:3313/api/products
   private baseUrl = 'http://localhost:3313/api/products'; // Базовий URL
   headers 
   constructor(private http: HttpClient) {
@@ -19,7 +21,7 @@ export class ProductsService {
   }
 
   // Отримати всі продукти
-  getProducts(filters?: {popular?: boolean}): Observable<any[]> {
+  getProducts(filters?: {popular?: boolean, withNameAndImage?: boolean}): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl, { params: filters });
   }
 
@@ -54,5 +56,9 @@ export class ProductsService {
     formData.append('file', file);
     formData.append('isMain', isMain.toString());
     return this.http.post<any>(`${this.baseUrl}/${id}/image`, formData, { headers: this.headers });
+  }
+
+  deleteProductImage(id: string, fileId: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/${id}/image/${fileId}`, { headers: this.headers });
   }
 }

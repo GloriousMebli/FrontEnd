@@ -25,7 +25,7 @@ export class AdminLoginComponent {
           // Перевірка, чи токен збігається
           const storedToken = localStorage.getItem('adminToken');
           if (storedToken === response.token) {
-            this.router.navigate(['/admins']); // Перенаправлення на маршрут /admins
+            this.router.navigate(['/catalog']); // Перенаправлення на маршрут /admins
           }
 
           this.resetForm(form); // Скидаємо форму після успішного входу

@@ -13,13 +13,16 @@
       </div>
       <div class="swiper-product">
         <div class="container-swiper">
-          <button class="container-arrow" (click)="prevImage()" [disabled]="currentIndex === 0">
-            <img class="swiper-button-prev" src="../../../assets/arrow-left.svg" alt="Prev">
-          </button>
-          <img class="swiper-product-image" [src]="this.product?.images?.[currentIndex]?.url" alt="Product Image" width="847" height="465" draggable="false">
-          <button class="container-arrow" (click)="nextImage()" [disabled]="currentIndex === (this.product?.images?.length||0) - 1">
-            <img class="swiper-button-next" src="../../../assets/arrow-right.svg" alt="Next">
-          </button>
+          <div class="swiper-product-image" id="image-viewer" style="width: 100%; height: 100%;">
+            <button class="container-arrow" style="left: 16px;" (click)="prevImage()" [disabled]="currentIndex === 0">
+              <img class="swiper-button-prev" src="../../../assets/arrow-left.svg" alt="Prev">
+            </button>
+            <button class="container-arrow" style="right: 16px;" (click)="nextImage()" [disabled]="currentIndex === (this.product?.images?.length||0) - 1">
+              <img class="swiper-button-next" src="../../../assets/arrow-right.svg" alt="Next">
+            </button>
+          </div>
+          <!-- <img  [src]="this.product?.images?.[currentIndex]?.url" alt="Product Image" width="847" height="465" draggable="false"> -->
+          
         </div>
         <div class="swiper-pagination">
           @for(image of this.product?.images; track $index){
@@ -31,13 +34,13 @@
       </div>
       <div class="block-product-text">
         <div class="block-title-product">
-          <p class="title-main"><span class="title-main-span">Каталог/</span>Дивани</p>
+          <p class="title-main"><span class="title-main-span">Каталог/</span>{{product?.category?.label}}</p>
           <p *ngIf="isAdmin" (click)="EDIT_VIEW = true" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
         </div>
         <p class="title-product">{{product?.name || 'Назва товару'}} <span class="title-product-span-price"> {{product?.price}}</span></p>
         <p class="title-product-text">Опис</p>
         <div class="line"></div>
-        <p class="text-product" [innerText]="product?.desc">
+        <p class="text-product" [innerText]="product?.desc || ''">
         </p>
         <p class="title-product-text-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
         <!-- Якщо користувач не адмін, показуємо кнопку ЗВ'ЯЗОК -->
@@ -59,12 +62,12 @@
           <ul class="list-info">
             <span class="item-info-title">Розмір дивана:</span>
             <div>
-              <p class="textarea-info" [innerText]="product?.sizeInfo"></p>
+              <p class="textarea-info" [innerText]="product?.sizeInfo || ''"></p>
             </div>
           </ul>
           <ul class="list-info">
             <span class="item-info-title">Матеріали:</span>
-            <p class="textarea-info-info" [innerText]="product?.materialInfo"></p>
+            <p class="textarea-info-info" [innerText]="product?.materialInfo || ''"></p>
           </ul>
         </div>
       </div>
@@ -164,13 +167,15 @@
                       }
                     </div>
                   </div>
-                    @if(mainPhotoUrl){
+                    @if(mainPhoto?._id){
                       <div class="photo-admin-product">
                         <img 
-                          [src]="mainPhotoUrl"
+                          [src]="mainPhoto?.url"
                           class="main-photo"
                           alt="Main Photo"
                         >
+
+                        <button class="delete-photo-btn" (click)="deletePhoto(mainPhoto?._id)"> <img style="width:16px; height:16px; fill:white" src="../../../assets/trash.svg" alt=""></button>
                       </div>
                     }@else{
                       <div class="photo-admin-product">
@@ -191,6 +196,7 @@
                             class="small-photo"
                             alt="Small Photo"
                           >
+                          <button class="delete-photo-btn" (click)="deletePhoto(photo?._id)"> <img style="width:16px; height:16px; fill:white" src="../../../assets/trash.svg" alt=""></button>
                         </div>
                       }
                       <div  class="small-photo-admin-product" (click)="onPhotoClick('small')">

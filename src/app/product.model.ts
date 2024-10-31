@@ -1,7 +1,14 @@
 interface Image {
+  _id: string;
   url: string;
   thumbnailUrl: string;
   isMain: boolean;
+  meta: {
+    fileName: string;
+    fileId: string;
+    thumbnailFileId: String,
+    thumbnailFileName: String
+  }
 }
 
 interface Category {

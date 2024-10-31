@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Product from '../../product.model';
-
+import OpenSeadragon from 'openseadragon'
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -20,11 +20,20 @@ export class ProductComponent implements OnInit {
     this.EDIT_VIEW = !this.EDIT_VIEW;
   }
 
-  mainPhotoUrl: string | ArrayBuffer | null = null;
-  mainPhotoFile: File | null = null;
+  mainPhoto = {url: '', _id: ''}
 
-  smallPhotos: { url: string  }[] = []
-
+  smallPhotos: {_id: string, url: string  }[] = []
+  viewer
+  viewerOptions = {
+    visibilityRatio: 1,
+    id: "image-viewer",
+    sequenceMode: false,
+    showNavigationControl: false,
+    showZoomControl: false,
+    maxZoomPixelRatio: 2,
+    zoomPerScroll: 1.8,
+    prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/"
+  }
 
   constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef){}
 
@@ -38,9 +47,16 @@ export class ProductComponent implements OnInit {
         this.product = data;
         this.product?.images?.map((image: any) => {
           if (image.isMain) {
-            this.mainPhotoUrl = image.url;
+            this.mainPhoto = {url: image.url, _id: image._id};
+            this.viewer = OpenSeadragon({
+              ...this.viewerOptions,
+              tileSources:  {
+                  type: 'image',
+                  url: image.url
+              },
+          });
           }else{
-            this.smallPhotos.push({url: image.url})
+            this.smallPhotos.push({_id: image._id, url: image.url})
           }
         })
       })
@@ -88,16 +104,32 @@ export class ProductComponent implements OnInit {
 
       this.productsService.uploadProductImage(this.product?._id||'', file, isMain).subscribe(res=>{
         this.smallPhotos = [];
+        this.product.images = res?.images
         res.images?.map((image: any) => {
           if (image.isMain) {
-            this.mainPhotoUrl = image.url;
+            this.mainPhoto = {url: image.url, _id: image._id};
           }else{
-            this.smallPhotos.push({url: image.url})
+            this.smallPhotos.push({_id: image._id, url: image.url})
           }
         })
       })
 
     }
+  }
+
+  deletePhoto(fileId: string): void {
+    if(!confirm('Ви впевнені, що хочете видалити це зображення?')) return
+    this.productsService.deleteProductImage(this.product?._id||'', fileId).subscribe((data: any) => {
+      this.smallPhotos = [];
+      this.mainPhoto = {url: '', _id: ''};
+      data.images?.map((image: any) => {
+        if (image?.isMain) {
+          this.mainPhoto = {url: image.url, _id: image._id};
+        }else{
+          this.smallPhotos.push({_id: image._id, url: image.url})
+        }
+      })
+    })
   }
 
   addToPopular(): void {
@@ -134,15 +166,27 @@ export class ProductComponent implements OnInit {
   // Метод для переходу до попереднього зображення
   prevImage(): void {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length - 1;
+    this.viewer.open({
+      type: 'image',
+      url: this.product?.images?.[this.currentIndex]?.url
+    })
   }
 
   // Метод для переходу до наступного зображення
   nextImage(): void {
     this.currentIndex = (this.currentIndex < this.images.length - 1) ? this.currentIndex + 1 : 0;
+    this.viewer.open({
+      type: 'image',
+      url: this.product?.images?.[this.currentIndex]?.url
+    })
   }
 
   // Метод для вибору конкретного зображення
   selectImage(index:number): void {
     this.currentIndex = index
+    this.viewer.open({
+      type: 'image',
+      url: this.product?.images?.[this.currentIndex]?.url
+    })
   }
 }
