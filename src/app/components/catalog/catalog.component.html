@@ -19,39 +19,56 @@
         <p class="title-main-text">всі товари</p>
         <div *ngIf="isAdmin" class="block-main-add-category">
           <div class="block-main-add-category-button">
-            <div *ngFor="let input of inputFields; let i = index; trackBy: trackByIndex" class="input-wrapper">
-              <input
-                [(ngModel)]="inputFields[i]"
-                class="btn-category-add-input"
-                placeholder="Додати товар..."
-              />
-              <!-- Хрестик відображається тільки якщо в інпуті є текст -->
-              <img
-                *ngIf="inputFields[i]"
-                (click)="removeInputField(i)"
-                class="image-category-add"
-                src="../../../assets/x.svg"
-                alt="Видалити категорію"
-              />
-            </div>
+            @for(category of categories; track $index){
+              <li class="item-main" [ngClass]="{'item-main--active': filters?.categoryIds?.includes(category?._id)}" (click)="setFilter('categoryIds', category._id)">
+                <input class="category-input" (change)="editCategory(category._id, $event)" [value]="category?.label">
+                <button class="delete-category-btn" (click)="deleteCategory(category._id); $event.stopPropagation()">
+                  <img class="image-main-add-category-arrow" style="height: 15px; " src="../../../assets/trash.svg">
+                </button>
+              </li>
+            }
+            @if(ADD_CATEGORY){
+              <div class="input-wrapper">
+                <input
+                  (change)="createCategory($event)"
+                  class="btn-category-add-input"
+                  placeholder="Додати Назву..."
+                />
+                <img
+                  (click)="ADD_CATEGORY = false"
+                  class="image-category-add"
+                  src="../../../assets/x.svg"
+                />
+              </div>
+            }
+            
           </div>
-          <div class="block-main-add-category-plus">
-            <button (click)="addInputField()" class="button-main-add-category-plus">
-              <span class="image-main-add-category-plus">+</span>
-            </button>
-          </div>
+          <button (click)="ADD_CATEGORY = true" class="block-main-add-category-plus">
+            <span class="image-main-add-category-plus">+</span>
+          </button>
         </div>
         <ul *ngIf="!isAdmin" class="list-main">
-          <li class="item-main">ДИВАНИ</li>
-          <li class="item-main">КУТИ</li>
-          <li class="item-main none-item">ЛІЖКА</li>
+          @for(category of categories; track $index){
+            <li class="item-main"[ngClass]="{'item-main--active': filters?.categoryIds?.includes(category._id)}" (click)="setFilter('categoryIds', category._id)">
+              {{category.label}}
+
+              @if(filters?.categoryIds?.includes(category?._id)){
+                <img class="image-main-add-category-arrow" src="../../../assets/KRESTIK.svg">
+              }
+            </li>
+          }
         </ul>               
         <div class="block-popular">
         <ul class="list-popular">
             @for(product of products; track $index){
               <li class="item-popular" [routerLink]="product._id">
                 <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-                <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
+                @for(image of product.images; track $index){
+                  @if(image?.isMain){
+                    <img class="image-popular" [src]="image.thumbnailUrl" alt="" draggable="false">
+                  }
+                }
+                
                 <p class="text-popular">{{product.name || 'Новий Товар'}}</p>
               </li>
             }

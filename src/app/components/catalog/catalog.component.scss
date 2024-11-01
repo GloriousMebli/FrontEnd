@@ -106,7 +106,33 @@
     border-radius: 40px;
     border: 2px solid #352F2A;
 }
+.item-main--active{
+    background: #352F2A;
+    color: #E8E4D9;
+}
 
+.category-input{
+  width: auto;
+  max-width: 15ch;
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  background: none;
+} 
+.item-main--active .category-input{
+  background: #352F2A;
+  color: #E8E4D9;
+}
+
+.delete-category-btn{
+  display: flex;
+  align-items: center;
+  background: #5f544c;
+  border: 1px solid #6b5f55;
+  border-radius: 5px;
+  padding: 8px;
+  margin-left: 5px;
+}
 .none-item {
     color: rgba(53, 47, 42, 0.50);
     font-family: Manrope;
@@ -128,6 +154,7 @@
 
 .block-main-add-category-button {
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 

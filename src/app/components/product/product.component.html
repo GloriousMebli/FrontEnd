@@ -85,7 +85,7 @@
         </ul>
       </div>
     </div>
-    <p class="title-popular">РЕКОМЕНДУЄМО</p>
+    <!-- <p class="title-popular">РЕКОМЕНДУЄМО</p>
     <ul class="list-popular">
       <li class="item-popular">
         <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
@@ -111,7 +111,7 @@
           <p class="text-popular-price">10 000 грн</p>
         </span>
       </li>
-    </ul>
+    </ul> -->
   </div>
   <div class="footer" id="contact">
     <div class="container-footer-top">
@@ -157,9 +157,9 @@
                       <div>
                         <span class="title-admin-product-span-mobile">Каталог/</span>
                         <select class="select-admin-product">
-                            <option value="sofas">Дивани</option>
-                            <option value="corners">Кути</option>
-                            <option value="chairs">Крісла</option>
+                          @for(category of categories; track $index){
+                            <option value="{{category._id}}">{{category.label}}</option>
+                          }
                         </select>
                       </div>
                       @if(product?._id !== 'new'){
@@ -214,10 +214,11 @@
                 <div class="title-admin-product">
                   <div>
                     <span class="title-admin-product-span">Каталог/</span>
-                    <select class="select-admin-product" >
-                        <option value="sofas">Дивани</option>
-                        <option value="corners">Кути</option>
-                        <option value="chairs">Крісла</option>
+                    <select (change)="setCategory($event)" class="select-admin-product">
+                      <option value="">Вибрати</option>
+                      @for(category of categories; track $index){
+                        <option [value]="category._id" [selected]="product?.category?._id === category._id">{{category.label}}</option>
+                      }
                     </select>
                   </div>
                   @if(product?._id !== 'new'){
@@ -231,7 +232,7 @@
                 <div class="line-admin-product"></div>
                 <textarea class="input-admin-product-description" autogrow [value]="product?.desc || ''" (change)="setValue($event, 'desc')"  type="text" rows="8" placeholder="Додати опис..."></textarea>
                 <p class="text-admin-product-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
-                <button class="button-admin-product" (click)="saveProduct()">ЗБЕРЕГТИ</button>
+                <button class="button-admin-product" (click)="toggleEditView()">ЗБЕРЕГТИ</button>
             </div>
         </div>
         <div class="block-admin-product">

@@ -1,6 +1,6 @@
 // product.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -22,8 +22,14 @@ export class ProductsService {
   }
 
   // Отримати всі продукти
-  getProducts(filters?: {popular?: boolean, withNameAndImage?: boolean}): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl, { params: filters });
+  getProducts(filters?: {popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[]}): Observable<any[]> {
+    let httpParams = new HttpParams();
+    Object.keys(filters).forEach(function (key) {
+      if (filters[key] !== '' && filters[key] !== null && filters[key] !== undefined) {
+        httpParams = httpParams.append(key, filters[key]);
+      }
+    });
+    return this.http.get<any[]>(this.baseUrl, { params: httpParams });
   }
 
   // Отримати продукт за ID

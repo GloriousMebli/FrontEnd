@@ -3,6 +3,8 @@ import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Product from '../../product.model';
 import OpenSeadragon from 'openseadragon'
+import { CategoryService } from '../../services/category.service';
+import { AdminService } from '../../services/admin.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -12,13 +14,13 @@ export class ProductComponent implements OnInit {
 
   product: Product
 
+  categories
+
   isAdmin: boolean = false;
 
   EDIT_VIEW = false
   
-  toggleEditView() {
-    this.EDIT_VIEW = !this.EDIT_VIEW;
-  }
+  popularProducts
 
   mainPhoto = {url: '', _id: ''}
 
@@ -35,26 +37,33 @@ export class ProductComponent implements OnInit {
     prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/"
   }
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef){}
+  constructor(private productsService: ProductsService, private adminService: AdminService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef){}
 
   ngOnInit(): void {
     const adminToken = localStorage.getItem('adminToken');
-    this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
+    if(adminToken){
+      this.adminService.verifyAdmin(adminToken).subscribe((data: any) => {
+        if(data?.valid){ 
+          this.isAdmin = true
+          this.categoryService.getCategories().subscribe((data: any) => {
+            this.categories = data;
+          })
+        }else{
+          localStorage.removeItem('adminToken')
+        }
+      }, (error) => {
+        localStorage.removeItem('adminToken')
+      })
+    }
 
     const productId = this.route.snapshot.paramMap.get('id');
     if(productId !== 'new') {
       this.productsService.getProductById(productId || '').subscribe((data: any) => {
         this.product = data;
-        this.product?.images?.map((image: any) => {
+        this.product?.images.sort( (data1, data2) => data1.isMain ? -1 : 1)?.map((image: any) => {
           if (image.isMain) {
             this.mainPhoto = {url: image.url, _id: image._id};
-            this.viewer = OpenSeadragon({
-              ...this.viewerOptions,
-              tileSources:  {
-                  type: 'image',
-                  url: image.url
-              },
-          });
+            this.initViewer(image.url)
           }else{
             this.smallPhotos.push({_id: image._id, url: image.url})
           }
@@ -64,11 +73,29 @@ export class ProductComponent implements OnInit {
       this.EDIT_VIEW = true
       this.product = {_id: 'new'}
     }
+
   }
 
 
   setValue(event: Event, key: string): void {
     this.product[key] = (event.target as HTMLInputElement).value
+
+    this.saveProduct()
+  }
+
+  setCategory(event){
+    this.product.category = this.categories.find((category) => category._id === event.target.value)
+    console.log(this.product.category)
+  }
+
+  initViewer(url){
+    this.viewer = OpenSeadragon({
+      ...this.viewerOptions,
+      tileSources:  {
+          type: 'image',
+          url: url
+      },
+    })
   }
 
 
@@ -82,9 +109,18 @@ export class ProductComponent implements OnInit {
     }else{
       this.productsService.updateProduct(this.product?._id||'', this.product).subscribe((data: any) => {
         this.product = data;
-        this.EDIT_VIEW = false
       })
     }
+    
+  }
+
+  toggleEditView() {
+    this.EDIT_VIEW = !this.EDIT_VIEW;
+    if(this.EDIT_VIEW) return
+    setTimeout(() => {
+      if(!this?.mainPhoto?.url) return
+      this.initViewer(this?.mainPhoto?.url )
+    }, 100);
     
   }
 
