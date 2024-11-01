@@ -18,6 +18,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogInfoComponent } from './components/blog-info/blog-info.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AutoGrowDirective } from './directives/auto-gorw.directive';
+import { CategoryService } from './services/category.service';
+import { FormService } from './services/form.service';
 
 @NgModule({
   imports: [
@@ -43,7 +45,7 @@ import { AutoGrowDirective } from './directives/auto-gorw.directive';
     ErrorComponent,
     AutoGrowDirective
    ],
-  providers: [ ProductsService, AdminService ],
+  providers: [ ProductsService, AdminService, CategoryService, FormService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {

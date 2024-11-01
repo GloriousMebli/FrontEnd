@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import Product from '../../product.model';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-main',
@@ -9,11 +10,16 @@ import Product from '../../product.model';
   styleUrl: './main.component.scss'
 })
 export class MainComponent implements OnInit {
-  constructor(private renderer: Renderer2, private productsService: ProductsService, private router: Router) { }
+  constructor(private renderer: Renderer2, private formService: FormService, private productsService: ProductsService, private router: Router) { }
 
   popularProducts: Product[] = [];
 
   photos:any = []
+
+
+  contactName
+  contactPhone
+  successForm = false
 
   menuOpened = false;
 
@@ -129,5 +135,15 @@ export class MainComponent implements OnInit {
     if (this.isMenuOpen && window.innerWidth > 800) {
       this.closeMenu(); // Закрити меню на великих екранах
     }
+  }
+
+  sendContact(){
+     this.formService.sendFormData(this.contactName, this.contactPhone).subscribe((response) => {
+       this.successForm = true
+       setTimeout(() => {
+         this.closeContact()
+         this.successForm = false
+       }, 30000)
+     });
   }
 }

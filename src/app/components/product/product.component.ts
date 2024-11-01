@@ -85,7 +85,7 @@ export class ProductComponent implements OnInit {
 
   setCategory(event){
     this.product.category = this.categories.find((category) => category._id === event.target.value)
-    console.log(this.product.category)
+    this.saveProduct()
   }
 
   initViewer(url){
