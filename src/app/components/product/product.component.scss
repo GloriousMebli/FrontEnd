@@ -65,8 +65,11 @@
 
 .swiper-pagination {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-top: 16px;
+  max-width: 1013px;
+  width: 100%;
 }
 
 .swiper-pagination-photo {
@@ -586,14 +589,18 @@
     width: 648px;
   }
   .container-arrow {
+    width: 48px;
     height: 48px;
-    height: 40px;
   }
   .swiper-button-next,
   .swiper-button-prev {
     width: 32px;
     height: 32px;
     padding: 0;
+  }
+  .swiper-pagination {
+    width: 760px;
+    width: 100%;
   }
   .container-swiper-pagination-photo {
     width: 160px;
@@ -1186,7 +1193,7 @@
   }
   .container-arrow {
     width: 32px;
-    height: 28px;
+    height: 32px;
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -1699,7 +1706,7 @@
   min-height: 301px;
   color: #352F2A;
   font-family: Manrope;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 180%; /* 43.2px */
@@ -1861,6 +1868,7 @@
   color: #352F2A;
   background: transparent;
   font-family: Manrope;
+  width: 100%;
 }
 
 .input-admin-product-info::placeholder {
@@ -2043,7 +2051,7 @@
 }
 .input-admin-product-info-materials,
 .input-admin-product-info-materials::placeholder {
-  font-size: 16px;
+  font-size: 18px;
   min-width: 162px;
 }
 .textarea-info-info-left-text{
@@ -2335,6 +2343,10 @@
 .block-footer {
   gap: 16px;
 }
+.main-photo {
+  width: 100%;
+  height: auto;
+}
 }
 
 @media screen and (min-width: 320px) and (max-width: 799px) {
@@ -2390,6 +2402,9 @@
   }
   .title-admin-product-span-reg {
     font-size: 10px;
+  }
+  .main-photo {
+    width: 100%;
   }
   .photos-admin-product {
       gap: 4px;
