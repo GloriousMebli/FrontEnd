@@ -44,7 +44,7 @@
         </p>
         <p class="title-product-text-garanty">Офіційна гарантія на виріб - 18 місяців.</p>
         <!-- Якщо користувач не адмін, показуємо кнопку ЗВ'ЯЗОК -->
-        <button *ngIf="!isAdmin" class="button-product">ЗВ’ЯЗОК</button>
+        <a *ngIf="!isAdmin" href="tel:+380 73 800 4410"  class="button-product">ЗВ’ЯЗОК</a>
         <!-- Якщо користувач адмін, показуємо дві кнопки -->
         <div *ngIf="isAdmin" class="buttons-product">
           <button class="button-products" (click)="addToPopular()">
