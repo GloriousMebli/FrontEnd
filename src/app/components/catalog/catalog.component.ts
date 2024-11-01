@@ -57,6 +57,7 @@ export class CatalogComponent implements OnInit {
   loadProducts(): void {
     this.productsService.getProducts({withNameAndImage: this.isAdmin ? false :true, ...this.filters}).subscribe(
       (data: Product[]) => {
+        console.log(123)
         this.products = data;
       },
       (error) => {
