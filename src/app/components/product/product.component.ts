@@ -1,16 +1,21 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, Renderer2 } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Product from '../../product.model';
 import OpenSeadragon from 'openseadragon'
 import { CategoryService } from '../../services/category.service';
 import { AdminService } from '../../services/admin.service';
+import { FormService } from '../../services/form.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
 export class ProductComponent implements OnInit {
+
+  contactName
+  contactPhone
+  successForm = false
 
   product: Product
 
@@ -19,6 +24,8 @@ export class ProductComponent implements OnInit {
   isAdmin: boolean = false;
 
   EDIT_VIEW = false
+
+  isContactOpen = false;
   
   popularProducts
 
@@ -37,7 +44,28 @@ export class ProductComponent implements OnInit {
     prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@2.4/build/openseadragon/images/"
   }
 
-  constructor(private productsService: ProductsService, private adminService: AdminService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef){}
+  constructor(private productsService: ProductsService,private renderer: Renderer2, private adminService: AdminService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef, private formService: FormService ){}
+
+  sendContact(){
+    this.formService.sendFormData(this.contactName, this.contactPhone).subscribe((response) => {
+      this.successForm = true
+      setTimeout(() => {
+        this.closeContact()
+        this.successForm = false
+      }, 30000)
+    });
+ }
+
+ openContact() {
+  this.isContactOpen = true;
+  this.renderer.addClass(document.body, 'no-scroll');
+}
+
+closeContact() {
+  this.isContactOpen = false;
+  // Видаляємо клас, щоб дозволити скрол після закриття форми
+  this.renderer.removeClass(document.body, 'no-scroll');
+}
 
   ngOnInit(): void {
     const adminToken = localStorage.getItem('adminToken');

@@ -25,6 +25,8 @@ export class MainComponent implements OnInit {
 
   isContactOpen = false;
 
+  isButtonVisible = false;
+
   ngOnInit() {
     this.selectedAdvantage = this.advantages[0]; // Встановлюємо першу перевагу як вибрану
 
@@ -42,6 +44,10 @@ export class MainComponent implements OnInit {
       }
     });
 
+  }
+
+  openBntContact(): void {
+    this.isButtonVisible = !this.isButtonVisible; // Змінюємо стан при кожному кліку
   }
 
   openContact() {

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import Product from '../../product.model';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-catalog',
@@ -11,7 +12,15 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CatalogComponent implements OnInit {
 
+  contactName
+  contactPhone
+  successForm = false
+
   isAdmin: boolean = false;
+
+  menuOpened = false;
+
+  isContactOpen = false;
 
   products: Product[] = []; // Типізуйте products як масив Product
   categories
@@ -19,8 +28,19 @@ export class CatalogComponent implements OnInit {
   filters: {categoryIds?: string[]} = {}
 
   ADD_CATEGORY = false
+  constructor(private productsService: ProductsService, private router: Router,private categoryService: CategoryService, private renderer: Renderer2,private formService: FormService) {
+    
+  }
 
-  constructor(private productsService: ProductsService, private router: Router,private categoryService: CategoryService) {}
+  sendContact(){
+    this.formService.sendFormData(this.contactName, this.contactPhone).subscribe((response) => {
+      this.successForm = true
+      setTimeout(() => {
+        this.closeContact()
+        this.successForm = false
+      }, 30000)
+    });
+ }
 
   isInputVisible: boolean = false; // змінна для відображення інпуту
 
@@ -125,4 +145,16 @@ export class CatalogComponent implements OnInit {
       this.categories = this.categories.filter((category: any) => category._id !== id)
     })
   }
+
+  openContact() {
+    this.isContactOpen = true;
+    this.renderer.addClass(document.body, 'no-scroll');
+  }
+
+  closeContact() {
+    this.isContactOpen = false;
+    // Видаляємо клас, щоб дозволити скрол після закриття форми
+    this.renderer.removeClass(document.body, 'no-scroll');
+  }
+
 }

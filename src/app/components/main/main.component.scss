@@ -145,6 +145,7 @@
 
   .menu-buttons {
     display: flex;
+    align-items: center;
     gap: 16px;
   }
 
@@ -226,7 +227,7 @@
     font-size: 300px;
     font-style: normal;
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 60px;
   }
 
   .subtitle {
@@ -246,6 +247,50 @@
     display: flex;
     margin: 0 auto;
     margin-top: 60px;
+  }
+
+  .button-contacts {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .arrow {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 274px;
+    max-height: 115px;
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 32px;
+    border: 3px solid #352F2A;
+    align-items: center;
+    padding: 8px 0;
+    top: 64px;
+    cursor: pointer;
+    gap: 16px;
+    display: none;
+    transition: all 0.3s ease;
+  }
+
+  .arrow.open-btn {
+    display: flex;
+  }
+
+  .arrow-text {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .arrow-text-under {
+    text-decoration: underline;
   }
 
   // MAIN
