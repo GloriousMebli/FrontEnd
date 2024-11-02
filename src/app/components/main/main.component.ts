@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
     this.selectedAdvantage = this.advantages[0]; // Встановлюємо першу перевагу як вибрану
 
     this.productsService.getProducts({popular:true}).subscribe((data: Product[]) => {
-      this.popularProducts = data;
+      this.popularProducts = data?.slice(0, 3);
     })
 
     // Підписуємося на подію NavigationEnd

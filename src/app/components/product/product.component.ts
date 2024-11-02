@@ -96,6 +96,8 @@ closeContact() {
             this.smallPhotos.push({_id: image._id, url: image.url})
           }
         })
+      }, (err)=>{
+        this.router.navigate(['/catalog'])
       })
     }else{
       this.EDIT_VIEW = true
