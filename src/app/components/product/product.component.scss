@@ -182,11 +182,12 @@ pointer-events: none;
   margin-top: 16px;
   max-width: 1013px;
   width: 100%;
+  overflow: hidden;
 }
 
 .swiper-pagination-photo {
   width: 140px;
-  height: 90%;
+  height: auto;
   flex-shrink: 0;
   background: #DAD5C9;
   transition: all 0.3s ease;
