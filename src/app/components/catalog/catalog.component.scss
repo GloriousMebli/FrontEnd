@@ -2,6 +2,7 @@
 
 .contact-me.open {
   opacity: 1;
+  z-index: 1300;
   pointer-events: auto;
 }
 
@@ -16,6 +17,12 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
   overflow: hidden;
+}
+
+.open-blur {
+  z-index: 12;
+  filter: blur(2px);
+  pointer-events: none;
 }
 
 .container-contact-me {
@@ -291,7 +298,7 @@ pointer-events: none;
 .image-category-add {
   position: absolute;
   right: 12px;
-  top: 3px;
+  top: 8px;
   width: 36px;
   height: 36px;
   align-items: start;
@@ -301,8 +308,8 @@ pointer-events: none;
 .btn-category-add-input {
   position: relative;
   padding: 16px;
-  height: 40px;
-  width: 230px;
+  height: 53px;
+  width: 303px;
   display: flex;
   align-items: center;  
   justify-content: center;
@@ -374,6 +381,11 @@ pointer-events: none;
   min-width: 588px; /* Мінімальна ширина для адаптивності */
   max-width: 32%;
 }
+
+  .image-popular {
+    width: 100%;
+    max-height: 86%;
+  }
 
   .image-popular-arrow {
     width: 45px;
@@ -833,8 +845,13 @@ pointer-events: none;
     align-items: start;
   }
   .btn-category-add-input {
-    font-size: 14px;
-    width: 160px;
+    font-size: 24px;
+    width: 301px;
+    border: 1px solid #352F2A;
+    height: 33px;
+  }
+  .image-category-add {
+    top: 0;
   }
   .image-category-add {
     align-items: start;

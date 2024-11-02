@@ -31,6 +31,12 @@ padding: 40px;
 padding-top: 20px;
 }
 
+.open-blur {
+  opacity: 0.51;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
 .block-contact-me {
 display: flex;
 justify-content: space-between;
@@ -180,7 +186,7 @@ pointer-events: none;
 
 .swiper-pagination-photo {
   width: 140px;
-  height: auto;
+  height: 90%;
   flex-shrink: 0;
   background: #DAD5C9;
   transition: all 0.3s ease;
@@ -1773,8 +1779,8 @@ pointer-events: none;
 }
 
 .main-photo {
-  width: 900px;
-  height: auto;
+  width: auto;
+  max-height: 86%;
 }
 
 .small-photo {
