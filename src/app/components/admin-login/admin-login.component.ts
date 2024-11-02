@@ -17,7 +17,7 @@ export class AdminLoginComponent {
 
   login(form: NgForm) {
     if (form.valid) {
-      this.adminService.loginAdmin(this.email, this.password).subscribe({
+      this.adminService.loginAdmin(this.email?.trim()?.toLocaleLowerCase(), this.password).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
           localStorage.setItem('adminToken', response.token); // Зберігаємо токен у Local Storage
