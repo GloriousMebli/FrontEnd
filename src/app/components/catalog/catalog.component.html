@@ -1,7 +1,7 @@
 <div class="header">
     <div class="container-header">
         <p class="title-glorious" routerLink="">GLORIOUS</p>
-        @if(!isAdmin){
+        @if(isAdmin){
           <button class="button-contact" (click)="addProduct()" >
             ДОДАТИ ТОВАР
           </button>

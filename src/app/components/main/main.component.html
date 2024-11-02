@@ -19,7 +19,7 @@
           <li class="button-contacts">
             <a (click)="openBntContact()" class="contact">КОНТАКТ З НАМИ</a>
             <p class="arrow" [ngClass]="{'open-btn': isButtonVisible}">
-              <a (click)="openContact()" class="arrow-text">ЗАТЕЛЕФОНУВАТИ</a>
+              <a href="tel:+380 73 800 4410" class="arrow-text">ЗАТЕЛЕФОНУВАТИ</a>
               <a (click)="openContact()" class="arrow-text arrow-text-under">ЗАЛИШИТИ НОМЕР</a>
             </p>
           </li>
@@ -190,8 +190,8 @@
       <div class="block-mobail-menu-contact">
         <button class="button-mobail-menu-contact" (click)="openContact()">КОНТАКТ З НАМИ</button>
         <div class="block-button-mobail-menu-contact">
-          <p class="title-button-mobail-menu-contact">ЗАТЕЛЕФОНУВАТИ</p>
-          <p class="text-button-mobail-menu-contact">ЗАЛИШИТИ НОМЕР</p>
+          <a href="tel:+380 73 800 4410" class="title-button-mobail-menu-contact">ЗАТЕЛЕФОНУВАТИ</a>
+          <p (click)="openContact()" class="text-button-mobail-menu-contact">ЗАЛИШИТИ НОМЕР</p>
         </div>
       </div>
       <img (click)="closeMenu()" class="image-mobail-menu" src="../../../assets/KRESTIK.svg" alt="">
