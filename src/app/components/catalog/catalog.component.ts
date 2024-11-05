@@ -157,4 +157,10 @@ export class CatalogComponent implements OnInit {
     this.renderer.removeClass(document.body, 'no-scroll');
   }
 
+
+  logout(){
+    localStorage.removeItem('adminToken')
+    window.location.reload()
+  }
+
 }

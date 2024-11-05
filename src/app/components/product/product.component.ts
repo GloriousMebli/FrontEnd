@@ -255,4 +255,9 @@ closeContact() {
       url: this.product?.images?.[this.currentIndex]?.url
     })
   }
+
+  logout(){
+    localStorage.removeItem('adminToken')
+    window.location.reload()
+  }
 }

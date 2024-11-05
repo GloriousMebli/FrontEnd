@@ -147,6 +147,11 @@
         </div>
         <div>
           <p class="text-footer">Всі права захищені All rights reserved</p>
+          @if(isAdmin){
+            <button (click)="logout()" class="button-contact" style="margin-left: auto; margin-top: 10px;">
+              LOGOUT
+            </button>
+          }
         </div>
       </div>
   </div>
@@ -291,6 +296,9 @@
         </div>
         <div>
           <p class="text-footer text-footer-bottom-mobile">Всі права захищені All rights reserved</p>
+          <button (click)="logout()" class="button-contact" style="margin-left: auto; margin-top: 10px;">
+            LOGOUT
+          </button>
         </div>
       </div>
 </div>

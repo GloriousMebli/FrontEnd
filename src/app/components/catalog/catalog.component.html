@@ -106,7 +106,12 @@
           <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
         </div>
         <div>
-          <p class="text-footer">Всі права захищені All rights reserved</p>
+          <p class="text-footer">Всі права захищені All rights reserved</p>  
+          @if(isAdmin){
+            <button (click)="logout()" class="button-contact" style="margin-left: auto; margin-top: 10px;">
+              LOGOUT
+            </button>
+          }     
         </div>
       </div>
 </div>
