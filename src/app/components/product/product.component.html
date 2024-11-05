@@ -308,10 +308,15 @@
 <div class="contact-me" [ngClass]="{'open': isContactOpen}">
   <div class="container-contact-me">
     @if(successForm){
-      <div style="display: flex; align-items: center; justify-content: center; height: 100%; ">
-        <span class="title-contact-me">Дякуюмо за звернення.  <br> Наш менеджер зв'яжеться з вами найближчим часом!</span>
-        <div style="display: flex; align-items: start; height: 100%; ">
-          <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
+      <div style="display: flex; flex-direction: column; ">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <p class="title-contact-me-success">ДЯКУЄМО!</p>
+          <div style="display: flex; align-items: center; height: 100%; ">
+            <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
+          </div>
+        </div>
+        <div>
+          <span class="title-contact-me-success-bottom">ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ </span>
         </div>
       </div>
     }@else {

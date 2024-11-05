@@ -94,9 +94,14 @@
 // header
 
 .header {
-    background-color: #E8E4D9;
-    height: 1084px;
+  background: url('../../../assets/sofa.png');
+    height: 100vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
   }
 
   .container-header {
@@ -129,12 +134,12 @@
 
   .link-menu {
     text-decoration: none;
-    color: #000;
+    color: #E8E4D9;
     padding: 10px;
   }
 
   .link-menu {
-    color: #352F2A;
+    color: #E8E4D9;
     font-family: Manrope;
     font-size: 24px;
     font-style: normal;
@@ -150,9 +155,9 @@
   }
 
   .contact {
-    color: #E8E4D9;
+    color: #352F2A;
     border-radius: 40px;
-    background: #352F2A;
+    background: #E8E4D9;
     font-family: "Roboto Flex";
     font-size: 24px;
     font-style: normal;
@@ -164,17 +169,16 @@
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border: #352F2A 1px solid;
     transition: all 0.3s ease ;
   }
 
   .contact:hover {
-    background: #E8E4D9;
-    color: #352F2A;
+    background: #352F2A;
+    color: #E8E4D9;
   }
 
   .catalog {
-    color: #E8E4D9;
+    color: #352F2A;
     font-family: "Roboto Flex";
     font-size: 24px;
     font-style: normal;
@@ -185,14 +189,13 @@
     align-items: center;
     gap: 10px;
     border-radius: 40px;
-    background: #352F2A;
-    border: #352F2A 1px solid;
+    background: #E8E4D9;
     transition: all 0.3s ease;
   }
 
   .catalog:hover {
-    background: #E8E4D9;
-    color: #352F2A;
+    background: #352F2A;
+    color: #E8E4D9;
   }
 
   .blog {
@@ -210,19 +213,18 @@
     flex-shrink: 0;
     border-radius: 40px;
     background: #352F2A;
-    border: #352F2A 1px solid;
     transition: all 0.3s ease;
   }
 
   .blog:hover {
-    background: #E8E4D9;
-    color: #352F2A;
+    background: #352F2A;
+    color: #E8E4D9;
   }
 
   .title-glorious {
     display: flex;
     justify-content: center;
-    color: rgb(53, 47, 42);
+    color: #E8E4D9;
     font-family: "SONGER SemiExpanded";
     font-size: 300px;
     font-style: normal;
@@ -232,7 +234,7 @@
 
   .subtitle {
     margin-top: 24px;
-    color: #352F2A;
+    color: #E8E4D9;
     display: flex;
     justify-content: center;
     font-family: "SONGER SemiExpanded";
@@ -266,7 +268,7 @@
     width: 100%;
     flex-shrink: 0;
     border-radius: 32px;
-    border: 3px solid #352F2A;
+    border: 3px solid #E8E4D9;
     align-items: center;
     padding: 8px 0;
     top: 64px;
@@ -281,7 +283,7 @@
   }
 
   .arrow-text {
-    color: #352F2A;
+    color: #E8E4D9;
     font-family: Manrope;
     font-size: 24px;
     font-style: normal;
@@ -562,15 +564,23 @@
 
 .container-contact-me {
   width: 542px;
-  height: 406px;
+  height: 100%;
   flex-shrink: 0;
   border-radius: 24px;
   border: 3px solid #352F2A;
   background: #E8E4D9;
   display: flex;
   flex-direction: column;
-  padding: 40px;
-  padding-top: 20px;
+  padding: 24px;
+}
+
+.title-contact-me-success {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .block-contact-me {
@@ -582,10 +592,20 @@
 .title-contact-me {
   color: #352F2A;
   font-family: Manrope;
-  font-size: 36px;
+  font-size: 24px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 136.498%;
+}
+
+.title-contact-me-success-bottom {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 36px;
 }
 
 .image-contact-me {
@@ -632,6 +652,7 @@
   height: 60px;
   border: #352F2A 1px solid;
   transition: all 0.3s ease ;
+  margin-top: 36px;
 }
 
 .button-contact-me:hover {
@@ -755,9 +776,6 @@
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1439px) {
-  .header {
-    height: 800px;
-  }
   .nav-menu {
     margin-left: 0;
     gap: 16px;
@@ -778,10 +796,6 @@
   .subtitle {
     font-size: 32px;
     margin-top: 0;
-  }
-  .sofa {
-    width: 100%;
-    margin-top: 36px;
   }
   // main
     .container-main {
@@ -858,7 +872,7 @@
 @media screen and (min-width: 800px) and (max-width: 1199px) {
   .header {
     padding: 0;
-    height: auto;
+    height: 100vh;
   }
   .container-header {
     padding: 0;
@@ -875,17 +889,16 @@
     justify-content: space-between;
   }
   .button-contact-mobile {
-    color: #DAD5C9;
+    color: #352F2A;
     font-family: Manrope;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     border-radius: 40px;
-    background: #352F2A;
+    background: #E8E4D9;
     width: 144px;
     height: 48px;
-    border: #352F2A 1px solid;
     transition: all 0.3s ease ;
   }
   .nav-menu,
@@ -893,7 +906,7 @@
     display: none;
   }
   .title-glorious {
-    color: #352F2A;
+    color: #E8E4D9;
     font-family: "SONGER SemiExpanded";
     font-size: 128px;
     font-style: normal;
@@ -901,7 +914,7 @@
     margin-top: 140px;
   }
   .subtitle {
-    color: #352F2A;
+    color: #E8E4D9;
     font-family: "SONGER SemiExpanded";
     font-size: 24px;
     font-style: normal;
@@ -1168,7 +1181,7 @@
 @media screen and (min-width: 320px) and (max-width: 799px) {
   .header {
     padding: 0;
-    height: auto;
+    height: 100vh;
   }
   .container-header {
     padding: 0;
@@ -1185,17 +1198,16 @@
     justify-content: space-between;
   }
   .button-contact-mobile {
-    color: #DAD5C9;
+    color: #352F2A;
     font-family: Manrope;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     border-radius: 40px;
-    background: #352F2A;
+    background: #E8E4D9;
     width: 122px;
     height: 36px;
-    border: #352F2A 1px solid;
     transition: all 0.3s ease ;
   }
   .nav-menu,
@@ -1442,12 +1454,12 @@
   // contact me
   .container-contact-me {
     width: 288px;
-    height: 242px;
+    height: auto;
     flex-shrink: 0;
     border-radius: 24px;
     border: 2px solid #352F2A;
     background: #E8E4D9;
-    padding: 24px 16px;
+    padding: 16px;
   }
   .title-contact-me {
     color: #352F2A;
@@ -1463,6 +1475,12 @@
     font-size: 16px;
     height: 46px;
   }
+  .title-contact-me-success {
+    font-size: 20px;
+  }
+  .title-contact-me-success-bottom{
+    font-size: 13px;
+  }
   .button-contact-me {
     color: #DAD5C9;
     font-family: Manrope;
@@ -1472,6 +1490,7 @@
     line-height: normal;
     width: 112px;
     height: 36px;
+    margin-top: 12px;
   }
   .image-contact-me {
     width: 32px;

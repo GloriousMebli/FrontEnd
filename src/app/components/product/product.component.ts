@@ -219,19 +219,12 @@ closeContact() {
     }
   }
 
-  // Массив зображень
-  images: string[] = [
-    '../../../assets/sofa-list.png',
-    '../../../assets/123.jpg',
-    '../../../assets/sofa.png'
-  ];
-
   // Поточне зображення
   currentIndex: number = 0;
 
   // Метод для переходу до попереднього зображення
   prevImage(): void {
-    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.images.length - 1;
+    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.product.images.length - 1;
     this.viewer.open({
       type: 'image',
       url: this.product?.images?.[this.currentIndex]?.url
@@ -240,7 +233,7 @@ closeContact() {
 
   // Метод для переходу до наступного зображення
   nextImage(): void {
-    this.currentIndex = (this.currentIndex < this.images.length - 1) ? this.currentIndex + 1 : 0;
+    this.currentIndex = (this.currentIndex < this.product.images.length - 1) ? this.currentIndex + 1 : 0;
     this.viewer.open({
       type: 'image',
       url: this.product?.images?.[this.currentIndex]?.url
