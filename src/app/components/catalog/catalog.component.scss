@@ -1,4 +1,5 @@
 // CONTACT ME
+a, button { text-decoration: none; }
 
 .contact-me.open {
   opacity: 1;
@@ -132,6 +133,7 @@ pointer-events: none;
 
 .header {
     padding: 24px 40px;
+    background-color: #352F2A;
 }
 
 .container-header {
@@ -148,6 +150,7 @@ pointer-events: none;
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    margin-bottom: 0;
 }
 
 .button-contact {

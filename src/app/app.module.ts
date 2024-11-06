@@ -20,6 +20,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { AutoGrowDirective } from './directives/auto-gorw.directive';
 import { CategoryService } from './services/category.service';
 import { FormService } from './services/form.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { FormService } from './services/form.service';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
   ],
   exports: [ RouterModule ],
   declarations: [

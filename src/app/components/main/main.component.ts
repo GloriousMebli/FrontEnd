@@ -152,4 +152,10 @@ export class MainComponent implements OnInit {
        }, 30000)
      });
   }
+
+  activeButton: string | null = null;
+
+  toggleRotation(button: string) {
+    this.activeButton = this.activeButton === button ? null : button;
+  }
 }

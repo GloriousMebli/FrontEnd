@@ -82,27 +82,56 @@
       <!-- MOBILE SECTION OUR ADVANTAGES -->
       <div class="block-our-advantages-mobile" id="advantages-mobile">
         <p class="title-our-advantages-mobile">НАШІ ПЕРЕВАГИ</p>
-
-        <div class="list-block-our-advantages-mobile"
-             *ngFor="let advantage of advantages"
-             (click)="selectAdvantage(advantage)">
-
-          <p class="text-our-advantages-mobile-title">{{ advantage.title }}</p> <!-- Використовуємо advantage.title -->
-
-          <img
-            [ngClass]="{
-              'arrow-right': selectedAdvantage === advantage,
-              'arrow-down': selectedAdvantage !== advantage
-            }"
-            class="image-item-block-our-advantages-mobile"
-            src="../assets/arrow-down-right.svg"
-            alt="">
+        <div class="accordion"> 
+          <div class="accordion-list"  ngbAccordion>
+            <div class="accordion" ngbAccordionItem [collapsed]="true" #item1="ngbAccordionItem">
+            <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('first')">
+              <p class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</p>
+              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
+            </div>
+            <div class="accordion-line"></div>
+            <div ngbAccordionCollapse>
+              <div class="accordion-body" ngbAccordionBody>
+                <ng-template>
+                  <img class="image-accordion" src="../../../assets/people-work.png" alt="">
+                  <p class="text-accordion">Ми контролюємо весь процес створення меблів, від розробки до виробництва, забезпечуючи високу якість кожного етапу.</p>
+                </ng-template>
+              </div>
+            </div>
+            </div>
+            <div class="accordion" ngbAccordionItem [collapsed]="true" #item2="ngbAccordionItem">
+              <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('second')">
+                <p class="title-accordion">КОМАНДА МАЙСТРІВ</p>
+                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
+              </div>
+              <div class="accordion-line"></div>
+              <div ngbAccordionCollapse>
+                <div class="accordion-body" ngbAccordionBody>
+                  <ng-template>
+                    <img class="image-accordion" src="../../../assets/people-work2.png" alt="">
+                    <p class="text-accordion">Працюємо з кожним клієнтом індивідуально, пропонуючи рішення, які максимально відповідають вашим потребам та побажанням.</p>
+                  </ng-template>
+                </div>
+              </div>
+              </div>
+              <div class="accordion" ngbAccordionItem [collapsed]="true" #item3="ngbAccordionItem">
+                <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('third')"> 
+                  <p class="title-accordion">ЯКІСТЬ МЕБЛІВ</p>
+                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
+                </div>
+                <div class="accordion-line"></div>
+                <div ngbAccordionCollapse>
+                  <div class="accordion-body" ngbAccordionBody>
+                    <ng-template>
+                      <img class="image-accordion" src="../../../assets/people-work3.png" alt="">
+                      <p class="text-accordion">Ми використовуємо тільки сертифіковані та безпечні для здоров’я матеріали, турбуючись про ваше благополуччя.</p>
+                    </ng-template>
+                  </div>
+                </div>
+                </div>
+          </div>
         </div>
 
-        <div class="line-our-advantages-mobile"></div>
-
-        <img class="image-our-advantages-mobile" [src]="selectedAdvantage?.image" alt="">
-        <p class="text-our-advantages-mobile">{{ selectedAdvantage?.text }}</p> <!-- Використовуємо оператор ?. -->
       </div>
       <section class="section-history" id="history">
         <div class="container-history">
