@@ -1180,8 +1180,10 @@
 
 @media screen and (min-width: 320px) and (max-width: 799px) {
   .header {
+    background: url('../../../assets/sofa-mobile.png') no-repeat center / cover;
     padding: 0;
     height: 100vh;
+    width: 100%;
   }
   .container-header {
     padding: 0;
