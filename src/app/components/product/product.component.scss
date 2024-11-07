@@ -6,6 +6,11 @@ a, button { text-decoration: none; }
   pointer-events: auto;
 }
 
+.item-info-left-garanty-span {
+  display: flex;
+  align-items: center;
+}
+
 .contact-me {
   position: absolute;
   top: 30%;
@@ -126,6 +131,7 @@ pointer-events: none;
 
 .header {
   padding: 24px 40px;
+  background-color: #352F2A;
 }
 
 .container-header {
@@ -142,6 +148,7 @@ pointer-events: none;
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .button-contact {
@@ -192,7 +199,7 @@ pointer-events: none;
 .swiper-pagination {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 32px;
   margin-top: 16px;
   max-width: 1013px;
   width: 100%;
@@ -315,12 +322,12 @@ pointer-events: none;
 .title-product-text {
   color: #352F2A;
   font-family: Manrope;
-  font-size: 24px;
+  font-size: 48px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.96px;
-  margin-top: 290px;
+  margin-top: 180px;
   margin-bottom: 8px;
 }
 
@@ -366,7 +373,7 @@ pointer-events: none;
 }
 
 .button-product {
-  color: #352F2A !important;
+  color: #E8E4D9 !important;
   font-family: Manrope;
   font-size: 24px;
   font-style: normal;
@@ -382,12 +389,12 @@ pointer-events: none;
   border: 2px solid #352F2A;
   transition: all 0.3s ease;
   margin-top: 64px;
-  background: #E8E4D9;
+  background: #352F2A;
 }
 
 .button-product:hover {
-  background: #352F2A;
-  color: #E8E4D9 !important;
+  background: #E8E4D9;
+  color: #352F2A !important;
 }
 
 .buttons-product {
@@ -442,11 +449,19 @@ pointer-events: none;
   gap: 64px;
 }
 
+.textarea-info,
+.textarea-info-info {
+  margin: 0;
+  font-size: 24px;
+}
+
 .list-info {
   display: flex;
   flex-direction: column;
   gap: 32px;
   width: 410px;
+  padding: 0;
+  margin: 0;
 }
 
 .item-info-title {
@@ -458,38 +473,32 @@ pointer-events: none;
   line-height: normal;
 }
 
-.block-info-left {
-  margin-top: 8px;
-}
-
 .textarea-info {
   color: #352F2A;
   font-family: Manrope;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  min-height: 387px;
   background-color: #E8E4D9;
   resize: none;
+
 }
 
 .textarea-info-info {
   color: #352F2A;
   font-family: Manrope;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   max-width: 434px;
-  min-height: 301px;
   background-color: #E8E4D9;
   resize: none;
 }
 
 .textarea-info-info-left {
   max-width: 840px;
-  min-height: 330px;
   background-color: transparent;
   resize: none;
 }
@@ -501,11 +510,13 @@ pointer-events: none;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin: 0;
 }
 
 .block-info-product {
   display: flex;
   justify-content: space-between;
+  margin-top: 48px;
 }
 
 .line-info-left {
@@ -519,8 +530,19 @@ pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: 48px;
-  margin-top: 16px;
   width: 840px;
+  padding: 0;
+  margin: 0;
+  margin-top: 16px;
+}
+
+.terms-of-use{
+  color: #DAD5C9;
+  font-family: Manrope;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .title-popular {
@@ -551,10 +573,11 @@ pointer-events: none;
   font-weight: 700;
   line-height: normal;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .item-info-left-garanty-line {
-  width: 522px;
+  max-width: 67%;
   height: 2px;
   flex-shrink: 0;
   background: #352F2A;
@@ -659,6 +682,8 @@ pointer-events: none;
   gap: 16px;
 }
 
+
+
 .title-text-footer {
   color: #DAD5C9;
   font-family: Manrope;
@@ -671,12 +696,16 @@ pointer-events: none;
 }
 
 .text-footer {
+  display: flex;
+  align-items: center;
+  gap: 32px;
   color: #DAD5C9;
   font-family: Manrope;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin-bottom: 0;
 }
 
 .container-footer-bottom {
@@ -750,6 +779,7 @@ pointer-events: none;
   }
   .title-product-text {
     font-size: 36px;
+    margin-top: 80px;
   }
   .line {
     width: 100%;
@@ -757,6 +787,7 @@ pointer-events: none;
   .text-product {
     font-size: 20px;
     width: 558px;
+    letter-spacing: 0.2px;
   }
   .title-product-text-garanty {
     font-size: 20px;
@@ -766,6 +797,7 @@ pointer-events: none;
     width: 242px;
     padding: 0;
     height: 48px;
+    margin-top: 16px;
   }
   .button-products {
     font-size: 20px;
@@ -805,6 +837,9 @@ pointer-events: none;
   }
   .title-popular {
     font-size: 96px;
+  }
+  .text-footer {
+    gap: 8px;
   }
   // footer
   .footer {
@@ -924,7 +959,8 @@ pointer-events: none;
     font-size: 18px;
   }
   .item-info-left-garanty-line{
-    width: 384px;
+    max-width: 424px;
+    width: 100%;
   }
   .item-popular {
     height: 439px;
@@ -1188,7 +1224,8 @@ pointer-events: none;
     font-size: 20px;
   }
   .item-info-left-garanty-line {
-    width: 57%;
+    max-width: 470px;
+    width: 100%;
   }
   .item-info-left {
     color: #352F2A;
@@ -1411,10 +1448,15 @@ pointer-events: none;
     font-family: Manrope;
     font-size: 13px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: normal;
     margin-bottom: 8px;
     width: 100%;
+    letter-spacing: 0px;
+  }
+  .title-product-text {
+    letter-spacing: 0px;
+    font-weight: 700;
   }
   .title-product-text-garanty {
     color: #352F2A;
@@ -1424,6 +1466,7 @@ pointer-events: none;
     font-weight: 600;
     line-height: normal;
     margin-bottom: 16px;
+    letter-spacing: 0px;
   }
   .buttons-product {
     gap: 4px;
@@ -1432,13 +1475,15 @@ pointer-events: none;
   .button-products {
     color: #DAD5C9;
     font-family: Manrope;
-    font-size: 12px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     width: 148px;
     height: 36px;
     padding: 0;
+    margin-top: 16px;
+    letter-spacing: 0.2px;
   }
   .lists-info-product {
     gap: 8px;
@@ -1485,7 +1530,6 @@ pointer-events: none;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: -0.52px;
   }
   .block-info-left {
     flex-direction: column;
@@ -1497,8 +1541,9 @@ pointer-events: none;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-top: 16px;
     margin-bottom: 4px;
+    letter-spacing: 0px;
+    margin-top: 16px;
   }
   .line-info-left {
     width: 100%;
@@ -1506,12 +1551,27 @@ pointer-events: none;
   .list-info-left {
     width: 100%;
     gap: 16px;
+    margin-top: 4px;
   }
   .item-info-left-garanty {
-    font-size: 13px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .item-info-left-garanty-span {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
   }
   .item-info-left-garanty-line {
     width: 100%;
+    max-width: 90%;
+    margin-right: 12px;
+  }
+  .item-info-left-garanty-arrow{
+    width: 20px;
+    height: 20px;
   }
   .item-info-left {
     color: #352F2A;
@@ -2128,6 +2188,9 @@ pointer-events: none;
   font-size: 20px;
   min-width: 272px;
 }
+.textarea-info-info {
+  font-size: 22px;
+}
 // footer
 .footer {
   padding: 64px;
@@ -2144,6 +2207,18 @@ pointer-events: none;
 }
 .text-footer {
   font-size: 20px;
+}
+.textarea-info-info-left-text {
+  font-size: 22px;
+}
+.item-info-left-garanty-span{
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+.item-info-left-garanty-arrow {
+  width: 36px;
+  height: 36px;
 }
 }
 
@@ -2312,6 +2387,12 @@ pointer-events: none;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.textarea-info-info {
+  font-size: 20px;
+}
+.lists-info-product {
+  gap: 48px;
 }
 .photos-admin-product {
   gap: 4px;
@@ -2682,6 +2763,17 @@ pointer-events: none;
   .textarea-info-info-left-text {
     font-size: 13px;
   }
+  .textarea-info-info {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .textarea-info{
+    font-weight: 600;
+  }
+  .list-info,
+  .list-info-left {
+    padding: 0;
+  }
   .title-admin-product-text {
       color: #352F2A;
       font-family: Manrope;
@@ -2794,6 +2886,7 @@ pointer-events: none;
 }
 .list-footer {
     gap: 8px;
+    align-items: start;
 }
 .text-footer {
     color: #E8E4D9;
@@ -2815,6 +2908,13 @@ pointer-events: none;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.terms-of-use{
+  font-size: 12px;
+  font-weight: 700;
 }
 .text-footer-bottom-mobile {
     color: #E8E4D9;

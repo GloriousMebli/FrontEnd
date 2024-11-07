@@ -11,7 +11,7 @@
   <div class="container-product">
     <div class="block-product">
       <div class="block-product-text-mobile">
-        <p class="title-main-mobile"><span class="title-main-span-mobile">Каталог/</span>{{product?.category?.label}}</p>
+        <p class="title-main-mobile"><span routerLink="/catalog" class="title-main-span-mobile">Каталог/</span>{{product?.category?.label}}</p>
         <p></p>
         <p *ngIf="isAdmin" (click)="toggleEditView()" class="title-change-mobile"><img class="image-change-mobile" src="../../../assets/change.svg" alt=""><p class="text-change-mobile">Редагувати товар</p></p>
       </div>
@@ -79,13 +79,13 @@
         <p class="title-info-product">Умови доставки та оплати</p>
         <div class="line-info-left"></div>
         <ul class="list-info-left">
-          <span class="item-info-left-garanty" routerLink="/terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ ДІЙСНОЇ ГАРАНТІЇ <div class="item-info-left-garanty-line"></div></span>
           <div class="block-admin-product-info-text">
             <p class="textarea-info-info-left-text">Для купівлі товару необхідно зателефонувати за вказаним контактом.</p>
             <p class="textarea-info-info-left-text">Передоплата або оплата при отриманні.</p>
             <p class="textarea-info-info-left-text">Доставка здійснюється кур'єром (авто виробника), попутним транспортом або Новою Поштою в будь-яку точку України, окрім окупованих і де відбуваються військові дії.</p>
             <p class="textarea-info-info-left-text">Термін доставки від 3 днів, в залежності від замовлення і відстані.</p>
           </div>
+          <span class="item-info-left-garanty" routerLink="/terms-of-use"><span class="item-info-left-garanty-span">УМОВИ ВИКОРИСТАННЯ ДЛЯ МЕБЛІВ <img class="item-info-left-garanty-arrow" src="../../../assets/arrow-up-right (1).svg"></span></span>
         </ul>
       </div>
     </div>
@@ -146,7 +146,7 @@
           <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
         </div>
         <div>
-          <p class="text-footer">Всі права захищені All rights reserved</p>
+          <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ МЕБЛІВ</span> Всі права захищені All rights reserved</p>
           @if(isAdmin){
             <button (click)="logout()" class="button-contact" style="margin-left: auto; margin-top: 10px;">
               LOGOUT
@@ -295,7 +295,7 @@
           <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
         </div>
         <div>
-          <p class="text-footer text-footer-bottom-mobile">Всі права захищені All rights reserved</p>
+          <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ ДІЙСНОЇ ГАРАНТІЇ</span> Всі права захищені All rights reserved</p>
           <button (click)="logout()" class="button-contact" style="margin-left: auto; margin-top: 10px;">
             LOGOUT
           </button>

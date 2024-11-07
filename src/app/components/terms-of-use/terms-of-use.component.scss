@@ -2,6 +2,7 @@ a, button { text-decoration: none; }
 
 .header {
     padding: 24px 40px;
+    background-color: #352F2A;
   }
 
   .container-header {
@@ -23,6 +24,16 @@ a, button { text-decoration: none; }
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  .terms-of-use{
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }
 
   .button-contact-contact,

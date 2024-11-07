@@ -17,11 +17,13 @@
         <ul class="menu-buttons">
           <!-- <li><a class="blog" routerLink="/blog">БЛОГ</a></li> -->
           <li class="button-contacts">
-            <a (click)="openBntContact()" class="contact">КОНТАКТ З НАМИ</a>
-            <p class="arrow" [ngClass]="{'open-btn': isButtonVisible}">
-              <a href="tel:+380 73 800 4410" class="arrow-text">ЗАТЕЛЕФОНУВАТИ</a>
-              <a (click)="openContact()" class="arrow-text arrow-text-under">ЗАЛИШИТИ НОМЕР</a>
-            </p>
+            <a (mouseenter)="openBntContact()" class="contact">КОНТАКТ З НАМИ</a>
+            <div class="block-arrow">
+              <p class="arrow" (mouseenter)="isButtonVisible = true" [ngClass]="{'open-btn': isButtonVisible}">
+                <a href="tel:+380 73 800 4410" class="arrow-text arrow-text-under">ЗАТЕЛЕФОНУВАТИ</a>
+                <a (click)="openContact()" class="arrow-text ">ЗАЛИШИТИ НОМЕР</a>
+              </p>
+            </div>
           </li>
           <li><a class="catalog" routerLink="/catalog">КАТАЛОГ</a></li>
         </ul>
@@ -87,7 +89,7 @@
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item1="ngbAccordionItem">
             <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('first')">
               <p class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</p>
-              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
+              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
             </div>
             <div class="accordion-line"></div>
             <div ngbAccordionCollapse>
@@ -102,7 +104,7 @@
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item2="ngbAccordionItem">
               <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('second')">
                 <p class="title-accordion">КОМАНДА МАЙСТРІВ</p>
-                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
+                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
               </div>
               <div class="accordion-line"></div>
               <div ngbAccordionCollapse>
@@ -117,7 +119,7 @@
               <div class="accordion" ngbAccordionItem [collapsed]="true" #item3="ngbAccordionItem">
                 <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('third')"> 
                   <p class="title-accordion">ЯКІСТЬ МЕБЛІВ</p>
-                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
+                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
                 </div>
                 <div class="accordion-line"></div>
                 <div ngbAccordionCollapse>
@@ -155,9 +157,9 @@
       <div class="block-footer">
         <div class="list-footer">
           <p class="title-text-footer">ПРО НАС</p>
-          <p class="text-footer">КОМФОРТ НА РОКИ</p>
           <p class="text-footer">ПОПУЛЯРНІ ТОВАРИ</p>
           <p class="text-footer">НАШІ ПЕРЕВАГИ</p>
+          <p class="text-footer">НАША ІСТОРІЯ</p>
         </div>
         <div class="list-footer">
           <p class="title-text-footer">ЗВ’ЯЗОК</p>
@@ -175,11 +177,11 @@
     <div class="container-footer-bottom">
       <div class="block-footer-bottom">
         <p class="title-text-footer">НАША АДРЕСА</p>
-        <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
+        <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer text-footer-map" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
       </div>
       <div>
         <p routerLink="/terms-of-use" class="terms-of-use-tablet">УМОВИ ВИКОРИСТАННЯ МЕБЛІВ</p>
-        <p class="text-footer text-footer-bottom-mobile">Всі права захищені All rights reserved</p>
+        <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ МЕБЛІВ</span> Всі права захищені All rights reserved</p>
       </div>
     </div>
   </footer>
@@ -221,11 +223,11 @@
     <div class="list-mobail-menu-block">
       <!-- <button class="button-mobail-menu" routerLink="/blog">БЛОГ</button> -->
       <div class="block-mobail-menu-contact">
-        <button class="button-mobail-menu-contact" (click)="openContact()">КОНТАКТ З НАМИ</button>
-        <div class="block-button-mobail-menu-contact">
-          <a href="tel:+380 73 800 4410" class="title-button-mobail-menu-contact">ЗАТЕЛЕФОНУВАТИ</a>
-          <p (click)="openContact()" class="text-button-mobail-menu-contact">ЗАЛИШИТИ НОМЕР</p>
-        </div>
+        <button class="button-mobail-menu-contact" (click)="openBntContact()">КОНТАКТ З НАМИ</button>
+        <p class="arrow" [ngClass]="{'open-btn': isButtonVisible}">
+          <a href="tel:+380 73 800 4410" class="arrow-text">ЗАТЕЛЕФОНУВАТИ</a>
+          <a (click)="openContact()" class="arrow-text arrow-text-under">ЗАЛИШИТИ НОМЕР</a>
+        </p>
       </div>
       <img (click)="closeMenu()" class="image-mobail-menu" src="../../../assets/KRESTIK.svg" alt="">
     </div>

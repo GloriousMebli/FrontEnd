@@ -2,6 +2,8 @@ a, button { text-decoration: none; }
 
 .header {
     padding: 24px 40px;
+    background: #352F2A;
+    align-items: center;
   }
   
   .container-header {
@@ -18,6 +20,7 @@ a, button { text-decoration: none; }
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    margin-bottom: 0;
   }
   .container-login {
     height: 89.5vh;
@@ -105,6 +108,6 @@ a, button { text-decoration: none; }
     .login-form {
         padding: 24px;
         max-width: 310px;
-        max-height: 280px;
+        max-height: 310px;
     }
 }
