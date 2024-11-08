@@ -2,6 +2,7 @@ a, button { text-decoration: none; }
 
 .header {
   padding: 24px 40px;
+  background-color: #352F2A;
 }
 
 .container-header {
@@ -23,10 +24,11 @@ a, button { text-decoration: none; }
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .terms-of-use{
-  color: #352F2A;
+  color: #E8E4D9;
   font-family: Manrope;
   font-size: 20px;
   font-style: normal;
@@ -61,14 +63,23 @@ a, button { text-decoration: none; }
 // MAIN
 
 .blog-info {
+  max-width: 100%;
   background-color: #E8E4D9;
-  padding: 76px 40px;
-  padding-bottom: 160px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  max-width: 100%;
+  padding: 120px;
+  padding-top: 24px;
+}
+
+.block-blog-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .container-text {
@@ -82,6 +93,10 @@ a, button { text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.image-blog-info {
+  max-width: 100%;
 }
 
 .image-blog-info-arrow {
@@ -112,6 +127,7 @@ a, button { text-decoration: none; }
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-top: 24px;
 }
 
 // FOOTER
@@ -166,6 +182,10 @@ a, button { text-decoration: none; }
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin: 0;
 }
 
 .container-footer-bottom {
@@ -189,18 +209,15 @@ a, button { text-decoration: none; }
     padding: 11px 32px;
   }
   // main
-  .blog-info {
-    padding: 50px 32px;
-    padding-bottom: 128px;
+  .container {
+    padding: 100px;
+    padding-top: 26px;
   }
   .title-blog-info {
-    font-size: 36px;
+    font-size: 32px;
   }
   .text-blog-info {
     font-size: 20px;
-  }
-  .image-blog-info {
-    width: 750px;
   }
    // footer
    .footer {
@@ -248,8 +265,9 @@ a, button { text-decoration: none; }
     padding: 0;
   }
   // main
-  .image-blog-info {
-    width: 600px;
+  .container {
+    padding: 80px;
+    padding-top: 26px;
   }
   .image-x {
     width: 48px;
@@ -260,6 +278,9 @@ a, button { text-decoration: none; }
   }
   .text-blog-info {
     font-size: 18px;
+  }
+  .blog-info {
+    padding: 0;
   }
   // footer
   .footer {
@@ -299,14 +320,22 @@ a, button { text-decoration: none; }
   }
   // main
   .blog-info {
-    padding: 24px;
-    padding-bottom: 56px;
+    padding: 0;
   }
   .container {
+    max-width: 100%;
     flex-direction: column;
+    padding: 24px;
+    padding-top: 16px;
+    padding-bottom: 64px;
+  }
+  .block-blog-info {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 10px;
   }
   .image-blog-info {
-    width: 100%;
+    max-width: 100%;
     height: auto;
   }
   .container-text {
@@ -322,16 +351,15 @@ a, button { text-decoration: none; }
     font-style: normal;
     font-weight: 600;
     line-height: 136.498%;
-    margin: 8px 0;
-    margin-right: auto;
   }
   .text-blog-info {
     color: #352F2A;
     font-family: Manrope;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 136.498%;
+    margin-top: 0;
   }
   // footer
   .footer {
@@ -388,13 +416,17 @@ a, button { text-decoration: none; }
   // main
   .blog-info {
     padding: 16px;
+    padding-bottom: 64px;
   }
   .container {
+    width: 100%;
     flex-direction: column;
+    padding: 0;
   }
   .image-blog-info {
     width: 100%;
     height: auto;
+    border-radius: 16px;
   }
   .container-text {
     margin-left: 0;
@@ -402,23 +434,29 @@ a, button { text-decoration: none; }
   .block-text {
     gap: 0;
   }
-  .title-blog-info {
-    color: #352F2A;
-    font-family: Manrope;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 136.498%;
-    margin: 8px 0;
-    margin-right: auto;
+  .block-blog-info {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 10px;
   }
-  .text-blog-info {
+  .title-blog-info {
     color: #352F2A;
     font-family: Manrope;
     font-size: 16px;
     font-style: normal;
+    font-weight: 600;
+    line-height: 136.498%;
+    margin: 0;
+  }
+  .text-blog-info {
+    color: #352F2A;
+    font-family: Manrope;
+    font-size: 13px;
+    font-style: normal;
     font-weight: 400;
     line-height: 136.498%;
+    margin: 0;
+    margin-top: 8px;
   }
   // footer
   .footer {
@@ -483,5 +521,14 @@ a, button { text-decoration: none; }
     line-height: normal;
     margin: 0 auto;
     margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.terms-of-use {
+  font-size: 13px;
+  text-decoration: underline;
 }
 }

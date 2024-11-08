@@ -96,7 +96,7 @@ a, button { text-decoration: none; }
 // header
 
 .header {
-  background: url('../../../assets/sofa.png');
+  background: url('../../../assets/sofa.webp') no-repeat center / cover;
     height: 100vh;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100%;
@@ -160,7 +160,7 @@ a, button { text-decoration: none; }
     color: #352F2A;
     border-radius: 40px;
     background: #E8E4D9;
-    font-family: "Roboto Flex";
+    font-family: Manrope;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -172,6 +172,7 @@ a, button { text-decoration: none; }
     gap: 10px;
     flex-shrink: 0;
     transition: all 0.3s ease ;
+    display: flex;
   }
 
   .contact:hover {
@@ -181,7 +182,7 @@ a, button { text-decoration: none; }
 
   .catalog {
     color: #352F2A;
-    font-family: "Roboto Flex";
+    font-family: Manrope;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -201,7 +202,7 @@ a, button { text-decoration: none; }
   }
 
   .blog {
-    color: #E8E4D9;
+    color: #352F2A;
     font-family: Manrope;
     font-size: 24px;
     font-style: normal;
@@ -214,7 +215,7 @@ a, button { text-decoration: none; }
     gap: 10px;
     flex-shrink: 0;
     border-radius: 40px;
-    background: #352F2A;
+    background: #E8E4D9;
     transition: all 0.3s ease;
   }
 
@@ -235,7 +236,7 @@ a, button { text-decoration: none; }
   }
 
   .subtitle {
-    margin-top: 24px;
+    margin-top: -24px;
     color: #E8E4D9;
     display: flex;
     justify-content: center;
@@ -360,7 +361,25 @@ a, button { text-decoration: none; }
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: -0.96px;
+    letter-spacing: 0px;
+    margin-bottom: 0;
+  }
+
+  .text-popular-price {
+    color: #5C544C;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0px;
+    margin-bottom: 0;
+  }
+
+  .block-popular {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   // OUR ADVANTAGES
@@ -446,6 +465,7 @@ a, button { text-decoration: none; }
   .block-history {
     justify-content: space-between;
     display: flex;
+    gap: 24px;
   }
 
   .text-block-history {
@@ -467,13 +487,13 @@ a, button { text-decoration: none; }
 
   .button-history {
     color: #352F2A;
-    font-family: "Roboto Flex";
+    font-family: Manrope;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     display: inline-flex;
-    padding: 16px 64px;
+    padding: 16px 52px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -545,7 +565,7 @@ a, button { text-decoration: none; }
     line-height: normal;
     display: flex;
     gap: 32px;
-    align-items: center;
+    align-items: baseline;
     margin: 0;
   }
 
@@ -711,8 +731,8 @@ a, button { text-decoration: none; }
     align-items: center;
   }
   .blog {
-    height: 48px;
-    padding: 11px 32px;
+    padding: 10px 32px;
+    font-size: 20px;
   }
   .contact {
     display: flex;
@@ -738,7 +758,10 @@ a, button { text-decoration: none; }
     font-size: 250px;
     margin-bottom: 0;
   }
-
+  .text-popular-price {
+    margin-bottom: 0;
+    font-size: 20px;
+  }
   .container-main {
     margin: 0 auto;
   }
@@ -807,6 +830,10 @@ a, button { text-decoration: none; }
     height: 509px;
     flex-shrink: 0;
   }
+  .image-popular-arrow {
+    width: 38px;
+    height: 38px;
+  }
     // footer
     .footer {
       padding: 64px;
@@ -843,6 +870,10 @@ a, button { text-decoration: none; }
     font-size: 18px;
     padding: 12px 32px;
   }
+  .blog {
+    padding: 4px 32px;
+    height: 46px;
+  }
   .contact {
     height: 46px;
   }
@@ -858,6 +889,10 @@ a, button { text-decoration: none; }
     .container-main {
       width: 100%;
       padding: 0 32px;
+    }
+    .image-popular-arrow {
+      height: 28px;
+      width: 28px;
     }
   // popular
   .title-popular {
@@ -876,10 +911,12 @@ a, button { text-decoration: none; }
   }
   .title-item-block-our-advantages {
     font-size: 32px;
+    margin-bottom: 12px;
   }
   .image-item-block-our-advantages {
     width: 28px;
     height: 28px;
+    margin-bottom: 12px;
   }
   .image-our-advantages {
     width: 100%;
@@ -888,6 +925,7 @@ a, button { text-decoration: none; }
   }
   .text-our-advantages {
     font-size: 16px;
+    max-width: 260px;
   }
   // history
   .title-history {
@@ -921,10 +959,18 @@ a, button { text-decoration: none; }
   }
   .title-footer {
     font-size: 36px;
+    font-weight: 700;
   }
   .title-text-footer,
   .text-footer {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  .block-footer {
+    margin-left: 234px;
+    gap: 48px;
+  }
+  .terms-of-use {
+    font-size: 18px;
   }
 }
 
@@ -1177,6 +1223,7 @@ a, button { text-decoration: none; }
   }
   .title-footer {
     font-size: 32px;
+    font-weight: 700;
   }
   .title-text-footer,
   .text-footer {
@@ -1194,6 +1241,7 @@ a, button { text-decoration: none; }
   }
   .block-footer {
     gap: 16px;
+    margin-left: 66px;
   }
   .block-mobail-menu-contact {
     display: flex;
@@ -1206,7 +1254,23 @@ a, button { text-decoration: none; }
     width: 214px;
     
   }  
+  .terms-of-use-tablet {
+    display: none;
+  }
+  .terms-of-use {
+    font-size: 14px;
+  }
   .arrow-text {
+    font-size: 16px;
+  }
+  .text-footer-map {
+    font-size: 16px;
+    max-width: 234px;
+  }
+  .text-footer-bottom-mobile {
+    gap: 14px;
+  }
+  .text-popular-price {
     font-size: 16px;
   }
   // contact me
@@ -1252,10 +1316,13 @@ a, button { text-decoration: none; }
   .item-mobile-mebu {
     font-size: 36px;
   }
-  .button-mobail-menu {
+  .button-mobail-menu-blog {
     font-size: 16px;
     width: 111px;
     height: 48px;
+    background-color: #E8E4D9;
+    border-radius: 20px;
+    margin-left: 16px;
   }
   .button-mobail-menu-contact {
     font-size: 16px;
@@ -1323,6 +1390,21 @@ a, button { text-decoration: none; }
     line-height: normal;
     margin-top: 0;
   }
+  .button-mobail-menu-blog {
+    font-size: 13px;
+    width: 100px;
+    height: 36px;
+    background-color: #E8E4D9;
+    border-radius: 20px;
+    margin-left: 6px;
+  }
+  .list-mobail-menu-block {
+    display: flex;
+    align-items: center;
+  }
+  .list-mobail-menu {
+    padding: 0;
+  }
   .sofa {
     width: 100%;
     height: auto;
@@ -1370,6 +1452,9 @@ a, button { text-decoration: none; }
     height: auto;
     flex-shrink: 0;
   }
+  .text-popular-price{
+    font-size: 14px;
+  }
   .arrow {
     width: 141px;
     border-radius: 24px;
@@ -1381,7 +1466,7 @@ a, button { text-decoration: none; }
   .text-popular {
     color: #5C544C;
     font-family: Manrope;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -1576,14 +1661,17 @@ a, button { text-decoration: none; }
     margin-top: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
   .text-footer-bottom-mobile {
+    display: flex;
+    align-items: start;
     margin-top: 32px;
   }
   .terms-of-use {
     font-size: 13px;
     font-weight: 600;
+    text-decoration: underline;
   }
   // contact me
   .container-contact-me {

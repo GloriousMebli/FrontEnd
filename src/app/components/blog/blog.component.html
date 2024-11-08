@@ -1,8 +1,10 @@
-<div class="header">
+<div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
+  <div class="header">
   <div class="container-header">
       <p class="title-glorious" routerLink="">GLORIOUS</p>
       <div class="menu-buttons">
           <button class="button-contact" routerLink="/catalog">КАТАЛОГ</button>
+          <button (click)="openContact()" class="button-contact">КОНТАКТ З НАМИ</button>
       </div>
   </div>
 </div>
@@ -10,73 +12,18 @@
   <div class="container-blog">
     <p class="title-blog">блог</p>
     <ul class="list-blog">
-      <li routerLink="/blog/1" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo1.png" alt="">
+      <li *ngFor="let post of posts" [routerLink]="['/blog', post.id]" class="item-blog">
+        <img class="image-blog" [src]="post.image" alt="">
         <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
+          <p class="title-container-text-blog">{{ post.title }}</p>
+          <p class="text-container-blog">{{ post.text }}</p>
           <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
+            <p class="title-container-text-blog-arrow">{{ post.linkText }}</p>
             <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
           </div>
         </div>
       </li>
-      <li routerLink="/blog/2" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo2.png" alt="">
-        <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
-          <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
-            <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-          </div>
-        </div>
-      </li>
-      <li routerLink="/blog/3" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo3.png" alt="">
-        <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
-          <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
-            <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-          </div>
-        </div>
-      </li>
-      <li routerLink="/blog/4" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo1.png" alt="">
-        <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
-          <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
-            <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-          </div>
-        </div>
-      </li>
-      <li routerLink="/blog/5" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo2.png" alt="">
-        <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
-          <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
-            <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-          </div>
-        </div>
-      </li>
-      <li routerLink="/blog/6" class="item-blog">
-        <img class="image-blog" src="../../../assets/photo3.png" alt="">
-        <div class="container-blog-text">
-          <p class="title-container-text-blog">БЛА БЛА БЛА</p>
-          <p class="text-container-blog">БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА БЛА</p>
-          <div class="container-blog-arrow">
-            <p class="title-container-text-blog-arrow">БЛА БЛА БЛА</p>
-            <img class="image-blog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-          </div>
-        </div>
-      </li>
-    </ul>
+    </ul>    
   </div>
 </div>
 <div class="footer" id="contact">
@@ -112,4 +59,35 @@
       </div>
     </div>
 </div>
+</div>
 
+
+<!-- contact for me -->
+<div class="contact-me" [ngClass]="{'open': isContactOpen}">
+  <div class="container-contact-me">
+    @if(successForm){
+      <div style="display: flex; flex-direction: column; ">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <p class="title-contact-me-success">ДЯКУЄМО!</p>
+          <div style="display: flex; align-items: center; height: 100%; ">
+            <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
+          </div>
+        </div>
+        <div>
+          <span class="title-contact-me-success-bottom">ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ </span>
+        </div>
+      </div>
+    }@else {
+      <div class="block-contact-me">
+        <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
+        <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
+      </div>
+      <div class="block-input-contact-me">
+        <input class="input-contact" type="text" [(ngModel)]="contactName" placeholder="Ім’я">
+        <input class="input-contact" type="text" [(ngModel)]="contactPhone" placeholder="Номер телефону">
+      </div>
+      <button class="button-contact-me" (click)="sendContact()">ВІДПРАВИТИ</button>
+    }
+    
+  </div>
+ </div>

@@ -81,17 +81,17 @@ export class MainComponent implements OnInit {
     {
       title: 'ВЛАСНЕ ВИРОБНИЦТВО',
       text: 'Ми контролюємо весь процес створення меблів, від розробки до виробництва, забезпечуючи високу якість кожного етапу.',
-      image: '../assets/people-work.png'
+      image: '../assets/people-work.webp'
     },
     {
       title: 'КОМАНДА МАЙСТРІВ',
       text: 'Працюємо з кожним клієнтом індивідуально, пропонуючи рішення, які максимально відповідають вашим потребам та побажанням.',
-      image: '../assets/people-work2.png'
+      image: '../assets/people-work2.webp'
     },
     {
       title: 'ЯКІСТЬ МЕБЛІВ',
       text: 'Ми використовуємо тільки сертифіковані та безпечні для здоров’я матеріали, турбуючись про ваше благополуччя.',
-      image: '../assets/people-work3.png'
+      image: '../assets/people-work3.webp'
     }
   ];
 

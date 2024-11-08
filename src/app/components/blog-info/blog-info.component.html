@@ -6,19 +6,15 @@
       </div>
   </div>
 </div>
-<div class="blog-info">
-  <img routerLink="/blog" class="image-blog-info-arrow" src="../../../assets/arrow-up-right.svg" alt="">
+<div *ngIf="blogPost" class="blog-info">
   <div class="container">
-    <div>
-      <img class="image-blog-info" src="../../../assets/photo-blog-info.png" alt="">
-    </div>
-    <div class="container-text">
-      <div class="block-text">
-        <p class="title-blog-info">НАЗВА РОЗДІЛУ</p>
-        <p class="text-blog-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit, lorem eget tincidunt malesuada, sapien purus viverra odio, id ullamcorper erat ante sit amet nunc. Ut fringilla sem at mauris cursus, sed scelerisque velit viverra. Sed non felis id lectus hendrerit malesuada. Nam porttitor libero non massa vehicula, ac accumsan sapien volutpat. Nulla facilisi. Morbi vulputate libero vel dolor consequat, ut faucibus nunc facilisis. Sed ac turpis ac lorem ullamcorper fermentum. Curabitur in libero lacinia, accumsan lorem id, pharetra augue. Integer a metus id lacus volutpat tincidunt ut sit amet justo. Aliquam erat volutpat</p>
+      <img routerLink="/blog" class="image-blog-info-arrow" src="../../../assets/arrow-up-right.svg" alt="">
+      <div >
+        <p class="title-blog-info">{{ blogPost.title }}</p>
+        <img class="image-blog-info" [src]="blogPost.image_info" alt="">
       </div>
-    </div>
-  </div>
+        <p class="text-blog-info">{{ blogPost.text_info }}</p>
+      </div>
 </div>
 <div class="footer" id="contact">
   <div class="container-footer-top">
@@ -49,7 +45,7 @@
         <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
       </div>
       <div>
-        <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ ДІЙСНОЇ ГАРАНТІЇ</span> Всі права захищені All rights reserved</p>
+        <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ МЕБЛІВ</span> Всі права захищені All rights reserved</p>
       </div>
     </div>
 </div>

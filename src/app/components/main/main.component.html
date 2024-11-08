@@ -15,7 +15,7 @@
           <li><a (click)="scrollToSection('history')" class="link-menu">НАША ІСТОРІЯ</a></li>
         </ul>
         <ul class="menu-buttons">
-          <!-- <li><a class="blog" routerLink="/blog">БЛОГ</a></li> -->
+          <li><a class="blog" routerLink="/blog">БЛОГ</a></li>
           <li class="button-contacts">
             <a (mouseenter)="openBntContact()" class="contact">КОНТАКТ З НАМИ</a>
             <div class="block-arrow">
@@ -44,7 +44,10 @@
                 <li class="item-popular" [routerLink]="'/catalog/' + product._id">
                   <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
                   <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
-                  <p class="text-popular">{{product?.name}}</p>
+                  <div class="block-popular">
+                    <p class="text-popular">{{product.name || 'Новий Товар'}}</p>
+                    <p class="text-popular-price">{{product.price}}</p>
+                  </div>
                 </li>
               }
             </ul>
@@ -89,13 +92,13 @@
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item1="ngbAccordionItem">
             <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('first')">
               <p class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</p>
-              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
+              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
             </div>
             <div class="accordion-line"></div>
             <div ngbAccordionCollapse>
               <div class="accordion-body" ngbAccordionBody>
                 <ng-template>
-                  <img class="image-accordion" src="../../../assets/people-work.png" alt="">
+                  <img class="image-accordion" src="../../../assets/people-work.webp" alt="">
                   <p class="text-accordion">Ми контролюємо весь процес створення меблів, від розробки до виробництва, забезпечуючи високу якість кожного етапу.</p>
                 </ng-template>
               </div>
@@ -104,13 +107,13 @@
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item2="ngbAccordionItem">
               <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('second')">
                 <p class="title-accordion">КОМАНДА МАЙСТРІВ</p>
-                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
+                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
               </div>
               <div class="accordion-line"></div>
               <div ngbAccordionCollapse>
                 <div class="accordion-body" ngbAccordionBody>
                   <ng-template>
-                    <img class="image-accordion" src="../../../assets/people-work2.png" alt="">
+                    <img class="image-accordion" src="../../../assets/people-work2.webp" alt="">
                     <p class="text-accordion">Працюємо з кожним клієнтом індивідуально, пропонуючи рішення, які максимально відповідають вашим потребам та побажанням.</p>
                   </ng-template>
                 </div>
@@ -119,13 +122,13 @@
               <div class="accordion" ngbAccordionItem [collapsed]="true" #item3="ngbAccordionItem">
                 <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('third')"> 
                   <p class="title-accordion">ЯКІСТЬ МЕБЛІВ</p>
-                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-up-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
+                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
                 </div>
                 <div class="accordion-line"></div>
                 <div ngbAccordionCollapse>
                   <div class="accordion-body" ngbAccordionBody>
                     <ng-template>
-                      <img class="image-accordion" src="../../../assets/people-work3.png" alt="">
+                      <img class="image-accordion" src="../../../assets/people-work3.webp" alt="">
                       <p class="text-accordion">Ми використовуємо тільки сертифіковані та безпечні для здоров’я матеріали, турбуючись про ваше благополуччя.</p>
                     </ng-template>
                   </div>
@@ -141,10 +144,10 @@
           <div class="block-history">
             <div class="text-block-history">
               <p class="text-history">Меблева фірма “Glorious”, заснована в 2020 році, спеціалізується на створенні унікальних і зручних меблів для дому та офісу. Від маленької майстерні до сучасного виробництва, ми пропонуємо функціональні та стильні рішення, що відповідають світовим тенденціям. Наша місія — дарувати комфорт і затишок через індивідуальний підхід та використання інноваційних технологій.</p>
-              <div class="image-block-history-mobile"><img class="image-history" src="../../../assets/people.png" alt=""></div>
+              <div class="image-block-history-mobile"><img class="image-history" src="../../../assets/people.webp" alt=""></div>
               <button class="button-history" routerLink="/catalog">НАШІ ТОВАРИ</button>
             </div>
-            <div class="image-block-history"><img class="image-history" src="../../../assets/people.png" alt=""></div>
+            <div class="image-block-history"><img class="image-history" src="../../../assets/people.webp" alt=""></div>
           </div>
         </div>
       </section>
@@ -221,7 +224,6 @@
  <div class="mobail-menu" [ngClass]="{'open': isMenuOpen}">
   <div class="block-mobail-menu">
     <div class="list-mobail-menu-block">
-      <!-- <button class="button-mobail-menu" routerLink="/blog">БЛОГ</button> -->
       <div class="block-mobail-menu-contact">
         <button class="button-mobail-menu-contact" (click)="openBntContact()">КОНТАКТ З НАМИ</button>
         <p class="arrow" [ngClass]="{'open-btn': isButtonVisible}">
