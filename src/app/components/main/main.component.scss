@@ -138,6 +138,11 @@ a, button { text-decoration: none; }
     text-decoration: none;
     color: #E8E4D9;
     padding: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .link-menu:hover {
+    color: #352F2A;
   }
 
   .link-menu {
@@ -305,7 +310,7 @@ a, button { text-decoration: none; }
   // MAIN
 
   .main {
-    box-shadow: 40px -200px -50px (41, 37, 33, 0.76);
+    box-shadow: 0px -70px 70px rgba(41, 37, 33, 0.76);
     position: relative;
     display: flex;
     z-index: 20;
@@ -583,6 +588,8 @@ a, button { text-decoration: none; }
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
+    text-decoration: underline;
   }
 
   // CONTACT ME
@@ -850,6 +857,9 @@ a, button { text-decoration: none; }
       font-size: 20px;
     }
     .text-footer {
+      font-size: 20px;
+    }
+    .terms-of-use {
       font-size: 20px;
     }
 }
@@ -1661,11 +1671,14 @@ a, button { text-decoration: none; }
     margin-top: 0;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+  }
+  .block-footer-bottom {
+    margin-right: auto;
   }
   .text-footer-bottom-mobile {
     display: flex;
-    align-items: start;
+    align-items: center;
     margin-top: 32px;
   }
   .terms-of-use {

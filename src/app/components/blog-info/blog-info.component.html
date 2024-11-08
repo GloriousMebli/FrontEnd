@@ -13,7 +13,7 @@
         <p class="title-blog-info">{{ blogPost.title }}</p>
         <img class="image-blog-info" [src]="blogPost.image_info" alt="">
       </div>
-        <p class="text-blog-info">{{ blogPost.text_info }}</p>
+        <p class="text-blog-info" [innerHTML]="blogPost?.text_info || ''"></p>
       </div>
 </div>
 <div class="footer" id="contact">
@@ -45,7 +45,7 @@
         <a href="https://maps.app.goo.gl/V6pgHoX6BtCKdhSL6" class="text-footer" target="_blank">Черкаси Вул. Чорновола Вʼячеслава Будинок 175</a>
       </div>
       <div>
-        <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ ДЛЯ МЕБЛІВ</span> Всі права захищені All rights reserved</p>
+        <p class="text-footer text-footer-bottom-mobile"><span routerLink="/terms-of-use" class="terms-of-use">УМОВИ ВИКОРИСТАННЯ МЕБЛІВ</span> Всі права захищені All rights reserved</p>
       </div>
     </div>
 </div>

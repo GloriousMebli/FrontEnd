@@ -60,3 +60,14 @@ h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: 400; }
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.bold-text {
+  color: #352F2A;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -167,6 +167,8 @@ pointer-events: none;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .button-contact {
@@ -764,7 +766,7 @@ pointer-events: none;
 .container-footer-bottom {
     margin-top: 16px;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
 }
 .text-footer {
     color: #E8E4D9;
@@ -776,9 +778,9 @@ pointer-events: none;
 }
 .text-footer-bottom-mobile {
   display: flex;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   gap: 8px;
   color: #E8E4D9;
   font-family: Manrope;
@@ -786,11 +788,11 @@ pointer-events: none;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 0 auto;
   margin-top: 32px;
 }
 .terms-of-use {
-  font-size: 11px;
+  font-size: 13px;
+  text-decoration: underline;
 }
   // contact me
   .container-contact-me {

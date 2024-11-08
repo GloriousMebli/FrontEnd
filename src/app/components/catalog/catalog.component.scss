@@ -226,10 +226,12 @@ pointer-events: none;
   flex-direction: column;
   color: #E8E4D9;
   font-family: Manrope;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .text-footer{
   display: flex;
@@ -363,7 +365,7 @@ pointer-events: none;
 .btn-category-add-input {
   position: relative;
   padding: 16px;
-  height: 53px;
+  height: 48px;
   width: 303px;
   display: flex;
   align-items: center;  
@@ -929,7 +931,7 @@ pointer-events: none;
   }
   .category-input { 
     font-size: 16px;
-    max-width: 13ch;
+    max-width: 11ch;
   }
   .title-main {
     color: #352F2A;
@@ -961,13 +963,17 @@ pointer-events: none;
     justify-content: center;
     margin: 4px auto;
   }
+  .block-main-add-category-plus {
+    height: 36px;
+    padding: 14px;
+  }
   .block-main-add-category {
     display: flex;
     align-items: start;
   }
   .btn-category-add-input {
     font-size: 24px;
-    width: 301px;
+    width: 170px;
     border: 1px solid #352F2A;
     height: 33px;
   }
@@ -1002,7 +1008,7 @@ pointer-events: none;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    width: 150px;
+    min-width: 120px;
   }
   .item-main.item-main--active {
     color: #E8E4D9;
@@ -1052,7 +1058,7 @@ pointer-events: none;
     font-size: 16px;
   }
   .image-main-add-category-plus {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   // contact me
   .container-contact-me {
@@ -1139,10 +1145,13 @@ pointer-events: none;
       font-weight: 500;
       line-height: normal;
   }
+  .block-footer-bottom {
+    margin-right: auto;
+  }
   .container-footer-bottom {
       margin-top: 16px;
       flex-direction: column;
-      align-items: start;
+      align-items: center;
   }
   .text-footer {
       color: #E8E4D9;
@@ -1153,7 +1162,7 @@ pointer-events: none;
       line-height: normal;
   }
   .terms-of-use {
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: underline;
   }
   .block-footer-bottom {
@@ -1169,7 +1178,7 @@ pointer-events: none;
       margin: 0 auto;
       margin-top: 32px;
       display: flex;
-      align-items: start;
+      align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 8px;
