@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from './services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import { AdminService } from './services/admin.service';
 })
 export class AppComponent implements OnInit{
 
-  constructor(private adminService: AdminService) {}
+  isMainPage: boolean = false;
+
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit() {
     const adminToken = localStorage.getItem('adminToken');
@@ -21,5 +24,16 @@ export class AppComponent implements OnInit{
         localStorage.removeItem('adminToken')
       })
     }
+    this.isMainPage = this.router.url === '/';
+    this.router.events.subscribe(() => {
+      this.isMainPage = this.router.url === '/';
+    });
+  }
+
+  isAdmin: boolean = false;
+
+  logout(){
+    localStorage.removeItem('adminToken')
+    window.location.reload()
   }
 }

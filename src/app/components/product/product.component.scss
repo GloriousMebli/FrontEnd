@@ -1510,6 +1510,13 @@ pointer-events: none;
   .buttons-product {
     gap: 4px;
   }
+  .container-header {
+    display: flex;
+    align-items: center;
+  }
+  .button-contact {
+    margin-top: 0;
+  }
   .button-product,
   .button-products {
     color: #DAD5C9;

@@ -282,74 +282,6 @@ pointer-events: none;
   flex-shrink: 0;
 }
 
-// FOOTER
-
-.footer {
-  padding: 80px;
-  background: #352F2A;
-}
-
-.container-footer-top {
-  display: flex;
-  align-items: start;
-}
-
-.title-footer {
-  color: #DAD5C9;
-  font-family: "SONGER SemiExpanded";
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
-.block-footer {
-  margin-left: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 64px;
-}
-
-.list-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.title-text-footer {
-  color: #DAD5C9;
-  font-family: Manrope;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.text-footer {
-  color: #DAD5C9;
-  font-family: Manrope;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
-.container-footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-top: 80px;
-}
-
-.text-footer-bottom-mobile {
-  margin-bottom: 0;
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
 @media screen and (min-width: 1440px) and (max-width: 1919px) {
   .header {
     padding: 24px 32px;
@@ -687,7 +619,7 @@ pointer-events: none;
   }
   .container-blog-text {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     height: auto;
   }
   .title-container-text-blog {
@@ -722,6 +654,7 @@ pointer-events: none;
   .container-blog-arrow {
     gap: 8px;
     margin-top: 16px;
+    align-items: baseline;
   }
   // footer
   .footer {

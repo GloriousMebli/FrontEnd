@@ -71,3 +71,28 @@ h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: 400; }
   margin: 0;
   padding: 0;
 }
+
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .bold-text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1439px) {
+  .bold-text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1199px) {
+  .bold-text {
+    font-size: 20px;  
+  }
+  
+}
+
+@media screen and (min-width: 320px) and (max-width: 799px) {
+  .bold-text {
+    font-size: 13px;
+  }
+}
