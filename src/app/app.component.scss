@@ -2,8 +2,12 @@
     text-decoration: none;
 }
 
-.main-footer {
-    background: #E8E4D9;
+.footer {
+    padding: 80px;
+  }
+
+  .main-footer {
+    background-color: #E8E4D9;
     p {
         color: #352F2A;
     }
@@ -13,11 +17,6 @@
     span {
         color: #352F2A;
     }
-  }
-
-.footer {
-    padding: 80px;
-    // background: #E8E4D9;
   }
 
   .container-footer-top {
