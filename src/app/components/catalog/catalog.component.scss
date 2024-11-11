@@ -997,7 +997,7 @@ pointer-events: none;
     display: flex;
     height: 28px;
     padding: 16px 8px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
@@ -1009,7 +1009,7 @@ pointer-events: none;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    min-width: 120px;
+    max-width: 100%;
   }
   .item-main.item-main--active {
     color: #E8E4D9;

@@ -4,7 +4,6 @@
         <p class="title-glorious" routerLink="">GLORIOUS</p>
         <div class="menu-buttons">
             <button class="button-contact" routerLink="/catalog">КАТАЛОГ</button>
-            <button (click)="openContact()" class="button-contact">КОНТАКТ З НАМИ</button>
         </div>
     </div>
   </div>
@@ -19,33 +18,3 @@
         </div>
   </div>
 </div>
-
-<!-- contact for me -->
-<div class="contact-me" [ngClass]="{'open': isContactOpen}">
-  <div class="container-contact-me">
-    @if(successForm){
-      <div style="display: flex; flex-direction: column; ">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <p class="title-contact-me-success">ДЯКУЄМО!</p>
-          <div style="display: flex; align-items: center; height: 100%; ">
-            <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-          </div>
-        </div>
-        <div>
-          <span class="title-contact-me-success-bottom">ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ </span>
-        </div>
-      </div>
-    }@else {
-      <div class="block-contact-me">
-        <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
-        <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-      </div>
-      <div class="block-input-contact-me">
-        <input class="input-contact" type="text" [(ngModel)]="contactName" placeholder="Ім’я">
-        <input class="input-contact" type="text" [(ngModel)]="contactPhone" placeholder="Номер телефону">
-      </div>
-      <button class="button-contact-me" (click)="sendContact()">ВІДПРАВИТИ</button>
-    }
-    
-  </div>
- </div>
