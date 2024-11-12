@@ -6,6 +6,7 @@ import OpenSeadragon from 'openseadragon'
 import { CategoryService } from '../../services/category.service';
 import { AdminService } from '../../services/admin.service';
 import { FormService } from '../../services/form.service';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -30,6 +31,8 @@ export class ProductComponent implements OnInit {
   popularProducts
 
   mainPhoto = {url: '', _id: ''}
+
+  loadingImage = false
 
   smallPhotos: {_id: string, url: string  }[] = []
   viewer
@@ -167,8 +170,9 @@ closeContact() {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
-
-      this.productsService.uploadProductImage(this.product?._id||'', file, isMain).subscribe(res=>{
+      this.loadingImage = true
+      this.productsService.uploadProductImage(this.product?._id||'', file, isMain)
+      .subscribe(res=>{
         this.smallPhotos = [];
         this.product.images = res?.images
         res.images?.map((image: any) => {
@@ -178,6 +182,10 @@ closeContact() {
             this.smallPhotos.push({_id: image._id, url: image.url})
           }
         })
+        this.loadingImage = false
+      }, (err) => {
+        this.loadingImage = false
+        alert(err?.error?.message)
       })
 
     }

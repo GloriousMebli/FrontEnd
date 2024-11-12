@@ -156,11 +156,17 @@
                       </div>
                     }@else{
                       <div class="photo-admin-product">
-                        <img 
+                        @if(loadingImage){
+                          <div class="spinner-border" role="status">
+                            <span class="sr-only"></span>
+                          </div>
+                        }@else {
+                          <img 
                           [src]="'../../../assets/plus.svg'"
                           class="plus-photo"
                           alt="Main Photo"
                         >
+                        }
                         <input type="file" id="file-input-main" (change)="onFileSelected($event, true)" accept="image/*" style="opacity: 0; position: absolute; height: 100%; cursor: pointer;">
                       </div>
                     }
@@ -177,16 +183,26 @@
                         </div>
                       }
                       <div  class="small-photo-admin-product" (click)="onPhotoClick('small')">
-                        <img 
-                          [src]=" '../../../assets/plus.svg'"
-                          class="plus-photo-small"
-                          alt="Small Photo"
-                        >
+                        @if(loadingImage){
+                          <div class="spinner-border" role="status">
+                            <span class="sr-only"></span>
+                          </div>
+                        }@else {
+                          <img 
+                            [src]=" '../../../assets/plus.svg'"
+                            class="plus-photo-small"
+                            alt="Small Photo"
+                          >
+                        }
                         <input type="file" [id]="'file-input-small'" (change)="onFileSelected($event, false)" accept="image/*" style="opacity: 0; position: absolute; height: 100%; cursor: pointer;">
                       </div>
+                     
                     </div>
+                    
                   </div>
-            </div>                 
+                   
+            </div>    
+                      
             <div class="text-admin-product">
                 <div class="title-admin-product">
                   <div>
