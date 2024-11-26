@@ -16,7 +16,18 @@
 </div>
 <div class="main">
     <div class="container-main">
+      <div class="block-main">
         <p class="title-main" routerLink=""><span class="title-main-span">Головна/</span>Каталог</p>
+        <div class="filter-options">
+          <select class="select-main" [(ngModel)]="sortOption" (change)="applySort()">
+            <option value="">Сортувати за</option>
+            <option value="price-asc">Ціна: від меншої до більшої</option>
+            <option value="price-desc">Ціна: від більшої до меншої</option>
+            <option value="createdAt-asc">Дата: спочатку старі</option>
+            <option value="createdAt-desc">Дата: спочатку нові</option>
+          </select>                   
+        </div>
+      </div>
         <p class="title-main-text">всі товари</p>
         <div *ngIf="isAdmin" class="block-main-add-category">
           <div class="block-main-add-category-button">
@@ -60,22 +71,22 @@
           }
         </ul>               
         <div class="block-popular">
-        <ul class="list-popular">
-            @for(product of products; track $index){
-              <li class="item-popular" [routerLink]="product._id">
-                <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-                @for(image of product.images; track $index){
-                  @if(image?.isMain){
-                    <img class="image-popular" [src]="image.thumbnailUrl" alt="" draggable="false">
-                  }
+          <ul class="list-popular">
+          @for(product of products; track $index) {
+            <li class="item-popular" [routerLink]="product._id">
+              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
+              @for(image of product.images; track $index) {
+                @if(image?.isMain) {
+                  <img class="image-popular" [src]="image.thumbnailUrl" alt="" draggable="false">
                 }
-                <div class="block-popular-text">
-                  <p class="text-popular">{{product.name || 'Новий Товар'}}</p>
-                  <p class="text-popular-price">{{product.price}}</p>
-                </div>
-              </li>
-            }
-          </ul>
+              }
+              <div class="block-popular-text">
+                <p class="text-popular">{{ product.name || 'Новий Товар' }}</p>
+                <p class="text-popular-price">{{ product.price }}</p>
+              </div>
+            </li>
+          }
+          </ul>           
         </div>
     </div>
 </div>

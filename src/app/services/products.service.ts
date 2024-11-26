@@ -21,8 +21,7 @@ export class ProductsService {
     };
   }
 
-  // Отримати всі продукти
-  getProducts(filters?: {popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[]}): Observable<any[]> {
+  getProducts(filters?: { popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[], sortBy?: string, order?: string }): Observable<any[]> {
     let httpParams = new HttpParams();
     Object.keys(filters).forEach(function (key) {
       if (filters[key] !== '' && filters[key] !== null && filters[key] !== undefined) {
@@ -31,6 +30,7 @@ export class ProductsService {
     });
     return this.http.get<any[]>(this.baseUrl, { params: httpParams });
   }
+  
 
   // Отримати продукт за ID
   getProductById(id: string): Observable<any> {

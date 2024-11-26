@@ -10,6 +10,7 @@ import { FormService } from '../../services/form.service';
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss'
 })
+
 export class CatalogComponent implements OnInit {
 
   contactName
@@ -51,8 +52,10 @@ export class CatalogComponent implements OnInit {
     this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
     
     this.loadProducts();
-    this.loadCategories()
-  }
+    this.loadCategories();
+
+    this.fetchProducts();
+    }
 
    // Метод для навігації
    navigateToAdmin(): void {
@@ -65,6 +68,71 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  sortOption: string = '';
+
+  displayedProducts: any[] = []; // Список для відображення
+  itemsPerPage: number = 3; // Кількість товарів на сторінку
+  currentPage: number = 0; // Поточна сторінка
+
+  fetchProducts(): void {
+    const [sortBy, order] = this.sortOption.split('-'); // Розбиваємо опцію сортування
+    this.productsService.getProducts({ sortBy, order }).subscribe((data) => {
+      this.products = data; // Оновлюємо список продуктів
+    });
+    this.productsService.getProducts({}).subscribe((data) => {
+      this.products = data; // Отримуємо всі товари
+      this.loadMoreProducts(); // Завантажуємо першу порцію товарів
+    });
+  }
+
+  ngAfterViewInit(): void {
+    // Відновлюємо прокручування після завантаження
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    if (scrollPosition) {
+      window.scrollTo(0, parseInt(scrollPosition));
+    }
+  }
+
+  loadMoreProducts(): void {
+    const startIndex = this.currentPage * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    const newProducts = this.products.slice(startIndex, endIndex);
+
+    if (newProducts.length > 0) {
+      this.displayedProducts = [...this.displayedProducts, ...newProducts];
+      this.currentPage++;
+    }
+  }
+
+  applySort(): void {
+    const sortParams = this.getSortParams(this.sortOption);
+    this.productsService.getProducts(sortParams).subscribe((data) => {
+      this.products = data;
+      this.loadMoreProducts(); // Завантажуємо першу порцію товарів після сортування
+    });
+  }
+  
+  getSortParams(option: string): any {
+    let sortParams = {};
+    switch (option) {
+      case 'price-asc':
+        sortParams = { sortBy: 'price', order: 'asc' };
+        break;
+      case 'price-desc':
+        sortParams = { sortBy: 'price', order: 'desc' };
+        break;
+      case 'createdAt-asc':
+        sortParams = { sortBy: 'createdAt', order: 'asc' };
+        break;
+      case 'createdAt-desc':
+        sortParams = { sortBy: 'createdAt', order: 'desc' };
+        break;
+      default:
+        sortParams = {};
+        break;
+    }
+    return sortParams;
+  }
 
   trackByIndex(index: number): number {
     return index;

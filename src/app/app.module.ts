@@ -21,6 +21,7 @@ import { AutoGrowDirective } from './directives/auto-gorw.directive';
 import { CategoryService } from './services/category.service';
 import { FormService } from './services/form.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+    InfiniteScrollModule,
   ],
   exports: [ RouterModule ],
   declarations: [
