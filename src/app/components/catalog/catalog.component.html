@@ -62,7 +62,6 @@
           @for(category of categories; track $index){
             <li class="item-main"[ngClass]="{'item-main--active': filters?.categoryIds?.includes(category._id)}" (click)="setFilter('categoryIds', category._id)">
               {{category.label}}
-
               @if(filters?.categoryIds?.includes(category?._id)){
                 <img class="image-main-add-category-arrow" src="../../../assets/KRESTIK.svg">
               }
