@@ -168,8 +168,8 @@ export class CatalogComponent implements OnInit {
     const [sortBy, order] = this.sortOption.split('-'); // Split sorting option into sortBy and order
     const params = {
       ...this.filters,
-      sortBy: sortBy || 'price', // Default to sorting by price if no sort option is provided
-      order: order || 'asc',     // Default to ascending order if no order is provided
+      sortBy: sortBy || 'createdAt', // Default to sorting by price if no sort option is provided
+      order: order || 'desc',     // Default to ascending order if no order is provided
     };
 
     this.productsService.getProducts(params).subscribe((data: Product[]) => {
