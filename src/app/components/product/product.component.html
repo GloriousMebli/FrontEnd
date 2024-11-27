@@ -220,7 +220,6 @@
                 </div>
                 <input class="input-admin-product-name" [value]="product?.name || ''" (change)="setValue($event, 'name')" type="text" placeholder="Додати назву...">
                 <input class="input-admin-product-price" type="text" [value]="product?.price || ''" (change)="setValue($event, 'price')" placeholder="Додати ціну...">
-                
                 <p class="text-admin-product-description">Опис</p>
                 <div class="line-admin-product"></div>
                 <textarea class="input-admin-product-description" autogrow [value]="product?.desc || ''" (change)="setValue($event, 'desc')"  type="text" rows="8" placeholder="Додати опис..."></textarea>

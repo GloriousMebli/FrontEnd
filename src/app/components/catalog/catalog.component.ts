@@ -51,7 +51,6 @@ export class CatalogComponent implements OnInit {
     const adminToken = localStorage.getItem('adminToken');
     this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
     
-    this.loadProducts();
     this.loadCategories();
 
     this.fetchProducts();
@@ -70,37 +69,18 @@ export class CatalogComponent implements OnInit {
 
   sortOption: string = '';
 
-  displayedProducts: any[] = []; // Список для відображення
-  itemsPerPage: number = 3; // Кількість товарів на сторінку
-  currentPage: number = 0; // Поточна сторінка
-
   fetchProducts(): void {
     const [sortBy, order] = this.sortOption.split('-'); // Розбиваємо опцію сортування
     this.productsService.getProducts({ sortBy, order }).subscribe((data) => {
-      this.products = data; // Оновлюємо список продуктів
-    });
-    this.productsService.getProducts({}).subscribe((data) => {
-      this.products = data; // Отримуємо всі товари
-      this.loadMoreProducts(); // Завантажуємо першу порцію товарів
+      this.products = data;
     });
   }
 
+
   ngAfterViewInit(): void {
-    // Відновлюємо прокручування після завантаження
     const scrollPosition = localStorage.getItem('scrollPosition');
     if (scrollPosition) {
       window.scrollTo(0, parseInt(scrollPosition));
-    }
-  }
-
-  loadMoreProducts(): void {
-    const startIndex = this.currentPage * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    const newProducts = this.products.slice(startIndex, endIndex);
-
-    if (newProducts.length > 0) {
-      this.displayedProducts = [...this.displayedProducts, ...newProducts];
-      this.currentPage++;
     }
   }
 
@@ -108,7 +88,6 @@ export class CatalogComponent implements OnInit {
     const sortParams = this.getSortParams(this.sortOption);
     this.productsService.getProducts(sortParams).subscribe((data) => {
       this.products = data;
-      this.loadMoreProducts(); // Завантажуємо першу порцію товарів після сортування
     });
   }
   
@@ -142,17 +121,6 @@ export class CatalogComponent implements OnInit {
     this.inputFields.splice(index, 1);
   }
 
-  loadProducts(): void {
-    this.productsService.getProducts({withNameAndImage: this.isAdmin ? false :true, ...this.filters}).subscribe(
-      (data: Product[]) => {
-        this.products = data;
-      },
-      (error) => {
-        console.error('Error loading products', error);
-      }
-    );
-  }
-
   setFilter(key: string, value: string): void {
     if(key === 'categoryIds'){
       this.filters.categoryIds = this.filters.categoryIds || []
@@ -160,7 +128,6 @@ export class CatalogComponent implements OnInit {
     }else{
       this.filters[key] = value
     }
-    this.loadProducts();
   }
   addProduct(){
     this.productsService.createProduct({}).subscribe((data: any) => {

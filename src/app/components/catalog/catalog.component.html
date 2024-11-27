@@ -20,7 +20,7 @@
         <p class="title-main" routerLink=""><span class="title-main-span">Головна/</span>Каталог</p>
         <div class="filter-options">
           <select class="select-main" [(ngModel)]="sortOption" (change)="applySort()">
-            <option value="">Сортувати за</option>
+            <option value="">Всі:</option>
             <option value="price-asc">Ціна: від меншої до більшої</option>
             <option value="price-desc">Ціна: від більшої до меншої</option>
             <option value="createdAt-asc">Дата: спочатку старі</option>
@@ -53,7 +53,6 @@
                 />
               </div>
             }
-            
           </div>
           <button (click)="ADD_CATEGORY = true" class="block-main-add-category-plus">
             <span class="image-main-add-category-plus">+</span>
@@ -82,7 +81,8 @@
               }
               <div class="block-popular-text">
                 <p class="text-popular">{{ product.name || 'Новий Товар' }}</p>
-                <p class="text-popular-price">{{ product.price }}</p>
+                <p class="text-popular-price">{{ product.price}}
+                </p>
               </div>
             </li>
           }
