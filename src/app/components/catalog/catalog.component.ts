@@ -53,21 +53,31 @@ export class CatalogComponent implements OnInit {
     
     this.loadCategories();
 
-    this.fetchProducts();
-    const savedFilters = localStorage.getItem('filters');
-    if (savedFilters) {
-      this.filters = JSON.parse(savedFilters);
-      this.fetchFilteredProducts();
-    }
-    if (this.sortOption) {
-      this.sortOption = localStorage.getItem('sortOption');
-    }
+    // Check if localStorage is available
+    if (typeof Storage !== "undefined") {
+      // Load filters and sort option from localStorage if they exist
+      const savedFilters = localStorage.getItem('filters');
+      const savedSortOption = localStorage.getItem('sortOption');
+
+      if (savedFilters) {
+        this.filters = JSON.parse(savedFilters);
+      }
+      
+      if (savedSortOption) {
+        this.sortOption = savedSortOption;
+      }
     }
 
-      // Save the filters, including category selection, to localStorage
+    // Fetch filtered products based on the current filters and sort option
+    this.fetchFilteredProducts();
+    }
+
+  // Save filters and sort option to localStorage
   saveFiltersToLocalStorage(): void {
-    localStorage.setItem('filters', JSON.stringify(this.filters));
-    localStorage.setItem('sortOption', this.sortOption); // Save the sort option as well
+    if (typeof Storage !== "undefined") {
+      localStorage.setItem('filters', JSON.stringify(this.filters));
+      localStorage.setItem('sortOption', this.sortOption); // Save the sort option as well
+    }
   }
 
    // Метод для навігації
@@ -132,41 +142,40 @@ export class CatalogComponent implements OnInit {
     this.inputFields.splice(index, 1);
   }
 
-    // Method for selecting a category filter
-    setFilter(key: string, value: string): void {
-      if (key === 'categoryIds') {
-        this.filters.categoryIds = this.filters.categoryIds || [];
-        const categoryIds = this.filters[key];
-        if (categoryIds?.includes(value)) {
-          categoryIds.splice(categoryIds.indexOf(value), 1);
-        } else {
-          categoryIds.push(value);
-        }
+  // Method to set the filter for category
+  setFilter(key: string, value: string): void {
+    if (key === 'categoryIds') {
+      this.filters.categoryIds = this.filters.categoryIds || [];
+      const categoryIds = this.filters[key];
+      if (categoryIds?.includes(value)) {
+        categoryIds.splice(categoryIds.indexOf(value), 1);
       } else {
-        this.filters[key] = value;
+        categoryIds.push(value);
       }
-  
-      // Save filters to localStorage after updating them
-      this.saveFiltersToLocalStorage();
-  
-      // Fetch the products based on the updated filters
-      this.fetchFilteredProducts();
+    } else {
+      this.filters[key] = value;
     }
+
+    // Save the updated filters to localStorage
+    this.saveFiltersToLocalStorage();
+
+    // Fetch the products based on the updated filters
+    this.fetchFilteredProducts();
+  }
   
-    // Fetch filtered products based on the current filters and sorting option
-    fetchFilteredProducts(): void {
-      // Merge the current filters with the sort parameters
-      const [sortBy, order] = this.sortOption.split('-'); // Split sorting option into sortBy and order
-      const params = {
-        ...this.filters,
-        sortBy: sortBy || 'price', // Default to sorting by price if no sort option is provided
-        order: order || 'asc',     // Default to ascending order if no order is provided
-      };
-  
-      this.productsService.getProducts(params).subscribe((data: Product[]) => {
-        this.products = data;
-      });
-    }
+  // Fetch filtered products based on the current filters and sorting option
+  fetchFilteredProducts(): void {
+    const [sortBy, order] = this.sortOption.split('-'); // Split sorting option into sortBy and order
+    const params = {
+      ...this.filters,
+      sortBy: sortBy || 'price', // Default to sorting by price if no sort option is provided
+      order: order || 'asc',     // Default to ascending order if no order is provided
+    };
+
+    this.productsService.getProducts(params).subscribe((data: Product[]) => {
+      this.products = data;
+    });
+  }
 
   addProduct(){
     this.productsService.createProduct({}).subscribe((data: any) => {
