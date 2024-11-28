@@ -3,7 +3,6 @@ import { MainComponent } from './components/main/main.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { AdminGuard } from '../guards/admin.guard';
 import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogInfoComponent } from './components/blog-info/blog-info.component';
