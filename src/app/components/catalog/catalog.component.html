@@ -69,8 +69,13 @@
           }
         </ul>               
         <div class="block-popular">
-          <ul class="list-popular">
-          @for(product of products; track $index) {
+          <ul class="list-popular"
+          infiniteScroll
+          [infiniteScrollDistance]="1"
+          [infiniteScrollThrottle]="1000"
+          (scrolled)="loadMoreProducts()"
+          >
+          @for(product of displayedProducts; track $index) {
             <li class="item-popular" [routerLink]="product._id">
               <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
               @for(image of product.images; track $index) {

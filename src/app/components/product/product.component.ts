@@ -106,7 +106,6 @@ closeContact() {
       this.EDIT_VIEW = true
       this.product = {_id: 'new'}
     }
-
   }
 
 

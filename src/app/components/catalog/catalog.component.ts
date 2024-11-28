@@ -22,10 +22,7 @@ export class CatalogComponent implements OnInit {
   products: Product[] = [];
   categories;
   filters: {categoryIds?: string[]} = {};
-  ADD_CATEGORY = false
-  page: number = 1;
-  limit: number = 10;
-  loading: boolean = false;
+  ADD_CATEGORY = false;
   
   constructor(private productsService: ProductsService, private router: Router,private categoryService: CategoryService, private renderer: Renderer2,private formService: FormService) {
   }
@@ -87,17 +84,30 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  // Apply sorting based on the selected sort option
   applySort(): void {
     // Save the sort option to localStorage
     localStorage.setItem('sortOption', this.sortOption);
-
+  
     // Get the sort parameters and fetch the sorted products
     const sortParams = this.getSortParams(this.sortOption);
+  
+    // Reset the current page (this is essential to re-load the first batch)
+    this.currentPage = 0;
+    
+    // Clear the displayed products list before reloading the products
+    this.displayedProducts = [];
+    
+    // Fetch the sorted products
     this.productsService.getProducts({ ...this.filters, ...sortParams }).subscribe((data) => {
       this.products = data;
+      
+      // Load the first batch of products
+      this.loadMoreProducts();
     });
   }
+  
+  
+  
   
   getSortParams(option: string): any {
     let sortParams = {};
@@ -142,28 +152,44 @@ export class CatalogComponent implements OnInit {
     } else {
       this.filters[key] = value;
     }
-
+  
     // Save the updated filters to localStorage
     this.saveFiltersToLocalStorage();
-
+  
+    // Reset the displayed products
+    this.displayedProducts = [];
+  
     // Fetch the products based on the updated filters
     this.fetchFilteredProducts();
   }
+  
+  currentPage: number = 0;
+
   
   // Fetch filtered products based on the current filters and sorting option
   fetchFilteredProducts(): void {
     const [sortBy, order] = this.sortOption.split('-'); // Split sorting option into sortBy and order
     const params = {
       ...this.filters,
-      sortBy: sortBy || 'createdAt', // Default to sorting by price if no sort option is provided
-      order: order || 'desc',     // Default to ascending order if no order is provided
+      sortBy: sortBy || 'createdAt', // Default to sorting by createdAt if no sort option is provided
+      order: order || 'desc',        // Default to ascending order if no order is provided
+      page: this.currentPage,        // Pass the current page
+      pageSize: this.batchSize       // Page size for the request (how many products to fetch at once)
     };
-
+  
     this.productsService.getProducts(params).subscribe((data: Product[]) => {
       this.products = data;
+  
+      // If this is the first batch, reset displayed products
+      if (this.currentPage === 0) {
+        this.displayedProducts = this.products.slice(0, this.batchSize);
+      } else {
+        // If loading more products, append them
+        this.displayedProducts = [...this.displayedProducts, ...this.products];
+      }
     });
   }
-
+  
   addProduct(){
     this.productsService.createProduct({}).subscribe((data: any) => {
       if(data?.data?._id){
@@ -233,4 +259,23 @@ export class CatalogComponent implements OnInit {
     window.location.reload()
   }
 
+  displayedProducts: any[] = []; // Products currently displayed in the view
+  batchSize = 6; // Number of products to load at once
+  
+  loadInitialProducts() {
+    this.productsService.getProducts(this.filters).subscribe((products) => {
+      this.products = products; // Store fetched products
+      
+      // Load the first 6 products and immediately display them
+      this.displayedProducts = this.products.slice(0, this.batchSize); // Display the first 6 products
+    });
+  }
+  
+  loadMoreProducts() {
+    // Load the next batch of products and append to the displayed list
+    const nextBatch = this.products.slice(this.displayedProducts.length, this.displayedProducts.length + this.batchSize);
+    this.displayedProducts = [...this.displayedProducts, ...nextBatch];
+  }
+  
+  
 }
