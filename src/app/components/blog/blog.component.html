@@ -1,7 +1,7 @@
 <div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
   <div class="header">
   <div class="container-header">
-      <p class="title-glorious" routerLink="">GLORIOUS</p>
+    <img class="title-glorious" routerLink="" src="../../../assets/glorious-light.svg" alt="logo" width="198px" height="47px">
       <div class="menu-buttons">
           <button class="button-contact" routerLink="/catalog">КАТАЛОГ</button>
       </div>
@@ -9,12 +9,12 @@
 </div>
 <div class="block-blog">
   <div class="container-blog">
-    <p class="title-blog">блог</p>
+    <h1 class="title-blog">блог</h1>
     <ul class="list-blog">
       <li *ngFor="let post of posts" [routerLink]="['/blog', post.id]" class="item-blog">
         <img class="image-blog" [src]="post.image" alt="">
         <div class="container-blog-text">
-          <p class="title-container-text-blog">{{ post.title }}</p>
+          <h2 class="title-container-text-blog">{{ post.title }}</h2>
           <p class="text-container-blog">{{ post.text }}</p>
           <div class="container-blog-arrow">
             <p class="title-container-text-blog-arrow">{{ post.linkText }}</p>

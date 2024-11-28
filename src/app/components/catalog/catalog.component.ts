@@ -13,26 +13,22 @@ import { FormService } from '../../services/form.service';
 
 export class CatalogComponent implements OnInit {
 
-  contactName
-  contactPhone
-  successForm = false
-
+  contactName;
+  contactPhone;
+  successForm = false;
   isAdmin: boolean = false;
-
   menuOpened = false;
-
   isContactOpen = false;
-
-  products: Product[] = []; // Типізуйте products як масив Product
-  categories
-
-  filters: {categoryIds?: string[]} = {}
-
+  products: Product[] = [];
+  categories;
+  filters: {categoryIds?: string[]} = {};
   ADD_CATEGORY = false
+  page: number = 1;
+  limit: number = 10;
+  loading: boolean = false;
+  
   constructor(private productsService: ProductsService, private router: Router,private categoryService: CategoryService, private renderer: Renderer2,private formService: FormService) {
-    
   }
-
   sendContact(){
     this.formService.sendFormData(this.contactName, this.contactPhone).subscribe((response) => {
       this.successForm = true
@@ -43,40 +39,31 @@ export class CatalogComponent implements OnInit {
     });
  }
 
-  isInputVisible: boolean = false; // змінна для відображення інпуту
+  isInputVisible: boolean = false;
 
-  inputFields: string[] = []; // масив для зберігання значень інпутів
+  inputFields: string[] = [];
 
   ngOnInit(): void {
     const adminToken = localStorage.getItem('adminToken');
-    this.isAdmin = !!adminToken; // Якщо токен існує, користувач є адміністратором
+    this.isAdmin = !!adminToken;
     
     this.loadCategories();
-
-    // Check if localStorage is available
     if (typeof Storage !== "undefined") {
-      // Load filters and sort option from localStorage if they exist
       const savedFilters = localStorage.getItem('filters');
       const savedSortOption = localStorage.getItem('sortOption');
-
       if (savedFilters) {
         this.filters = JSON.parse(savedFilters);
       }
-      
       if (savedSortOption) {
         this.sortOption = savedSortOption;
       }
     }
-
-    // Fetch filtered products based on the current filters and sort option
     this.fetchFilteredProducts();
     }
-
-  // Save filters and sort option to localStorage
   saveFiltersToLocalStorage(): void {
     if (typeof Storage !== "undefined") {
       localStorage.setItem('filters', JSON.stringify(this.filters));
-      localStorage.setItem('sortOption', this.sortOption); // Save the sort option as well
+      localStorage.setItem('sortOption', this.sortOption); 
     }
   }
 

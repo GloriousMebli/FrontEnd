@@ -1,8 +1,8 @@
 <div [ngClass]="{'open-blur': isContactOpen}">
 <div class="header">
   <div class="container-header">
-      <p class="title-glorious" routerLink="">GLORIOUS</p>
-        @if(isAdmin){
+    <img class="title-glorious" routerLink="" src="../../../assets/glorious-light.svg" alt="logo" width="198px" height="47px">
+      @if(isAdmin){
           <button (click)="logout()" class="button-contact">
             LOGOUT
           </button>
@@ -47,8 +47,8 @@
           <p class="title-main"><span class="title-main-span">Каталог/</span>{{product?.category?.label}}</p>
           <p *ngIf="isAdmin" (click)="EDIT_VIEW = true" class="title-change"><img class="image-change" src="../../../assets/change.svg" alt=""><p class="text-change">Редагувати товар</p></p>
         </div>
-        <p class="title-product">{{product?.name || 'Назва товару'}} <span class="title-product-span-price"> {{product?.price}}</span></p>
-        <p class="title-product-text">Опис</p>
+        <h1 class="title-product">{{product?.name || 'Назва товару'}} <span class="title-product-span-price"> {{product?.price}}</span></h1>
+        <h2 class="title-product-text">Опис</h2>
         <div class="line"></div>
         <p class="text-product" [innerText]="product?.desc || ''">
         </p>
@@ -66,7 +66,7 @@
     </div>
     <div class="block-info-product">
       <div class="block-info-right">
-        <p class="title-info-product">Про товар</p>
+        <h3 class="title-info-product">Про товар</h3>
         <div class="line-info"></div>
         <div class="lists-info-product">
           <ul class="list-info">
@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="block-info-left">
-        <p class="title-info-product">Умови доставки та оплати</p>
+        <h3 class="title-info-product">Умови доставки та оплати</h3>
         <div class="line-info-left"></div>
         <ul class="list-info-left">
           <div class="block-admin-product-info-text">
@@ -95,33 +95,6 @@
         </ul>
       </div>
     </div>
-    <!-- <p class="title-popular">РЕКОМЕНДУЄМО</p>
-    <ul class="list-popular">
-      <li class="item-popular">
-        <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-        <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
-        <span class="item-popular-span">
-          <p class="text-popular">ДЖЕК 160</p>
-          <p class="text-popular-price">{{product?.price}} грн</p>
-        </span>
-      </li>
-      <li class="item-popular">
-        <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-        <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
-        <span class="item-popular-span">
-          <p class="text-popular">ДЖЕК 160</p>
-          <p class="text-popular-price">10 000 грн</p>
-        </span>
-      </li>
-      <li class="item-popular">
-        <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="" draggable="false">
-        <img class="image-popular" src="../assets/sofa-list.png" alt="" draggable="false">
-        <span class="item-popular-span">
-          <p class="text-popular">ДЖЕК 160</p>
-          <p class="text-popular-price">10 000 грн</p>
-        </span>
-      </li>
-    </ul> -->
   </div>
 } @else {
 <div class="admin-panel">
@@ -140,7 +113,7 @@
                         </select>
                       </div>
                       @if(product?._id !== 'new'){
-                        <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                        <div (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</div>
                       }
                     </div>
                   </div>
@@ -215,7 +188,7 @@
                     </select>
                   </div>
                   @if(product?._id !== 'new'){
-                    <span (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</span>
+                    <div (click)="toggleEditView()" class="title-admin-product-span-reg">Вийти з режиму редагування</div>
                   }
                 </div>
                 <input class="input-admin-product-name" [value]="product?.name || ''" (change)="setValue($event, 'name')" type="text" placeholder="Додати назву...">

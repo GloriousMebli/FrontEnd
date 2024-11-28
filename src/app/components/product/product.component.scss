@@ -2425,6 +2425,7 @@ pointer-events: none;
 }
 .title-admin-product-mobile {
   display: flex;
+  justify-content: space-between;
 }
 .title-admin-product-text-mobile {
   width: 100%;
@@ -2700,7 +2701,9 @@ pointer-events: none;
       padding: 24px 16px;
   }
   .title-admin-product-mobile {
-      display: flex;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
   }
   .title-admin-product-text-mobile {
       color: #352F2A;
@@ -2730,6 +2733,7 @@ pointer-events: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
   }
   .title-admin-product-span-reg {
     font-size: 10px;

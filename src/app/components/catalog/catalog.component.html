@@ -1,7 +1,7 @@
 <div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
 <div class="header">
     <div class="container-header">
-        <p class="title-glorious" routerLink="">GLORIOUS</p>
+        <img class="title-glorious" routerLink="" src="../../../assets/glorious-light.svg" alt="logo" width="198px" height="47px">
         @if(isAdmin){
           <button class="button-contact" (click)="addProduct()" >
             ДОДАТИ ТОВАР
@@ -28,7 +28,7 @@
           </select>                   
         </div>
       </div>
-        <p class="title-main-text">всі товари</p>
+        <h1 class="title-main-text">всі товари</h1>
         <div *ngIf="isAdmin" class="block-main-add-category">
           <div class="block-main-add-category-button">
             @for(category of categories; track $index){

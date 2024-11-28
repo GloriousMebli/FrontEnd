@@ -1,7 +1,7 @@
 <div [ngClass]="{'open-blur': isContactOpen}">
   <div class="header">
     <div class="container-header">
-        <p class="title-glorious" routerLink="">GLORIOUS</p>
+      <img class="title-glorious" routerLink="" src="../../../assets/glorious-light.svg" alt="logo" width="198px" height="47px">
         <div class="menu-buttons">
             <button class="button-contact" routerLink="/catalog">КАТАЛОГ</button>
         </div>
@@ -11,7 +11,7 @@
     <div class="container">
         <img routerLink="/blog" class="image-blog-info-arrow" src="../../../assets/arrow-up-right.svg" alt="">
         <div class="container-blog-info" >
-          <p class="title-blog-info">{{ blogPost.title }}</p>
+          <h1 class="title-blog-info">{{ blogPost.title }}</h1>
           <img class="image-blog-info" [src]="blogPost.image_info" alt="">
         </div>
           <p class="text-blog-info" [innerHTML]="blogPost?.text_info || ''"></p>

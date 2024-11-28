@@ -38,7 +38,7 @@
       @if(popularProducts?.length > 0){
         <section class="popular-products" id="popular">
           <div class="container-popular">
-            <p class="title-popular">ПОПУЛЯРНІ ТОВАРИ</p>
+            <h2 class="title-popular">ПОПУЛЯРНІ ТОВАРИ</h2>
             <ul class="list-popular">
               @for(product of popularProducts; track $index){
                 <li class="item-popular" [routerLink]="'/catalog/' + product._id">
@@ -56,7 +56,7 @@
       }
       <section class="section-our-advantages" id="advantages">
         <div class="container-our-advantages">
-          <p class="title-our-advantages">НАШІ ПЕРЕВАГИ</p>
+          <h2 class="title-our-advantages">НАШІ ПЕРЕВАГИ</h2>
           <div class="block-our-advantages">
             <div class="list-block-our-advantages">
               <div
@@ -64,7 +64,7 @@
                 *ngFor="let advantage of advantages"
                 (mouseenter)="selectAdvantage(advantage)"
               >
-                <p class="title-item-block-our-advantages">{{ advantage.title }}</p>
+                <h3 class="title-item-block-our-advantages">{{ advantage.title }}</h3>
                 <img
                   [ngClass]="{
                     'arrow-right': selectedAdvantage === advantage,
@@ -86,12 +86,12 @@
       </section>
       <!-- MOBILE SECTION OUR ADVANTAGES -->
       <div class="block-our-advantages-mobile" id="advantages-mobile">
-        <p class="title-our-advantages-mobile">НАШІ ПЕРЕВАГИ</p>
+        <h2 class="title-our-advantages-mobile">НАШІ ПЕРЕВАГИ</h2>
         <div class="accordion"> 
           <div class="accordion-list"  ngbAccordion>
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item1="ngbAccordionItem">
             <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('first')">
-              <p class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</p>
+              <h3 class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</h3>
               <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
             </div>
             <div class="accordion-line"></div>
@@ -106,7 +106,7 @@
             </div>
             <div class="accordion" ngbAccordionItem [collapsed]="true" #item2="ngbAccordionItem">
               <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('second')">
-                <p class="title-accordion">КОМАНДА МАЙСТРІВ</p>
+                <h3 class="title-accordion">КОМАНДА МАЙСТРІВ</h3>
                 <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
               </div>
               <div class="accordion-line"></div>
@@ -121,7 +121,7 @@
               </div>
               <div class="accordion" ngbAccordionItem [collapsed]="true" #item3="ngbAccordionItem">
                 <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('third')"> 
-                  <p class="title-accordion">ЯКІСТЬ МЕБЛІВ</p>
+                  <h3 class="title-accordion">ЯКІСТЬ МЕБЛІВ</h3>
                   <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
                 </div>
                 <div class="accordion-line"></div>
@@ -140,7 +140,7 @@
       </div>
       <section class="section-history" id="history">
         <div class="container-history">
-          <p class="title-history">наша історія</p>
+          <h2 class="title-history">наша історія</h2>
           <div class="block-history">
             <div class="text-block-history">
               <p class="text-history">Меблева фірма “Glorious”, заснована в 2020 році, спеціалізується на створенні унікальних і зручних меблів для дому та офісу. Від маленької майстерні до сучасного виробництва, ми пропонуємо функціональні та стильні рішення, що відповідають світовим тенденціям. Наша місія — дарувати комфорт і затишок через індивідуальний підхід та використання інноваційних технологій.</p>

@@ -31,7 +31,6 @@ export class ProductsService {
     return this.http.get<any[]>(this.baseUrl, { params: httpParams });
   }
   
-
   // Отримати продукт за ID
   getProductById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);

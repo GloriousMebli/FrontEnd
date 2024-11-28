@@ -1,8 +1,15 @@
 <router-outlet></router-outlet>
 <footer class="footer"  [ngClass]="{ 'main-footer': isMainPage }">
     <div class="container-footer-top">
-      <p class="title-footer">GLORIOUS</p>
-      <div class="block-footer">
+    <img
+      class="title-footer"
+      [src]="isMainPage ? '../assets/glorious-dark.svg' : '../assets/glorious-light.svg'"
+      alt="logo-footer"
+      width="352px"
+      height="84px"
+      draggable="false"
+    />      
+    <div class="block-footer">
         <div class="list-footer">
           <p class="title-text-footer" >ПРО НАС</p>
           <p class="text-footer text-scroll" (click)="scrollToSection('popular')">ПОПУЛЯРНІ ТОВАРИ</p>
