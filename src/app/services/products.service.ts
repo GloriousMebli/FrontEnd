@@ -21,15 +21,23 @@ export class ProductsService {
     };
   }
 
-  getProducts(filters?: { popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[], sortBy?: string, order?: string }): Observable<any[]> {
+  getProducts(filters?: { popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[], sortBy?: string, order?: string, page?: number, limit?: string }): Observable<any[]> {
     let httpParams = new HttpParams();
-    Object.keys(filters).forEach(function (key) {
-      if (filters[key] !== '' && filters[key] !== null && filters[key] !== undefined) {
-        httpParams = httpParams.append(key, filters[key]);
-      }
-    });
+    if (filters) {
+      Object.keys(filters).forEach((key) => {
+        let value = filters[key];
+        if (value !== '' && value !== null && value !== undefined) {
+          // Ensure page is a string when appending to the URL
+          if (key === 'page' && typeof value === 'number') {
+            value = value.toString();  // Convert page to string if it's a number
+          }
+          httpParams = httpParams.append(key, value);
+        }
+      });
+    }
     return this.http.get<any[]>(this.baseUrl, { params: httpParams });
-  }  
+  }
+  
 
   // Отримати продукт за ID
   getProductById(id: string): Observable<any> {

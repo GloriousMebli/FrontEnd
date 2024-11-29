@@ -76,7 +76,7 @@
           (scrolled)="loadMoreProducts()"
           >
           @for(product of displayedProducts; track $index) {
-            <li class="item-popular" [routerLink]="product._id">
+            <li class="item-popular" [routerLink]="['/catalog', product._id, formatProductName(product.name)]">
               <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
               @for(image of product.images; track $index) {
                 @if(image?.isMain) {

@@ -235,6 +235,16 @@ export class CatalogComponent implements OnInit {
     })
   }
 
+  formatProductName(name: string): string {
+    if (!name) return 'novyy-tovar'; // Default name if none exists
+    return name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+      .trim()
+      .replace(/\s+/g, '-'); // Replace spaces with hyphens
+  }
+  
+
   deleteCategory(id: string){
     if(!confirm('Ви впевнені, що хочете видалити цю категорію?')) return
     this.categoryService.deleteCategory(id).subscribe((data: any) => {
@@ -276,6 +286,5 @@ export class CatalogComponent implements OnInit {
     const nextBatch = this.products.slice(this.displayedProducts.length, this.displayedProducts.length + this.batchSize);
     this.displayedProducts = [...this.displayedProducts, ...nextBatch];
   }
-  
   
 }
