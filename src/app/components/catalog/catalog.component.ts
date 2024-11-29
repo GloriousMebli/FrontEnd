@@ -94,15 +94,10 @@ export class CatalogComponent implements OnInit {
     // Reset the current page (this is essential to re-load the first batch)
     this.currentPage = 0;
     
-    // Clear the displayed products list before reloading the products
-    this.displayedProducts = [];
-    
     // Fetch the sorted products
     this.productsService.getProducts({ ...this.filters, ...sortParams }).subscribe((data) => {
       this.products = data;
       
-      // Load the first batch of products
-      this.loadMoreProducts();
     });
   }
   
@@ -155,9 +150,7 @@ export class CatalogComponent implements OnInit {
   
     // Save the updated filters to localStorage
     this.saveFiltersToLocalStorage();
-  
-    // Reset the displayed products
-    this.displayedProducts = [];
+
   
     // Fetch the products based on the updated filters
     this.fetchFilteredProducts();
@@ -172,21 +165,13 @@ export class CatalogComponent implements OnInit {
     const params = {
       ...this.filters,
       sortBy: sortBy || 'createdAt', // Default to sorting by createdAt if no sort option is provided
-      order: order || 'desc',        // Default to ascending order if no order is provided
-      page: this.currentPage,        // Pass the current page
-      pageSize: this.batchSize       // Page size for the request (how many products to fetch at once)
+      order: order || 'desc',         // Page size for the request (how many products to fetch at once)
     };
   
     this.productsService.getProducts(params).subscribe((data: Product[]) => {
       this.products = data;
   
-      // If this is the first batch, reset displayed products
-      if (this.currentPage === 0) {
-        this.displayedProducts = this.products.slice(0, this.batchSize);
-      } else {
-        // If loading more products, append them
-        this.displayedProducts = [...this.displayedProducts, ...this.products];
-      }
+      // Load the first batch of produc
     });
   }
   
@@ -235,16 +220,6 @@ export class CatalogComponent implements OnInit {
     })
   }
 
-  formatProductName(name: string): string {
-    if (!name) return 'novyy-tovar'; // Default name if none exists
-    return name
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-      .trim()
-      .replace(/\s+/g, '-'); // Replace spaces with hyphens
-  }
-  
-
   deleteCategory(id: string){
     if(!confirm('Ви впевнені, що хочете видалити цю категорію?')) return
     this.categoryService.deleteCategory(id).subscribe((data: any) => {
@@ -268,23 +243,4 @@ export class CatalogComponent implements OnInit {
     localStorage.removeItem('adminToken')
     window.location.reload()
   }
-
-  displayedProducts: any[] = []; // Products currently displayed in the view
-  batchSize = 6; // Number of products to load at once
-  
-  loadInitialProducts() {
-    this.productsService.getProducts(this.filters).subscribe((products) => {
-      this.products = products; // Store fetched products
-      
-      // Load the first 6 products and immediately display them
-      this.displayedProducts = this.products.slice(0, this.batchSize); // Display the first 6 products
-    });
-  }
-  
-  loadMoreProducts() {
-    // Load the next batch of products and append to the displayed list
-    const nextBatch = this.products.slice(this.displayedProducts.length, this.displayedProducts.length + this.batchSize);
-    this.displayedProducts = [...this.displayedProducts, ...nextBatch];
-  }
-  
 }
