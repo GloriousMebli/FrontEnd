@@ -72,7 +72,7 @@
           <ul class="list-popular"
           >
           @for(product of products; track $index) {
-            <li class="item-popular" [routerLink]="['/catalog', product._id]">
+            <li class="item-popular" [routerLink]="['/catalog', product._id, formatName(product.name)]">
               <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
               @for(image of product.images; track $index) {
                 @if(image?.isMain) {

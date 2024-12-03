@@ -11,7 +11,7 @@ import { ErrorComponent } from './components/error/error.component';
 export const routes: Routes = [
     { path: '', component: MainComponent },
     { path: 'catalog', component: CatalogComponent },
-    { path: 'catalog/:id', component: ProductComponent },
+    { path: 'catalog/:id/:name', component: ProductComponent },
     { path: 'admin', component: AdminLoginComponent },
     { path: 'terms-of-use', component: TermsOfUseComponent },
     { path: 'blog', component: BlogComponent },

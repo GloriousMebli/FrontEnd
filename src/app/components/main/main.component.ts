@@ -50,6 +50,16 @@ export class MainComponent implements OnInit {
     this.isButtonVisible = !this.isButtonVisible; // Змінюємо стан при кожному кліку
   }
 
+  formatName(name: string): string {
+    if (!name) return 'новий-товар'; // Якщо назва порожня, повертаємо стандартну
+    return name
+      .toLowerCase() // Перетворюємо на нижній регістр
+      .trim() // Видаляємо зайві пробіли з початку і кінця
+      .replace(/[/\\]/g, '-') // Замінюємо всі символи "/" або "\" на дефіс
+      .replace(/\s+/g, '-') // Замінюємо всі пробіли на дефіс
+      .replace(/[^a-z0-9а-яёїієґ-]/gi, ''); // Видаляємо всі небажані символи
+  }
+
   openContact() {
     this.isContactOpen = true;
     this.closeMenu(); // Закрити мобільне меню

@@ -21,7 +21,7 @@ export class ProductsService {
     };
   }
 
-  getProducts(filters?: { popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[], sortBy?: string, order?: string, page?: number, limit?: string }): Observable<any[]> {
+  getProducts(filters?: { popular?: boolean, withNameAndImage?: boolean, categoryIds?: string[], sortBy?: string, order?: string }): Observable<any[]> {
     let httpParams = new HttpParams();
     if (filters) {
       Object.keys(filters).forEach((key) => {

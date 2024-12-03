@@ -64,6 +64,17 @@ export class CatalogComponent implements OnInit {
     }
   }
 
+  formatName(name: string): string {
+    if (!name) return 'новий-товар'; // Якщо назва порожня, повертаємо стандартну
+    return name
+      .toLowerCase() // Перетворюємо на нижній регістр
+      .trim() // Видаляємо зайві пробіли з початку і кінця
+      .replace(/[/\\]/g, '-') // Замінюємо всі символи "/" або "\" на дефіс
+      .replace(/\s+/g, '-') // Замінюємо всі пробіли на дефіс
+      .replace(/[^a-z0-9а-яёїієґ-]/gi, ''); // Видаляємо всі небажані символи
+  }
+  
+
    // Метод для навігації
    navigateToAdmin(): void {
     if (this.isAdmin) {
@@ -178,7 +189,7 @@ export class CatalogComponent implements OnInit {
   addProduct(){
     this.productsService.createProduct({}).subscribe((data: any) => {
       if(data?.data?._id){
-        this.router.navigate([`/catalog/${data?.data?._id}`]);
+        this.router.navigate([`/catalog/${data?.data?._id}/new`]);
       }
     })
   }

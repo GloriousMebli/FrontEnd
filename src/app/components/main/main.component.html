@@ -41,7 +41,7 @@
             <h2 class="title-popular">ПОПУЛЯРНІ ТОВАРИ</h2>
             <ul class="list-popular">
               @for(product of popularProducts; track $index){
-                <li class="item-popular" [routerLink]="'/catalog/' + product._id">
+                <li class="item-popular" [routerLink]="'/catalog/' + product._id + '/' + formatName(product.name)">
                   <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
                   <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
                   <div class="block-popular">
