@@ -7,6 +7,7 @@ import { TermsOfUseComponent } from './components/terms-of-use/terms-of-use.comp
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogInfoComponent } from './components/blog-info/blog-info.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SitemapComponent } from './components/sitemap/sitemap.component';
 
 export const routes: Routes = [
     { path: '', component: MainComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: 'terms-of-use', component: TermsOfUseComponent },
     { path: 'blog', component: BlogComponent },
     { path: 'blog/:id', component: BlogInfoComponent },
+    { path: 'sitemap', component: SitemapComponent },
     { path: '**', component: ErrorComponent }
 ];

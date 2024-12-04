@@ -1,0 +1,13 @@
+<div class="sitemap-container">
+    <h1>Sitemap</h1>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <ul>
+      <li *ngFor="let link of sitemapLinks">
+        <a [href]="link.loc" target="_blank">{{ link.loc }}</a>
+        <small class="sitemap-info">
+          (Changefreq: {{ link.changefreq }}, Priority: {{ link.priority }})
+        </small>
+      </li>
+    </ul>
+  </div>
+  

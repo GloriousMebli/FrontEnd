@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<footer class="footer"  [ngClass]="{ 'main-footer': isMainPage }">
+<footer class="footer"  [ngClass]="{ 'main-footer': isMainPage }" *ngIf="shouldShowFooter()">
     <div class="container-footer-top">
     <img
       class="title-footer"

@@ -13,6 +13,12 @@ export class AppComponent implements OnInit{
 
   constructor(private adminService: AdminService, private router: Router) {}
 
+
+  shouldShowFooter(): boolean {
+    // Перевіряємо, чи це не сторінка sitemap
+    return this.router.url !== '/sitemap';
+  }
+
   ngOnInit() {
     const adminToken = localStorage.getItem('adminToken');
     if(adminToken){
