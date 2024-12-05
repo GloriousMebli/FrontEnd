@@ -22,7 +22,8 @@ import { CategoryService } from './services/category.service';
 import { FormService } from './services/form.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollDirective  } from 'ngx-infinite-scroll';
-import { SitemapComponent } from './components/sitemap/sitemap.component';
+import { ProductUseComponent } from './components/use/product-use/product-use.component';
+import { CatalogUseComponent } from './components/use/catalog-use/catalog-use.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { SitemapComponent } from './components/sitemap/sitemap.component';
     BlogInfoComponent,
     ErrorComponent,
     AutoGrowDirective,
-    SitemapComponent
+    ProductUseComponent,
+    CatalogUseComponent,
    ],
   providers: [ ProductsService, AdminService, CategoryService, FormService ],
   bootstrap:    [ AppComponent ]

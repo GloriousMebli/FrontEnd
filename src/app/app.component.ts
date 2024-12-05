@@ -15,9 +15,9 @@ export class AppComponent implements OnInit{
 
 
   shouldShowFooter(): boolean {
-    // Перевіряємо, чи це не сторінка sitemap
-    return this.router.url !== '/sitemap';
-  }
+    const currentUrl = this.router.url;
+    return currentUrl !== '/sitemap' && !currentUrl.startsWith('/catalog-use');
+  }  
 
   ngOnInit() {
     const adminToken = localStorage.getItem('adminToken');

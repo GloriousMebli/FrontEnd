@@ -1,0 +1,112 @@
+// HEADER
+.header {
+    background: #352F2A;
+    padding: 24px 40px;
+}
+
+.logo-glorious {
+    height: 100%;
+    width: 100%;
+    max-width: 198px;
+    max-height: 47px;
+}
+
+// MAIN
+.main {
+    padding: 34px 40px;
+    background-color:#E8E4D9;
+}
+
+.title-main {
+    color: #352F2A;
+    font-family: "SONGER SemiExpanded";
+    font-size: clamp(40px, 8vw, 128px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.list-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.item-catalog {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #DAD5C9;
+    gap: 120px;
+    padding: 24px 32px;
+    border-radius: 8px;
+    width: 32%;
+    height: 100%;
+    max-width: 586px;
+    height: 100%;
+    margin-bottom: 2.4vw;
+}
+
+.image-catalog {
+    width: 100%;
+    height: 100%;
+    max-width: 566px;
+    max-height: 311px;
+}
+
+.image-catalog-arrow {
+    width: 100%;
+    height: 100%;
+    max-height: 38px;
+    max-width: 38px;
+    align-self: flex-end;
+}
+
+.title-catalog {
+    color: #5C544C;
+    font-family: Manrope;
+    font-size: clamp(20px, 2vw, 36px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+// FOOTER
+
+.footer {
+    background: #352F2A;
+    padding: 80px;
+    height: 100%;
+    max-height: 523px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-glorious-footer {
+    height: 100%;
+    width: 100%;
+    max-width: 704px;
+    max-height: 169px;
+    margin-top: 94px;
+}
+
+.text-footer-bottom {
+    color: #DAD5C9;
+    font-family: Manrope;
+    font-size: clamp(16px, 4vw, 24px);  /* Мінімальний шрифт - 16px, максимальний - 24px, з середнім розміром 4% від ширини екрану */
+    font-style: normal;
+    font-weight: 500;
+    display: flex;
+    justify-content: end;
+    margin-top: 64px;
+}
