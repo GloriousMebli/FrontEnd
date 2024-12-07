@@ -7,11 +7,12 @@ import { products } from './catalog-data';
   styleUrl: './catalog-use.component.scss'
 })
 export class CatalogUseComponent {
-  products = products;
+  products = products;  // Список продуктів
 
+  // Функція для форматування імені
   formatName(name: string): string {
     if (!name) return 'novyy-tovar'; // Якщо назва порожня, повертаємо стандартну
-  
+
     const cyrillicToLatinMap = {
       а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', є: 'ye', ж: 'zh',
       з: 'z', и: 'y', і: 'i', ї: 'yi', й: 'y', к: 'k', л: 'l', м: 'm',
@@ -23,13 +24,13 @@ export class CatalogUseComponent {
       Х: 'Kh', Ц: 'Ts', Ч: 'Ch', Ш: 'Sh', Щ: 'Shch', Ю: 'Yu', Я: 'Ya',
       "'": '', "’": '', "ʼ": '',
     };
-  
+
     const transliterate = (text: string): string =>
       text
         .split('')
         .map((char) => cyrillicToLatinMap[char] || char) // Транслітерація
         .join('');
-  
+
     return transliterate(name)
       .toLowerCase() // Перетворюємо на нижній регістр
       .trim() // Видаляємо зайві пробіли

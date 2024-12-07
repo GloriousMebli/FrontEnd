@@ -103,10 +103,62 @@
 .text-footer-bottom {
     color: #DAD5C9;
     font-family: Manrope;
-    font-size: clamp(16px, 4vw, 24px);  /* Мінімальний шрифт - 16px, максимальний - 24px, з середнім розміром 4% від ширини екрану */
+    font-size: clamp(13px, 4vw, 24px);  /* Мінімальний шрифт - 16px, максимальний - 24px, з середнім розміром 4% від ширини екрану */
     font-style: normal;
     font-weight: 500;
     display: flex;
     justify-content: end;
     margin-top: 64px;
+}
+
+@media  screen and (min-width: 800px) and (max-width: 1200px) {
+    .image-catalog-arrow {
+        max-width: 24px;
+        max-height: 24px;
+    }
+    .item-catalog {
+        gap: 70px;
+    }
+    .text-footer-bottom {
+        justify-content: center;
+        align-items: end;
+        margin-top: 200px;
+    }
+}
+
+@media  screen and (min-width: 300px) and (max-width: 799px) {
+    .header {
+        padding: 24px 16px;
+    }
+    .main {
+        padding: 24px 16px;
+    }
+    .list-catalog {
+        flex-direction: column;
+        align-items: center;
+    }
+    .item-catalog {
+        width: 100%;
+        height: 100%;
+        gap: 50px;
+        padding: 18px;
+    }
+    .image-catalog-arrow {
+        max-width: 24px;
+        max-height: 24px;
+    }
+    .footer {
+        padding: 40px 16px;
+        max-height: 500px;
+        margin: 0;
+    }
+    .logo-glorious-footer {
+        margin-top: 160px;
+    }
+    .text-footer-bottom {
+        justify-content: center;
+        align-items: end;
+        margin-top: 160px;
+        margin-bottom: 20px;
+    }
 }

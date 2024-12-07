@@ -4,7 +4,21 @@ export const products = [
         image: '../../../assets/sofa-catalog.png',
         title: 'Диван для вітальні',
         link: '/products/1/${product.title}',
-    },
+        productCard: [
+          {
+            title: 'Диван для вітальні1',
+            imageCard: '../../../assets/sofa-catalog.png',
+          },
+          {
+            title: 'Диван для вітальні2',
+            imageCard: '../../../assets/sofa-catalog.png',
+          },
+          {
+            title: 'Диван для вітальні3',
+            imageCard: '../../../assets/sofa-catalog.png',
+          },
+        ],
+      },
     {
         id: 2,
         image: '../../../assets/sofa-catalog.png',
