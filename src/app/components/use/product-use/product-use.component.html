@@ -1,28 +1,40 @@
 <div class="header">
-    <div class="container-header">
-        <img class="logo-glorious" src="../../../../assets/glorious-light.svg" alt="Logo" draggable="false">
-    </div>
+  <div class="container-header">
+    <img
+      class="logo-glorious"
+      src="../../../../assets/glorious-light.svg"
+      alt="Logo"
+      draggable="false"
+    />
+  </div>
 </div>
 <div class="main">
-    <div class="container-main" *ngIf="product">
-        <h1 class="title-main">{{product.title}}</h1>
-        <div class="container-catalog">
-              <ul class="list-catalog">
-                <li class="item-catalog">
-                  <img class="image-catalog" [src]="product.image" alt="{{ product.title }}">
-                  <h2 class="title-catalog">{{ product.title }}</h2>
-                </li>
-                <li class="item-catalog" *ngFor="let card of product.productCard">
-                  <img class="image-catalog" [src]="card.imageCard" alt="{{ card.title }}">
-                  <h2 class="title-catalog">{{ card.title }}</h2>
-                </li>
-              </ul>
-        </div>
+  <div class="container-main">
+    @for (product of products; track $index) {
+    <h1 class="title-main">{{ product.title }}</h1>
+    <div class="container-catalog">
+      <ul class="list-catalog">
+        <li class="item-catalog">
+          <img
+            class="image-catalog"
+            [src]="product.image"
+            alt="{{ product.title }}"
+          />
+          <h2 class="title-catalog">{{ product.title }}</h2>
+        </li>
+      </ul>
     </div>
+  }
+  </div>
 </div>
 <div class="footer">
-    <div class="container-footer">
-        <img class="logo-glorious-footer" src="../../../../assets/glorious-light.svg" alt="Logo" draggable="false">
-    </div>
-    <p class="text-footer-bottom">Всі права захищені All rights reserved</p>
+  <div class="container-footer">
+    <img
+      class="logo-glorious-footer"
+      src="../../../../assets/glorious-light.svg"
+      alt="Logo"
+      draggable="false"
+    />
+  </div>
+  <p class="text-footer-bottom">Всі права захищені All rights reserved</p>
 </div>

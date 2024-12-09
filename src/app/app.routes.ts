@@ -19,6 +19,6 @@ export const routes: Routes = [
     { path: 'blog', component: BlogComponent },
     { path: 'blog/:id', component: BlogInfoComponent },
     { path: 'catalog-use', component: CatalogUseComponent },
-    { path: 'catalog-use/:id/:name', component: ProductUseComponent },
+    { path: 'catalog-use/:id', component: ProductUseComponent },
     { path: '**', component: ErrorComponent }
 ];

@@ -1,27 +1,43 @@
 <div class="header">
-    <div class="container-header">
-        <img class="logo-glorious" src="../../../../assets/glorious-light.svg" alt="Logo" draggable="false">
-    </div>
+  <div class="container-header">
+    <img
+      class="logo-glorious"
+      src="../../../../assets/glorious-light.svg"
+      alt="Logo"
+      draggable="false"
+    />
+  </div>
 </div>
 <div class="main">
-    <div class="container-main">
-        <h1 class="title-main">ВСІ ТОВАРИ</h1>
-        <div class="container-catalog">
-            <ul class="list-catalog">
-                @for (product of products; track $index) {
-                    <li class="item-catalog" [routerLink]="['/catalog-use', product.id, formatName(product.title)]">
-                        <img class="image-catalog-arrow" src="../../../assets/arrow-up-right.svg" alt="">
-                        <img class="image-catalog" [src]="product.image" alt="">
-                        <h2 class="title-catalog">{{product.title}}</h2>
-                    </li>
-                }
-            </ul>
-        </div>
+  <div class="container-main">
+    <h1 class="title-main">ВСІ ТОВАРИ</h1>
+    <div class="container-catalog">
+      <ul class="list-catalog">
+        @for (item of firstProductsByCategory; track $index) {
+        <li
+          class="item-catalog"
+          [routerLink]="['/catalog-use', item.product?.category._id]"
+        >
+          <img
+            class="image-catalog"
+            [src]="item.product?.images[0]?.thumbnailUrl"
+            alt="{{ item.product?.title || 'No Title Available' }}"
+          />
+          <h2 class="title-catalog">{{ item.category }}</h2>
+        </li>
+        }
+      </ul>
     </div>
+  </div>
 </div>
 <div class="footer">
-    <div class="container-footer">
-        <img class="logo-glorious-footer" src="../../../../assets/glorious-light.svg" alt="Logo" draggable="false">
-    </div>
-    <p class="text-footer-bottom">Всі права захищені All rights reserved</p>
+  <div class="container-footer">
+    <img
+      class="logo-glorious-footer"
+      src="../../../../assets/glorious-light.svg"
+      alt="Logo"
+      draggable="false"
+    />
+  </div>
+  <p class="text-footer-bottom">Всі права захищені All rights reserved</p>
 </div>

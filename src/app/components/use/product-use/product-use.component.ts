@@ -1,23 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { products } from '../catalog-use/catalog-data';
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-product-use',
   templateUrl: './product-use.component.html',
-  styleUrl: './product-use.component.scss'
+  styleUrl: './product-use.component.scss',
 })
 export class ProductUseComponent implements OnInit {
-  product: any;  // Товар, який буде відображений
-  productId!: number;  // ID продукту з URL
+  products: any[] = []; // Продукти категорії
+  categoryId: string = ''; // ID категорії з URL
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsService
+  ) {}
 
   ngOnInit(): void {
-    // Отримуємо ID товару з URL
-    this.productId = +this.route.snapshot.paramMap.get('id')!;
+    // Отримуємо ID категорії з URL
+    this.categoryId = this.route.snapshot.paramMap.get('categoryId')!;
+    // Завантажуємо продукти цієї категорії
+    this.loadProductsByCategory(this.categoryId);
+  }
 
-    // Знаходимо продукт за ID
-    this.product = products.find(p => p.id === this.productId);
+  loadProductsByCategory(categoryId: string): void {
+    // Завантажуємо продукти з бекенду по категорії
+    this.productService
+      .getProductsByCategory(categoryId)
+      .subscribe((products) => {
+        this.products = products;
+      });
   }
 }
