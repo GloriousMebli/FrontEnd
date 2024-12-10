@@ -13,7 +13,7 @@ export class CatalogUseComponent {
   products: any[] = [];
   categories: any[] = [];
   firstProductsByCategory: { category: string; product: any }[] = [];
-  id: string = ''; // ID категорії з URL
+  category: string = ''; // ID категорії з URL
 
   constructor(
     private categoryService: CategoryService,
@@ -25,15 +25,15 @@ export class CatalogUseComponent {
     this.loadCategories();
     this.loadProducts();
     // Отримуємо ID категорії з URL
-    this.id = this.route.snapshot.paramMap.get('categoryId')!;
+    this.category = this.route.snapshot.paramMap.get('id')!;
     // Завантажуємо продукти цієї категорії
-    this.loadProductsByCategory(this.id);
+    this.loadProductsByCategory(this.category);
   }
 
-  loadProductsByCategory(id: string): void {
+  loadProductsByCategory(category: string): void {
     // Завантажуємо продукти з бекенду по категорії
     this.productsService
-      .getProductsByCategory(id)
+      .getProductsByCategory(category)
       .subscribe((products) => {
         this.products = products;
       });

@@ -7,6 +7,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
+  getCategoryById(id: string) {
+    throw new Error('Method not implemented.');
+  }
   baseUrl = environment.apiUrl
   private apiUrl = this.baseUrl + '/categories';
 

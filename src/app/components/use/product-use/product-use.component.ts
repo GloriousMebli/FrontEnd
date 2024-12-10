@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { products } from '../catalog-use/catalog-data';
 import { ProductsService } from '../../../services/products.service';
+import Product from '../../../product.model';
+import { CategoryService } from '../../../services/category.service';
+import Category from '../../../product.model';
 
 @Component({
   selector: 'app-product-use',
@@ -9,27 +11,31 @@ import { ProductsService } from '../../../services/products.service';
   styleUrl: './product-use.component.scss',
 })
 export class ProductUseComponent implements OnInit {
-  products: any[] = []; // Продукти категорії
-  categoryId: string = ''; // ID категорії з URL
+  products: Product[] = []; // Продукти категорії
+  id: string = ''; // ID категорії з URL
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private productsService: ProductsService,
+    private categoriesService: CategoryService
   ) {}
 
   ngOnInit(): void {
     // Отримуємо ID категорії з URL
-    this.categoryId = this.route.snapshot.paramMap.get('categoryId')!;
-    // Завантажуємо продукти цієї категорії
-    this.loadProductsByCategory(this.categoryId);
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    // Завантажуємо всі продукти, а потім фільтруємо їх за категорією
+    this.loadProducts();
   }
 
-  loadProductsByCategory(categoryId: string): void {
-    // Завантажуємо продукти з бекенду по категорії
-    this.productService
-      .getProductsByCategory(categoryId)
-      .subscribe((products) => {
-        this.products = products;
-      });
+  loadProducts(): void {
+    this.productsService.getProducts().subscribe((products: Product[]) => {
+      // Фільтруємо продукти за категорією
+      this.products = products.filter(
+        (product) => product.category._id === this.id
+      );
+    });
+  }
+  trackByIndex(index: number): number {
+    return index;
   }
 }

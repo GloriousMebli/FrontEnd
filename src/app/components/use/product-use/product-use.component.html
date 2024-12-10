@@ -1,6 +1,7 @@
 <div class="header">
   <div class="container-header">
     <img
+    [routerLink]="['/catalog-use']"
       class="logo-glorious"
       src="../../../../assets/glorious-light.svg"
       alt="Logo"
@@ -10,21 +11,24 @@
 </div>
 <div class="main">
   <div class="container-main">
-    @for (product of products; track $index) {
-    <h1 class="title-main">{{ product.title }}</h1>
+    @if (products.length > 0) {
+    <h1 class="title-main">{{products[0]?.category?.label}}</h1>
     <div class="container-catalog">
       <ul class="list-catalog">
+        @for (product of products; track $index;) {
         <li class="item-catalog">
           <img
             class="image-catalog"
-            [src]="product.image"
-            alt="{{ product.title }}"
+            [src]="product.images[0]?.thumbnailUrl"
+            [alt]="product.name || 'No Title Available'"
           />
-          <h2 class="title-catalog">{{ product.title }}</h2>
         </li>
+        } @if (products.length === 0) {
+        <p class="text-catalog">Немає товарів</p>
+        }
       </ul>
     </div>
-  }
+    }
   </div>
 </div>
 <div class="footer">
