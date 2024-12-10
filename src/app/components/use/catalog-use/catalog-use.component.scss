@@ -15,6 +15,7 @@
 .main {
   padding: 34px 40px;
   background-color: #e8e4d9;
+  min-height: 100vh;
 }
 
 .title-main {
@@ -28,10 +29,10 @@
 
 .list-catalog {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   padding: 0;
   gap: 1.8vw;
+  margin: 0 auto;
 }
 
 .item-catalog {
@@ -48,9 +49,7 @@
 
 .image-catalog {
   width: 100%;
-  height: 100%;
-  max-width: 566px;
-  max-height: 311px;
+  height: auto;
 }
 
 .image-catalog-arrow {
@@ -117,7 +116,7 @@
     max-height: 24px;
   }
   .item-catalog {
-    gap: 70px;
+    gap: 40px;
   }
   .text-footer-bottom {
     justify-content: center;
@@ -141,7 +140,7 @@
   .item-catalog {
     width: 100%;
     height: 100%;
-    gap: 50px;
+    gap: 20px;
     padding: 18px;
     margin: 0;
   }
