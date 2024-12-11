@@ -19,11 +19,17 @@
           [routerLink]="['/catalog-use', item.product?.category._id]"
         >
           <img
+            class="image-catalog-arrow"
+            src="../../../../assets/arrow-up-right.svg"
+            alt=""
+            draggable="false"
+          />
+          <img
             class="image-catalog"
             [src]="item.product?.images[0]?.thumbnailUrl"
             alt="{{ item.product?.title || 'No Title Available' }}"
           />
-          <h2 class="title-catalog">{{ item.category }}</h2>
+          <h2 class="title-catalog">{{ item.category.toLocaleUpperCase() }}</h2>
         </li>
         }
       </ul>

@@ -1,122 +1,203 @@
-<div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
-<div class="header">
+<div class="wrapper-blur" [ngClass]="{ 'open-blur': isContactOpen }">
+  <div class="header">
     <div class="container-header">
-        <img class="title-glorious" routerLink="" src="../../../assets/glorious-light.svg" alt="logo" width="198px" height="47px">
-        @if(isAdmin){
-          <button class="button-contact" (click)="addProduct()" >
-            ДОДАТИ ТОВАР
-          </button>
-        }@else {
-          <button (click)="openContact()" class="button-contact">
-            КОНТАКТ З НАМИ
-          </button>
-        }
-        
+      <img
+        class="title-glorious"
+        routerLink=""
+        src="../../../assets/glorious-light.svg"
+        alt="logo"
+        width="198px"
+        height="47px"
+      />
+      @if(isAdmin){
+      <button class="button-contact" (click)="addProduct()">
+        ДОДАТИ ТОВАР
+      </button>
+      }@else {
+      <button (click)="openContact()" class="button-contact">
+        КОНТАКТ З НАМИ
+      </button>
+      }
     </div>
-</div>
-<div class="main">
+  </div>
+  <div class="main">
     <div class="container-main">
       <div class="block-main">
-        <p class="title-main" routerLink=""><span class="title-main-span">Головна/</span>Каталог</p>
+        <p class="title-main" routerLink="">
+          <span class="title-main-span">Головна/</span>Каталог
+        </p>
         <div class="filter-options">
-          <select class="select-main" [(ngModel)]="sortOption" (change)="applySort()">
+          <select
+            class="select-main"
+            [(ngModel)]="sortOption"
+            (change)="applySort()"
+          >
             <option value="">Всі:</option>
             <option value="price-asc">Ціна: від меншої до більшої</option>
             <option value="price-desc">Ціна: від більшої до меншої</option>
             <option value="createdAt-asc">Дата: спочатку старі</option>
             <option value="createdAt-desc">Дата: спочатку нові</option>
-          </select>                   
+          </select>
         </div>
       </div>
-        <h1 class="title-main-text">всі товари</h1>
-        <div *ngIf="isAdmin" class="block-main-add-category">
-          <div class="block-main-add-category-button">
-            @for(category of categories; track $index){
-              <li class="item-main" [ngClass]="{'item-main--active': filters?.categoryIds?.includes(category?._id)}" (click)="setFilter('categoryIds', category._id)">
-                <input class="category-input" (change)="editCategory(category._id, $event)" [value]="category?.label">
-                <button class="delete-category-btn" (click)="deleteCategory(category._id); $event.stopPropagation()">
-                  <img class="image-main-add-category-arrow" style="height: 15px; " src="../../../assets/trash.svg">
-                </button>
-              </li>
-            }
-            @if(ADD_CATEGORY){
-              <div class="input-wrapper">
-                <input
-                  (change)="createCategory($event)"
-                  class="btn-category-add-input"
-                  placeholder="Додати Назву..."
-                />
-                <img
-                  (click)="ADD_CATEGORY = false"
-                  class="image-category-add"
-                  src="../../../assets/x.svg"
-                />
-              </div>
-            }
-          </div>
-          <button (click)="ADD_CATEGORY = true" class="block-main-add-category-plus">
-            <span class="image-main-add-category-plus">+</span>
-          </button>
-        </div>
-        <ul *ngIf="!isAdmin" class="list-main">
+      <h1 class="title-main-text">всі товари</h1>
+      <div *ngIf="isAdmin" class="block-main-add-category">
+        <div class="block-main-add-category-button">
           @for(category of categories; track $index){
-            <li class="item-main"[ngClass]="{'item-main--active': filters?.categoryIds?.includes(category._id)}" (click)="setFilter('categoryIds', category._id)">
-              {{category.label}}
-              @if(filters?.categoryIds?.includes(category?._id)){
-                <img class="image-main-add-category-arrow" src="../../../assets/KRESTIK.svg">
-              }
-            </li>
-          }
-        </ul>               
-        <div class="block-popular">
-          <ul class="list-popular"
+          <li
+            class="item-main"
+            [ngClass]="{
+              'item-main--active': filters?.categoryIds?.includes(category?._id)
+            }"
+            (click)="setFilter('categoryIds', category._id)"
           >
-          @for(product of products; track $index) {
-            <li class="item-popular" [routerLink]="['/catalog', product._id, formatName(product.name)]">
-              <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-              @for(image of product.images; track $index) {
-                @if(image?.isMain) {
-                  <img class="image-popular" [src]="image.thumbnailUrl" alt="" draggable="false">
-                }
-              }
-              <div class="block-popular-text">
-                <p class="text-popular">{{ product.name || 'Новий Товар' }}</p>
-                <p class="text-popular-price">{{ product.price}}
-                </p>
-              </div>
-            </li>
+            <input
+              class="category-input"
+              (change)="editCategory(category._id, $event)"
+              [value]="category?.label"
+            />
+            <button
+              class="delete-category-btn"
+              (click)="deleteCategory(category._id); $event.stopPropagation()"
+            >
+              <img
+                class="image-main-add-category-arrow"
+                style="height: 15px"
+                src="../../../assets/trash.svg"
+              />
+            </button>
+          </li>
+          } @if(ADD_CATEGORY){
+          <div class="input-wrapper">
+            <input
+              (change)="createCategory($event)"
+              class="btn-category-add-input"
+              placeholder="Додати Назву..."
+            />
+            <img
+              (click)="ADD_CATEGORY = false"
+              class="image-category-add"
+              src="../../../assets/x.svg"
+            />
+          </div>
           }
-          </ul>           
         </div>
+        <button
+          (click)="ADD_CATEGORY = true"
+          class="block-main-add-category-plus"
+        >
+          <span class="image-main-add-category-plus">+</span>
+        </button>
+      </div>
+      <ul *ngIf="!isAdmin" class="list-main">
+        @for(category of categories; track $index){
+        <li
+          class="item-main"
+          [ngClass]="{
+            'item-main--active': filters?.categoryIds?.includes(category._id)
+          }"
+          (click)="setFilter('categoryIds', category._id)"
+        >
+          {{ category.label }}
+          @if(filters?.categoryIds?.includes(category?._id)){
+          <img
+            class="image-main-add-category-arrow"
+            src="../../../assets/KRESTIK.svg"
+          />
+          }
+        </li>
+        }
+      </ul>
+      <div class="block-popular">
+        <ul
+          class="list-popular"
+        >
+          @for(product of products; track $index) {
+          <li
+            class="item-popular"
+            [routerLink]="['/catalog', product._id, formatName(product.name)]"
+          >
+            <img
+              class="image-popular-arrow"
+              src="../assets/arrow-up-right.svg"
+              alt=""
+            />
+            @for(image of product.images; track $index) { @if(image?.isMain) {
+            <img
+              class="image-popular"
+              [src]="image.thumbnailUrl"
+              alt=""
+              draggable="false"
+            />
+            } }
+            <div class="block-popular-text">
+              <p class="text-popular">{{ product.name || "Новий Товар" }}</p>
+              <p class="text-popular-price">{{ product.price }}</p>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 <!-- contact for me -->
-<div class="contact-me" [ngClass]="{'open': isContactOpen}">
+<div class="contact-me" [ngClass]="{ open: isContactOpen }">
   <div class="container-contact-me">
     @if(successForm){
-      <div style="display: flex; flex-direction: column; ">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <p class="title-contact-me-success">ДЯКУЄМО!</p>
-          <div style="display: flex; align-items: center; height: 100%; ">
-            <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-          </div>
-        </div>
-        <div>
-          <span class="title-contact-me-success-bottom">ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ </span>
+    <div style="display: flex; flex-direction: column">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <p class="title-contact-me-success">ДЯКУЄМО!</p>
+        <div style="display: flex; align-items: center; height: 100%">
+          <img
+            class="close-contact-me image-contact-me"
+            (click)="closeContact()"
+            [ngClass]="{ open: isContactOpen }"
+            src="../../../assets/x.svg"
+            alt=""
+          />
         </div>
       </div>
+      <div>
+        <span class="title-contact-me-success-bottom"
+          >ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ
+        </span>
+      </div>
+    </div>
     }@else {
-      <div class="block-contact-me">
-        <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
-        <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-      </div>
-      <div class="block-input-contact-me">
-        <input class="input-contact" type="text" [(ngModel)]="contactName" placeholder="Ім’я">
-        <input class="input-contact" type="text" [(ngModel)]="contactPhone" placeholder="Номер телефону">
-      </div>
-      <button class="button-contact-me" (click)="sendContact()">ВІДПРАВИТИ</button>
+    <div class="block-contact-me">
+      <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
+      <img
+        class="close-contact-me image-contact-me"
+        (click)="closeContact()"
+        [ngClass]="{ open: isContactOpen }"
+        src="../../../assets/x.svg"
+        alt=""
+      />
+    </div>
+    <div class="block-input-contact-me">
+      <input
+        class="input-contact"
+        type="text"
+        [(ngModel)]="contactName"
+        placeholder="Ім’я"
+      />
+      <input
+        class="input-contact"
+        type="text"
+        [(ngModel)]="contactPhone"
+        placeholder="Номер телефону"
+      />
+    </div>
+    <button class="button-contact-me" (click)="sendContact()">
+      ВІДПРАВИТИ
+    </button>
     }
-    
   </div>
- </div>
+</div>

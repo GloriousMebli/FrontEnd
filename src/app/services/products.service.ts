@@ -29,18 +29,24 @@ export class ProductsService {
     order?: string;
   }): Observable<any[]> {
     let httpParams = new HttpParams();
+
     if (filters) {
       Object.keys(filters).forEach((key) => {
         let value = filters[key];
         if (value !== '' && value !== null && value !== undefined) {
-          // Ensure page is a string when appending to the URL
+          // Перевіряємо і конвертуємо типи параметрів
           if (key === 'page' && typeof value === 'number') {
-            value = value.toString(); // Convert page to string if it's a number
+            value = value.toString(); // Перетворюємо page в рядок, якщо це число
+          } else if (key === 'categoryIds' && Array.isArray(value)) {
+            // Якщо це масив, конкатенуємо елементи через кому
+            value = value.join(',');
           }
-          httpParams = httpParams.append(key, value);
+
+          // Додаємо параметри до запиту
+          httpParams = httpParams.set(key, value); // Використовуємо set для заміни параметрів
         }
       });
-    }
+    } 
     return this.http.get<any[]>(this.baseUrl, { params: httpParams });
   }
 

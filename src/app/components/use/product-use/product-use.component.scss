@@ -42,10 +42,11 @@
   justify-content: center;
   align-items: center;
   background-color: #dad5c9;
-  padding: 24px 32px;
   border-radius: 8px;
   width: 32%;
   max-width: 586px;
+  padding: 19vb 32px;
+  max-height: 698px;
 }
 
 .image-catalog {
@@ -59,6 +60,26 @@
   font-size: clamp(20px, 2vw, 36px);
   font-style: normal;
   font-weight: 600;
+  line-height: normal;
+}
+
+.text-main {
+  color: #63574e;
+  font-family: Manrope;
+  font-size: clamp(11px, 2vw, 20px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  cursor: pointer;
+}
+
+.text-main-span {
+  color: #352f2a;
+  font-family: Manrope;
+  font-size: clamp(11px, 2vw, 20px);
+  font-style: normal;
+  font-weight: 500;
   line-height: normal;
 }
 
@@ -105,8 +126,6 @@
 }
 
 @media screen and (min-width: 800px) and (max-width: 1200px) {
-  .item-catalog {
-  }
   .text-footer-bottom {
     justify-content: center;
     align-items: end;
@@ -130,8 +149,9 @@
     width: 100%;
     height: 100%;
     gap: 50px;
-    padding: 18px;
     margin: 0;
+    padding-left: 18px;
+    padding-right: 18px;
   }
   .footer {
     padding: 40px 16px;

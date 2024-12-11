@@ -57,15 +57,25 @@ export class CatalogUseComponent {
     if (this.products.length && this.categories.length) {
       // Очистимо список перед заповненням
       this.firstProductsByCategory = this.categories.map((category) => {
-        // Знаходимо перший продукт в категорії
-        const firstProduct = this.products.find(
+        // Фільтруємо продукти для поточної категорії
+        const productsInCategory = this.products.filter(
           (product) => product.category._id === category._id
         );
+
+        // Сортуємо продукти в категорії за датою створення (за зростанням)
+        const sortedProducts = productsInCategory.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+
+        // Беремо перший продукт після сортування
+        const firstProduct = sortedProducts[0] || null;
+
         console.log(firstProduct);
 
         return {
           category: category.label,
-          product: firstProduct || null, // Повертаємо null, якщо продуктів немає
+          product: firstProduct, // Повертаємо null, якщо продуктів немає
         };
       });
     }
