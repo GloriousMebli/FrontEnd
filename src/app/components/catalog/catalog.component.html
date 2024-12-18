@@ -109,9 +109,7 @@
         }
       </ul>
       <div class="block-popular">
-        <ul
-          class="list-popular"
-        >
+        <ul class="list-popular">
           @for(product of products; track $index) {
           <li
             class="item-popular"
@@ -138,6 +136,9 @@
           }
         </ul>
       </div>
+      @if (hasMoreProducts) {
+      <button class="load-more-btn" (click)="loadMore()">Load more</button>
+      }
     </div>
   </div>
 </div>

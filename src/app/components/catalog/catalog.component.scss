@@ -179,6 +179,25 @@ pointer-events: none;
 
 // MAIN
 
+.load-more-btn {
+  background-color: #6b5f55;
+  color: #DAD5C9;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 34px;
+  border: #6b5f55 1px solid;
+  font-size: 18px;
+  transition: all 0.4s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #DAD5C9;
+  color: #6b5f55;
+}
+
 .main {
     width: 100%;
     min-height: 100vh;

@@ -27,7 +27,7 @@ export class ProductsService {
     categoryIds?: string[];
     sortBy?: string;
     order?: string;
-  }): Observable<any[]> {
+  }): Observable<any> {
     let httpParams = new HttpParams();
 
     if (filters) {
@@ -35,8 +35,8 @@ export class ProductsService {
         let value = filters[key];
         if (value !== '' && value !== null && value !== undefined) {
           // Перевіряємо і конвертуємо типи параметрів
-          if (key === 'page' && typeof value === 'number') {
-            value = value.toString(); // Перетворюємо page в рядок, якщо це число
+          if (key === 'page' || key === 'limit') {
+            value = value.toString(); // Перетворюємо page та limit в рядки
           } else if (key === 'categoryIds' && Array.isArray(value)) {
             // Якщо це масив, конкатенуємо елементи через кому
             value = value.join(',');
@@ -46,8 +46,8 @@ export class ProductsService {
           httpParams = httpParams.set(key, value); // Використовуємо set для заміни параметрів
         }
       });
-    } 
-    return this.http.get<any[]>(this.baseUrl, { params: httpParams });
+    }
+    return this.http.get<any>(this.baseUrl, { params: httpParams });
   }
 
   // Отримати продукт за ID

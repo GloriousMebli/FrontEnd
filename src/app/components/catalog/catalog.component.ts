@@ -21,9 +21,6 @@ export class CatalogComponent implements OnInit {
   categories;
   filters: { categoryIds?: string[] } = {};
   ADD_CATEGORY = false;
-  isLoading: boolean = true; // Для перевірки, чи завантажуються продукти
-  limit = 3;
-  page = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -63,29 +60,53 @@ export class CatalogComponent implements OnInit {
         this.sortOption = savedSortOption;
       }
     }
-    // this.onScroll() 
     this.fetchFilteredProducts();
   }
 
-  // onScroll() {
-  //   // Викликаємо getProducts з параметрами
-  //   this.productsService
-  //     .getProducts({
-  //       page: this.page,
-  //       limit: this.limit,
-  //     })
-  //     .subscribe(
-  //       (newProducts) => {
-  //         this.products = [...this.products, ...newProducts]; // Додаємо нові продукти до списку
-  //         this.page++; // Збільшуємо номер сторінки
-  //         this.isLoading = false; // Зупиняємо стан завантаження
-  //       },
-  //       (error) => {
-  //         console.error('Error loading products:', error);
-  //         this.isLoading = false; // Зупиняємо стан завантаження навіть при помилці
-  //       }
-  //     );
-  // }
+  hasMoreProducts: boolean = true; // Чи є ще продукти для завантаження
+  currentPage: number = 1; // Поточна сторінка
+
+  // Метод для завантаження додаткових продуктів
+  loadMore(): void {
+    // Отримуємо параметри сортування з локального сховища
+    const sortOption = localStorage.getItem('sortOption');
+    const sortParams = this.getSortParams(sortOption);
+
+    const params = {
+      ...this.filters,
+      ...sortParams,
+      page: this.currentPage + 1, // Наступна сторінка
+      limit: 6, // Ліміт на 6 продуктів
+    };
+
+    this.productsService.getProducts(params).subscribe(
+      (response: any) => {
+        const products = Array.isArray(response.products)
+          ? response.products
+          : [];
+
+        // Додаємо нові продукти до існуючих
+        products.forEach((newProduct) => {
+          const isProductAlreadyAdded = this.products.some(
+            (product) => product._id === newProduct._id
+          );
+          if (!isProductAlreadyAdded) {
+            this.products.push(newProduct);
+          }
+        });
+
+        // Оновлюємо стан кнопки "Load more"
+        if (products.length < 6) {
+          this.hasMoreProducts = false; // Приховуємо кнопку, якщо менше 6 продуктів
+        } else {
+          this.currentPage++; // Переходимо до наступної сторінки
+        }
+      },
+      (error) => {
+        console.error('Помилка завантаження продуктів:', error);
+      }
+    );
+  }
 
   saveFiltersToLocalStorage(): void {
     if (typeof Storage !== 'undefined') {
@@ -200,18 +221,43 @@ export class CatalogComponent implements OnInit {
   }
 
   applySort(): void {
-    // Save the sort option to localStorage
+    // Зберігаємо параметри сортування в локальному стані
     localStorage.setItem('sortOption', this.sortOption);
 
-    // Get the sort parameters and fetch the sorted products
+    // Отримуємо параметри сортування
     const sortParams = this.getSortParams(this.sortOption);
 
-    // Fetch the sorted products
+    // Скидаємо поточну сторінку до 1, щоб завантажити відсортовані продукти
+    this.currentPage = 1;
+    this.hasMoreProducts = true;
+
+    // Запитуємо продукти з урахуванням сортування
     this.productsService
-      .getProducts({ ...this.filters, ...sortParams })
-      .subscribe((data) => {
-        this.products = data;
-      });
+      .getProducts({
+        ...this.filters,
+        ...sortParams,
+        page: this.currentPage,
+        limit: 6,
+      })
+      .subscribe(
+        (response: any) => {
+          const newProducts = Array.isArray(response.products)
+            ? response.products
+            : [];
+
+          // Оновлюємо список продуктів
+          this.products = newProducts;
+
+          // Якщо менше 6 продуктів, приховуємо кнопку "Load more"
+          if (newProducts.length < 6) {
+            this.hasMoreProducts = false;
+          }
+        },
+        (error) => {
+          console.error('Помилка отримання продуктів:', error);
+          this.products = [];
+        }
+      );
   }
 
   getSortParams(option: string): any {
@@ -258,27 +304,59 @@ export class CatalogComponent implements OnInit {
       this.filters[key] = value;
     }
 
-    // Save the updated filters to localStorage
+    // Скидаємо поточну сторінку до 1 та ліміт на 6
+    this.currentPage = 1;
+    this.hasMoreProducts = true;
+
+    // Зберігаємо оновлені фільтри в localStorage
     this.saveFiltersToLocalStorage();
 
-    // Fetch the products based on the updated filters
+    // Завантажуємо продукти на основі оновлених фільтрів
     this.fetchFilteredProducts();
   }
 
   // Fetch filtered products based on the current filters and sorting option
   fetchFilteredProducts(): void {
-    const [sortBy, order] = this.sortOption.split('-'); // Split sorting option into sortBy and order
+    const [sortBy, order] = this.sortOption.split('-'); // Розділяємо параметри сортування
     const params = {
       ...this.filters,
-      sortBy: sortBy || 'createdAt', // Default to sorting by createdAt if no sort option is provided
-      order: order || 'desc', // Page size for the request (how many products to fetch at once)
+      page: this.currentPage, // Поточна сторінка
+      limit: 6, // Ліміт на 6 продуктів
+      sortBy: sortBy || 'createdAt', // Сортування за createdAt за замовчуванням
+      order: order || 'desc',
     };
 
-    this.productsService.getProducts(params).subscribe((data: Product[]) => {
-      this.products = data;
+    this.productsService.getProducts(params).subscribe(
+      (response: any) => {
+        const newProducts = Array.isArray(response.products)
+          ? response.products
+          : [];
 
-      // Load the first batch of produc
-    });
+        // Якщо це перша сторінка, оновлюємо список продуктів
+        if (this.currentPage === 1) {
+          this.products = newProducts;
+        } else {
+          // Додаємо нові продукти лише якщо їх ще немає в масиві
+          newProducts.forEach((product) => {
+            if (!this.products.some((p) => p._id === product._id)) {
+              this.products.push(product);
+            }
+          });
+        }
+
+        // Оновлюємо стан кнопки "Load more"
+        if (newProducts.length < 6) {
+          this.hasMoreProducts = false; // Приховуємо кнопку, якщо менше 6 продуктів
+        }
+
+        // Виведення загальної кількості продуктів
+        console.log('Загальна кількість продуктів:', response.total);
+      },
+      (error) => {
+        console.error('Помилка отримання продуктів:', error);
+        this.products = [];
+      }
+    );
   }
 
   addProduct() {
