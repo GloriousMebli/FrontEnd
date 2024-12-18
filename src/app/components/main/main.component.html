@@ -1,27 +1,59 @@
-<div class="wrapper-blur" [ngClass]="{'open-blur': isContactOpen}">
-<!-- HEADER -->
-<header class="header">
+<div class="wrapper-blur" [ngClass]="{ 'open-blur': isContactOpen }">
+  <!-- HEADER -->
+  <header class="header">
     <div class="container-header">
       <nav class="nav-header">
         <div class="block-nav-header-mobile" *ngIf="!isMenuOpen">
-          <button class="button-contact-mobile" routerLink="/catalog">КАТАЛОГ</button>
-          <img (click)="toggleMenu()" class="image-burger-mobile" src="../../../assets/burger.svg" alt="">
+          <button class="button-contact-mobile" routerLink="/catalog">
+            КАТАЛОГ
+          </button>
+          <img
+            (click)="toggleMenu()"
+            class="image-burger-mobile"
+            src="../../../assets/burger.svg"
+            alt=""
+          />
         </div>
         <ul class="nav-menu">
           @if(popularProducts?.length > 0){
-            <li><a (click)="scrollToSection('popular')" class="link-menu">ПОПУЛЯРНІ ТОВАРИ</a></li>
+          <li>
+            <a (click)="scrollToSection('popular')" class="link-menu"
+              >ПОПУЛЯРНІ ТОВАРИ</a
+            >
+          </li>
           }
-          <li><a (click)="scrollToSection('advantages')" class="link-menu">НАШІ ПЕРЕВАГИ</a></li>
-          <li><a (click)="scrollToSection('history')" class="link-menu">НАША ІСТОРІЯ</a></li>
+          <li>
+            <a (click)="scrollToSection('advantages')" class="link-menu"
+              >НАШІ ПЕРЕВАГИ</a
+            >
+          </li>
+          <li>
+            <a (click)="scrollToSection('history')" class="link-menu"
+              >НАША ІСТОРІЯ</a
+            >
+          </li>
         </ul>
         <ul class="menu-buttons">
           <li><a class="blog" routerLink="/blog">БЛОГ</a></li>
           <li class="button-contacts">
-            <a (mouseenter)="isButtonVisible = true" (mouseleave)="isButtonVisible = false" class="contact">КОНТАКТ З НАМИ</a>
+            <a
+              (mouseenter)="isButtonVisible = true"
+              (mouseleave)="isButtonVisible = false"
+              class="contact"
+              >КОНТАКТ З НАМИ</a
+            >
             <div class="block-arrow">
-              <p class="arrow" (mouseenter)="isButtonVisible = true" [ngClass]="{'open-btn': isButtonVisible}">
-                <a href="tel:+380 73 800 4410" class="arrow-text arrow-text-under">ЗАТЕЛЕФОНУВАТИ</a>
-                <a (click)="openContact()" class="arrow-text ">ЗАЛИШИТИ НОМЕР</a>
+              <p
+                class="arrow"
+                (mouseenter)="isButtonVisible = true"
+                [ngClass]="{ 'open-btn': isButtonVisible }"
+              >
+                <a
+                  href="tel:+380 73 800 4410"
+                  class="arrow-text arrow-text-under"
+                  >ЗАТЕЛЕФОНУВАТИ</a
+                >
+                <a (click)="openContact()" class="arrow-text">ЗАЛИШИТИ НОМЕР</a>
               </p>
             </div>
           </li>
@@ -36,23 +68,37 @@
   <main class="main">
     <div class="container-main">
       @if(popularProducts?.length > 0){
-        <section class="popular-products" id="popular">
-          <div class="container-popular">
-            <h2 class="title-popular">ПОПУЛЯРНІ ТОВАРИ</h2>
-            <ul class="list-popular">
-              @for(product of popularProducts; track $index){
-                <li class="item-popular" [routerLink]="'/catalog/' + product._id + '/' + formatName(product.name)">
-                  <img class="image-popular-arrow" src="../assets/arrow-up-right.svg" alt="">
-                  <img class="image-popular" [src]="product.images?.[0]?.thumbnailUrl" alt="" draggable="false">
-                  <div class="block-popular">
-                    <p class="text-popular">{{product.name || 'Новий Товар'}}</p>
-                    <p class="text-popular-price">{{product.price}}</p>
-                  </div>
-                </li>
-              }
-            </ul>
-          </div>
-        </section>
+      <section class="popular-products" id="popular">
+        <div class="container-popular">
+          <h2 class="title-popular">ПОПУЛЯРНІ ТОВАРИ</h2>
+          <ul class="list-popular">
+            @for(product of popularProducts; track $index){
+            <li
+              class="item-popular"
+              [routerLink]="
+                '/catalog/' + product._id + '/' + formatName(product.name)
+              "
+            >
+              <img
+                class="image-popular-arrow"
+                src="../assets/arrow-up-right.svg"
+                alt=""
+              />
+              <img
+                class="image-popular"
+                [src]="product.images?.[0]?.thumbnailUrl"
+                alt=""
+                draggable="false"
+              />
+              <div class="block-popular">
+                <p class="text-popular">{{ product.name || "Новий Товар" }}</p>
+                <p class="text-popular-price">{{ product.price }}</p>
+              </div>
+            </li>
+            }
+          </ul>
+        </div>
+      </section>
       }
       <section class="section-our-advantages" id="advantages">
         <div class="container-our-advantages">
@@ -64,7 +110,9 @@
                 *ngFor="let advantage of advantages"
                 (mouseenter)="selectAdvantage(advantage)"
               >
-                <h3 class="title-item-block-our-advantages">{{ advantage.title }}</h3>
+                <h3 class="title-item-block-our-advantages">
+                  {{ advantage.title }}
+                </h3>
                 <img
                   [ngClass]="{
                     'arrow-right': selectedAdvantage === advantage,
@@ -72,14 +120,21 @@
                   }"
                   class="image-item-block-our-advantages"
                   src="../assets/arrow-down-right.svg"
-                  alt="">
+                  alt=""
+                />
               </div>
             </div>
             <div>
               <p class="text-our-advantages">{{ selectedAdvantage.text }}</p>
             </div>
             <div>
-              <img class="image-our-advantages" [src]="selectedAdvantage.image" alt="" width="782" height="659">
+              <img
+                class="image-our-advantages"
+                [src]="selectedAdvantage.image"
+                alt=""
+                width="782"
+                height="659"
+              />
             </div>
           </div>
         </div>
@@ -87,67 +142,163 @@
       <!-- MOBILE SECTION OUR ADVANTAGES -->
       <div class="block-our-advantages-mobile" id="advantages-mobile">
         <h2 class="title-our-advantages-mobile">НАШІ ПЕРЕВАГИ</h2>
-        <div class="accordion"> 
-          <div class="accordion-list"  ngbAccordion>
-            <div class="accordion" ngbAccordionItem [collapsed]="true" #item1="ngbAccordionItem">
-            <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('first')">
-              <h3 class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</h3>
-              <img #firstBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'first' && !item1.collapsed }">
-            </div>
-            <div class="accordion-line"></div>
-            <div ngbAccordionCollapse>
-              <div class="accordion-body" ngbAccordionBody>
-                <ng-template>
-                  <img class="image-accordion" src="../../../assets/people-work.webp" alt="">
-                  <p class="text-accordion">Ми контролюємо весь процес створення меблів, від розробки до виробництва, забезпечуючи високу якість кожного етапу.</p>
-                </ng-template>
-              </div>
-            </div>
-            </div>
-            <div class="accordion" ngbAccordionItem [collapsed]="true" #item2="ngbAccordionItem">
-              <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('second')">
-                <h3 class="title-accordion">КОМАНДА МАЙСТРІВ</h3>
-                <img #secondBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'second' && !item2.collapsed }">
+        <div class="accordion">
+          <div class="accordion-list" ngbAccordion>
+            <div
+              class="accordion"
+              ngbAccordionItem
+              [collapsed]="true"
+              #item1="ngbAccordionItem"
+            >
+              <div
+                ngbAccordionToggle
+                class="accordion-header"
+                (click)="toggleRotation('first')"
+              >
+                <h3 class="title-accordion">ВЛАСНЕ ВИРОБНИЦТВО</h3>
+                <img
+                  #firstBtn
+                  ngbAccordionButton
+                  class="accordion-button"
+                  src="../../../assets/arrow-down-right.svg"
+                  alt=""
+                  [ngClass]="{
+                    'rotate-46': activeButton === 'first' && !item1.collapsed
+                  }"
+                />
               </div>
               <div class="accordion-line"></div>
               <div ngbAccordionCollapse>
                 <div class="accordion-body" ngbAccordionBody>
                   <ng-template>
-                    <img class="image-accordion" src="../../../assets/people-work2.webp" alt="">
-                    <p class="text-accordion">Працюємо з кожним клієнтом індивідуально, пропонуючи рішення, які максимально відповідають вашим потребам та побажанням.</p>
+                    <img
+                      class="image-accordion"
+                      src="../../../assets/people-work.webp"
+                      alt=""
+                    />
+                    <p class="text-accordion">
+                      Ми контролюємо весь процес створення меблів, від розробки
+                      до виробництва, забезпечуючи високу якість кожного етапу.
+                    </p>
                   </ng-template>
                 </div>
               </div>
+            </div>
+            <div
+              class="accordion"
+              ngbAccordionItem
+              [collapsed]="true"
+              #item2="ngbAccordionItem"
+            >
+              <div
+                ngbAccordionToggle
+                class="accordion-header"
+                (click)="toggleRotation('second')"
+              >
+                <h3 class="title-accordion">КОМАНДА МАЙСТРІВ</h3>
+                <img
+                  #secondBtn
+                  ngbAccordionButton
+                  class="accordion-button"
+                  src="../../../assets/arrow-down-right.svg"
+                  alt=""
+                  [ngClass]="{
+                    'rotate-46': activeButton === 'second' && !item2.collapsed
+                  }"
+                />
               </div>
-              <div class="accordion" ngbAccordionItem [collapsed]="true" #item3="ngbAccordionItem">
-                <div ngbAccordionToggle class="accordion-header" (click)="toggleRotation('third')"> 
-                  <h3 class="title-accordion">ЯКІСТЬ МЕБЛІВ</h3>
-                  <img #thirdBtn ngbAccordionButton class="accordion-button" src="../../../assets/arrow-down-right.svg" alt="" [ngClass]="{ 'rotate-46': activeButton === 'third' && !item3.collapsed }">
+              <div class="accordion-line"></div>
+              <div ngbAccordionCollapse>
+                <div class="accordion-body" ngbAccordionBody>
+                  <ng-template>
+                    <img
+                      class="image-accordion"
+                      src="../../../assets/people-work2.webp"
+                      alt=""
+                    />
+                    <p class="text-accordion">
+                      Працюємо з кожним клієнтом індивідуально, пропонуючи
+                      рішення, які максимально відповідають вашим потребам та
+                      побажанням.
+                    </p>
+                  </ng-template>
                 </div>
-                <div class="accordion-line"></div>
-                <div ngbAccordionCollapse>
-                  <div class="accordion-body" ngbAccordionBody>
-                    <ng-template>
-                      <img class="image-accordion" src="../../../assets/people-work3.webp" alt="">
-                      <p class="text-accordion">Ми використовуємо тільки сертифіковані та безпечні для здоров’я матеріали, турбуючись про ваше благополуччя.</p>
-                    </ng-template>
-                  </div>
+              </div>
+            </div>
+            <div
+              class="accordion"
+              ngbAccordionItem
+              [collapsed]="true"
+              #item3="ngbAccordionItem"
+            >
+              <div
+                ngbAccordionToggle
+                class="accordion-header"
+                (click)="toggleRotation('third')"
+              >
+                <h3 class="title-accordion">ЯКІСТЬ МЕБЛІВ</h3>
+                <img
+                  #thirdBtn
+                  ngbAccordionButton
+                  class="accordion-button"
+                  src="../../../assets/arrow-down-right.svg"
+                  alt=""
+                  [ngClass]="{
+                    'rotate-46': activeButton === 'third' && !item3.collapsed
+                  }"
+                />
+              </div>
+              <div class="accordion-line"></div>
+              <div ngbAccordionCollapse>
+                <div class="accordion-body" ngbAccordionBody>
+                  <ng-template>
+                    <img
+                      class="image-accordion"
+                      src="../../../assets/people-work3.webp"
+                      alt=""
+                    />
+                    <p class="text-accordion">
+                      Ми використовуємо тільки сертифіковані та безпечні для
+                      здоров’я матеріали, турбуючись про ваше благополуччя.
+                    </p>
+                  </ng-template>
                 </div>
-                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
       <section class="section-history" id="history">
         <div class="container-history">
           <h2 class="title-history">наша історія</h2>
           <div class="block-history">
             <div class="text-block-history">
-              <p class="text-history">Меблева фірма “Glorious”, заснована в 2020 році, спеціалізується на створенні унікальних і зручних меблів для дому та офісу. Від маленької майстерні до сучасного виробництва, ми пропонуємо функціональні та стильні рішення, що відповідають світовим тенденціям. Наша місія — дарувати комфорт і затишок через індивідуальний підхід та використання інноваційних технологій.</p>
-              <div class="image-block-history-mobile"><img class="image-history" src="../../../assets/people.webp" alt=""></div>
-              <button class="button-history" routerLink="/catalog">НАШІ ТОВАРИ</button>
+              <p class="text-history">
+                Меблева фірма “Glorious”, заснована в 2020 році, спеціалізується
+                на створенні унікальних і зручних меблів для дому та офісу. Від
+                маленької майстерні до сучасного виробництва, ми пропонуємо
+                функціональні та стильні рішення, що відповідають світовим
+                тенденціям. Наша місія — дарувати комфорт і затишок через
+                індивідуальний підхід та використання інноваційних технологій.
+              </p>
+              <div class="image-block-history-mobile">
+                <img
+                  class="image-history"
+                  src="../../../assets/people.webp"
+                  alt=""
+                />
+              </div>
+              <button class="button-history" routerLink="/catalog">
+                НАШІ ТОВАРИ
+              </button>
             </div>
-            <div class="image-block-history"><img class="image-history" src="../../../assets/people.webp" alt=""></div>
+            <div class="image-block-history">
+              <img
+                class="image-history"
+                src="../../../assets/people.webp"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -156,53 +307,102 @@
 </div>
 
 <!-- contact for me -->
- <div class="contact-me" [ngClass]="{'open': isContactOpen}">
+<div class="contact-me" [ngClass]="{ open: isContactOpen }">
   <div class="container-contact-me">
     @if(successForm){
-      <div style="display: flex; flex-direction: column; ">
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <p class="title-contact-me-success">ДЯКУЄМО!</p>
-          <div style="display: flex; align-items: center; height: 100%; ">
-            <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-          </div>
-        </div>
-        <div>
-          <span class="title-contact-me-success-bottom">ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ </span>
+    <div style="display: flex; flex-direction: column">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <p class="title-contact-me-success">ДЯКУЄМО!</p>
+        <div style="display: flex; align-items: center; height: 100%">
+          <img
+            class="close-contact-me image-contact-me"
+            (click)="closeContact()"
+            [ngClass]="{ open: isContactOpen }"
+            src="../../../assets/x.svg"
+            alt=""
+          />
         </div>
       </div>
+      <div>
+        <span class="title-contact-me-success-bottom"
+          >ОЧІКУЙТЕ ДЗВІНКА НАЙБЛИЖЧИМ ЧАСОМ
+        </span>
+      </div>
+    </div>
     }@else {
-      <div class="block-contact-me">
-        <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
-        <img class="close-contact-me image-contact-me" (click)="closeContact()" [ngClass]="{'open': isContactOpen}" src="../../../assets/x.svg" alt="">
-      </div>
-      <div class="block-input-contact-me">
-        <input class="input-contact" type="text" [(ngModel)]="contactName" placeholder="Ім’я">
-        <input class="input-contact" type="text" [(ngModel)]="contactPhone" placeholder="Номер телефону">
-      </div>
-      <button class="button-contact-me" (click)="sendContact()">ВІДПРАВИТИ</button>
+    <div class="block-contact-me">
+      <p class="title-contact-me">ЗАЛИШ ЗАЯВКУ</p>
+      <img
+        class="close-contact-me image-contact-me"
+        (click)="closeContact()"
+        [ngClass]="{ open: isContactOpen }"
+        src="../../../assets/x.svg"
+        alt=""
+      />
+    </div>
+    <div class="block-input-contact-me">
+      <input
+        class="input-contact"
+        type="text"
+        [(ngModel)]="contactName"
+        placeholder="Ім’я"
+      />
+      <input
+        class="input-contact"
+        type="text"
+        [(ngModel)]="contactPhone"
+        placeholder="Номер телефону"
+      />
+    </div>
+    <button class="button-contact-me" (click)="sendContact()">
+      ВІДПРАВИТИ
+    </button>
     }
-    
   </div>
- </div>
+</div>
 
- <!-- mobile menu -->
- <div class="mobail-menu" [ngClass]="{'open': isMenuOpen}">
+<!-- mobile menu -->
+<div class="mobail-menu" [ngClass]="{ open: isMenuOpen }">
   <div class="block-mobail-menu">
     <div class="list-mobail-menu-block">
       <div class="block-mobail-menu-contact">
-        <button class="button-mobail-menu-contact" (click)="openBntContact()">КОНТАКТ З НАМИ</button>
+        <button class="button-mobail-menu-contact" (click)="openBntContact()">
+          КОНТАКТ З НАМИ
+        </button>
         <button class="button-mobail-menu-blog" routerLink="/blog">БЛОГ</button>
-        <p class="arrow" [ngClass]="{'open-btn': isButtonVisible}">
+        <p class="arrow" [ngClass]="{ 'open-btn': isButtonVisible }">
           <a href="tel:+380 73 800 4410" class="arrow-text">ЗАТЕЛЕФОНУВАТИ</a>
-          <a (click)="openContact()" class="arrow-text arrow-text-under">ЗАЛИШИТИ НОМЕР</a>
+          <a (click)="openContact()" class="arrow-text arrow-text-under"
+            >ЗАЛИШИТИ НОМЕР</a
+          >
         </p>
       </div>
-      <img (click)="closeMenu()" class="image-mobail-menu" src="../../../assets/KRESTIK.svg" alt="">
+      <img
+        (click)="closeMenu()"
+        class="image-mobail-menu"
+        src="../../../assets/KRESTIK.svg"
+        alt=""
+      />
     </div>
     <ul class="list-mobail-menu">
-      <li (click)="navigateToSection('popular')" class="item-mobile-mebu">ПОПУЛЯРНІ ТОВАРИ</li>
-      <li (click)="navigateToSection('advantages-mobile')" class="item-mobile-mebu">НАШІ ПЕРЕВАГИ</li>
-      <li (click)="navigateToSection('history')" class="item-mobile-mebu">НАША ІСТОРІЯ</li>
+      <li (click)="navigateToSection('popular')" class="item-mobile-mebu">
+        ПОПУЛЯРНІ ТОВАРИ
+      </li>
+      <li
+        (click)="navigateToSection('advantages-mobile')"
+        class="item-mobile-mebu"
+      >
+        НАШІ ПЕРЕВАГИ
+      </li>
+      <li (click)="navigateToSection('history')" class="item-mobile-mebu">
+        НАША ІСТОРІЯ
+      </li>
     </ul>
   </div>
 </div>

@@ -7,19 +7,23 @@ import { FormService } from '../../services/form.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrl: './main.component.scss',
 })
 export class MainComponent implements OnInit {
-  constructor(private renderer: Renderer2, private formService: FormService, private productsService: ProductsService, private router: Router) { }
+  constructor(
+    private renderer: Renderer2,
+    private formService: FormService,
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   popularProducts: Product[] = [];
 
-  photos:any = []
+  photos: any = [];
 
-
-  contactName
-  contactPhone
-  successForm = false
+  contactName;
+  contactPhone;
+  successForm = false;
 
   menuOpened = false;
 
@@ -30,12 +34,16 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.selectedAdvantage = this.advantages[0]; // Встановлюємо першу перевагу як вибрану
 
-    this.productsService.getProducts({popular:true}).subscribe((data: Product[]) => {
-      this.popularProducts = data?.slice(0, 3);
-    })
+    this.productsService
+      .getProducts({ popular: true })
+      .subscribe((data: any) => {
+        if (Array.isArray(data.products)) {
+          this.popularProducts = data.products.slice(0, 3); // Ось тут ми працюємо з масивом products
+        }
+      });
 
     // Підписуємося на подію NavigationEnd
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Прокручуємо до верху сторінки
         window.scrollTo(0, 0);
@@ -43,35 +51,89 @@ export class MainComponent implements OnInit {
         this.closeMenu();
       }
     });
-
   }
 
   openBntContact(): void {
     this.isButtonVisible = !this.isButtonVisible; // Змінюємо стан при кожному кліку
   }
 
-
   formatName(name: string): string {
     if (!name) return 'novyy-tovar'; // Якщо назва порожня, повертаємо стандартну
-  
+
     const cyrillicToLatinMap = {
-      а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', є: 'ye', ж: 'zh',
-      з: 'z', и: 'y', і: 'i', ї: 'yi', й: 'y', к: 'k', л: 'l', м: 'm',
-      н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u', ф: 'f',
-      х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'shch', ю: 'yu', я: 'ya',
-      А: 'A', Б: 'B', В: 'V', Г: 'G', Д: 'D', Е: 'E', Є: 'Ye', Ж: 'Zh',
-      З: 'Z', И: 'Y', І: 'I', Ї: 'Yi', Й: 'Y', К: 'K', Л: 'L', М: 'M',
-      Н: 'N', О: 'O', П: 'P', Р: 'R', С: 'S', Т: 'T', У: 'U', Ф: 'F',
-      Х: 'Kh', Ц: 'Ts', Ч: 'Ch', Ш: 'Sh', Щ: 'Shch', Ю: 'Yu', Я: 'Ya',
-      "'": '', "’": '', "ʼ": '',
+      а: 'a',
+      б: 'b',
+      в: 'v',
+      г: 'g',
+      д: 'd',
+      е: 'e',
+      є: 'ye',
+      ж: 'zh',
+      з: 'z',
+      и: 'y',
+      і: 'i',
+      ї: 'yi',
+      й: 'y',
+      к: 'k',
+      л: 'l',
+      м: 'm',
+      н: 'n',
+      о: 'o',
+      п: 'p',
+      р: 'r',
+      с: 's',
+      т: 't',
+      у: 'u',
+      ф: 'f',
+      х: 'kh',
+      ц: 'ts',
+      ч: 'ch',
+      ш: 'sh',
+      щ: 'shch',
+      ю: 'yu',
+      я: 'ya',
+      А: 'A',
+      Б: 'B',
+      В: 'V',
+      Г: 'G',
+      Д: 'D',
+      Е: 'E',
+      Є: 'Ye',
+      Ж: 'Zh',
+      З: 'Z',
+      И: 'Y',
+      І: 'I',
+      Ї: 'Yi',
+      Й: 'Y',
+      К: 'K',
+      Л: 'L',
+      М: 'M',
+      Н: 'N',
+      О: 'O',
+      П: 'P',
+      Р: 'R',
+      С: 'S',
+      Т: 'T',
+      У: 'U',
+      Ф: 'F',
+      Х: 'Kh',
+      Ц: 'Ts',
+      Ч: 'Ch',
+      Ш: 'Sh',
+      Щ: 'Shch',
+      Ю: 'Yu',
+      Я: 'Ya',
+      "'": '',
+      '’': '',
+      ʼ: '',
     };
-  
+
     const transliterate = (text: string): string =>
       text
         .split('')
         .map((char) => cyrillicToLatinMap[char] || char) // Транслітерація
         .join('');
-  
+
     return transliterate(name)
       .toLowerCase() // Перетворюємо на нижній регістр
       .trim() // Видаляємо зайві пробіли
@@ -79,7 +141,6 @@ export class MainComponent implements OnInit {
       .replace(/\s+/g, '-') // Заміна пробілів на дефіс
       .replace(/[^a-z0-9-]/g, ''); // Видалення інших небажаних символів
   }
-  
 
   openContact() {
     this.isContactOpen = true;
@@ -112,18 +173,18 @@ export class MainComponent implements OnInit {
     {
       title: 'ВЛАСНЕ ВИРОБНИЦТВО',
       text: 'Ми контролюємо весь процес створення меблів, від розробки до виробництва, забезпечуючи високу якість кожного етапу.',
-      image: '../assets/people-work.webp'
+      image: '../assets/people-work.webp',
     },
     {
       title: 'КОМАНДА МАЙСТРІВ',
       text: 'Працюємо з кожним клієнтом індивідуально, пропонуючи рішення, які максимально відповідають вашим потребам та побажанням.',
-      image: '../assets/people-work2.webp'
+      image: '../assets/people-work2.webp',
     },
     {
       title: 'ЯКІСТЬ МЕБЛІВ',
       text: 'Ми використовуємо тільки сертифіковані та безпечні для здоров’я матеріали, турбуючись про ваше благополуччя.',
-      image: '../assets/people-work3.webp'
-    }
+      image: '../assets/people-work3.webp',
+    },
   ];
 
   selectedAdvantage: any | null = null; // Ініціалізуємо як null
@@ -140,7 +201,6 @@ export class MainComponent implements OnInit {
   selectAdvantage(advantage: any) {
     this.selectedAdvantage = advantage;
   }
-
 
   // MOBILE MENU
   isMenuOpen = false;
@@ -174,14 +234,16 @@ export class MainComponent implements OnInit {
     }
   }
 
-  sendContact(){
-     this.formService.sendFormData(this.contactName, this.contactPhone).subscribe((response) => {
-       this.successForm = true
-       setTimeout(() => {
-         this.closeContact()
-         this.successForm = false
-       }, 30000)
-     });
+  sendContact() {
+    this.formService
+      .sendFormData(this.contactName, this.contactPhone)
+      .subscribe((response) => {
+        this.successForm = true;
+        setTimeout(() => {
+          this.closeContact();
+          this.successForm = false;
+        }, 30000);
+      });
   }
 
   activeButton: string | null = null;

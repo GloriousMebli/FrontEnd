@@ -1,7 +1,7 @@
 <div class="header">
   <div class="container-header">
     <img
-    [routerLink]="['/catalog-use']"
+      [routerLink]="['/catalog-use']"
       class="logo-glorious"
       src="../../../../assets/glorious-light.svg"
       alt="Logo"
@@ -11,31 +11,40 @@
 </div>
 <div class="main">
   <div class="container-main">
-    <p class="text-main" [routerLink]="['/catalog-use']">Каталог/<span class="text-main-span">{{products[0]?.category?.label}}</span></p>
-    @if (products.length > 0) {
-    <h1 class="title-main">{{products[0]?.category?.label}}</h1>
-    <div class="container-catalog">
-      <ul class="list-catalog">
-        @for (product of products; track $index;) {
-        <li class="item-catalog">
-          <img
-            class="image-catalog"
-            [src]="product.images[0]?.thumbnailUrl"
-            [alt]="product.name || 'No Title Available'"
-          />
-        </li>
-        } @if (products.length === 0) {
-        <p class="text-catalog">Немає товарів у категорії</p>
-        }
-      </ul>
+    <div *ngIf="products.length > 0; else noProducts">
+      <h1 class="title-main">{{ products[0]?.category?.label }}</h1>
+      <div class="container-catalog">
+        <ul class="list-catalog">
+          <li
+            *ngFor="let product of products; trackBy: trackByIndex"
+            class="item-catalog"
+          >
+            <img
+              class="image-catalog"
+              [src]="product.images[0]?.thumbnailUrl"
+              [alt]="product.name || 'No Title Available'"
+            />
+          </li>
+        </ul>
+      </div>
     </div>
-    }
+    <button
+      *ngIf="hasMoreProducts()"
+      (click)="loadMore()"
+      class="load-more-btn"
+    >
+      Load more
+    </button>
+    <!-- Якщо продуктів немає -->
+    <ng-template #noProducts>
+      <p>Зачекайте, будь ласка.</p>
+    </ng-template>
   </div>
 </div>
 <div class="footer">
   <div class="container-footer">
     <img
-    [routerLink]="['/catalog-use']"
+      [routerLink]="['/catalog-use']"
       class="logo-glorious-footer"
       src="../../../../assets/glorious-light.svg"
       alt="Logo"

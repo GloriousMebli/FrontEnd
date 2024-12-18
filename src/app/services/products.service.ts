@@ -22,6 +22,8 @@ export class ProductsService {
   }
 
   getProducts(filters?: {
+    page?: number;
+    limit?: number;
     popular?: boolean;
     withNameAndImage?: boolean;
     categoryIds?: string[];
@@ -48,6 +50,22 @@ export class ProductsService {
       });
     }
     return this.http.get<any>(this.baseUrl, { params: httpParams });
+  }
+
+  // Функція для отримання першого продукту з кожної категорії
+  getFirstProductFromEachCategory(products: any[]): any[] {
+    const categories = new Set();
+    const firstProducts: any[] = [];
+
+    products.forEach((product) => {
+      // Перевіряємо, чи вже є продукт для цієї категорії
+      if (!categories.has(product.category._id)) {
+        categories.add(product.category._id);
+        firstProducts.push(product); // Додаємо перший продукт цієї категорії
+      }
+    });
+
+    return firstProducts;
   }
 
   // Отримати продукт за ID

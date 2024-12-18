@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
-import { products } from './catalog-data';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../../services/category.service';
 import { ProductsService } from '../../../services/products.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-catalog-use',
   templateUrl: './catalog-use.component.html',
-  styleUrl: './catalog-use.component.scss',
+  styleUrls: ['./catalog-use.component.scss'],
 })
-export class CatalogUseComponent {
-  products: any[] = [];
-  categories: any[] = [];
+export class CatalogUseComponent implements OnInit {
+  products: any[] = []; // Список всіх продуктів
+  categories: any[] = []; // Список категорій
   firstProductsByCategory: { category: string; product: any }[] = [];
   category: string = ''; // ID категорії з URL
+  allLoaded: boolean = false; // Позначка, чи всі продукти завантажені
+  pagesToLoad: number = 6; // Кількість категорій, які потрібно завантажити при кожному натисканні кнопки
+  currentCategoryIndex: number = 0; // Індекс категорії для завантаження
 
   constructor(
     private categoryService: CategoryService,
@@ -22,62 +24,87 @@ export class CatalogUseComponent {
   ) {}
 
   ngOnInit() {
-    this.loadCategories();
-    this.loadProducts();
-    // Отримуємо ID категорії з URL
+    this.loadCategories(); // Завантажуємо категорії
     this.category = this.route.snapshot.paramMap.get('id')!;
-    // Завантажуємо продукти цієї категорії
-    this.loadProductsByCategory(this.category);
   }
 
-  loadProductsByCategory(category: string): void {
-    // Завантажуємо продукти з бекенду по категорії
-    this.productsService
-      .getProductsByCategory(category)
-      .subscribe((products) => {
-        this.products = products;
-      });
-  }
-
+  // Завантажуємо продукти для поточної сторінки
   loadProducts() {
-    this.productsService.getProducts().subscribe((data) => {
-      this.products = data;
-      this.extractFirstProductsByCategory();
+    if (this.allLoaded) return; // Якщо всі продукти вже завантажені, припиняємо завантаження
+
+    // Завантажуємо кілька категорій (3 категорії)
+    let categoriesToLoad = this.categories.slice(
+      this.currentCategoryIndex,
+      this.currentCategoryIndex + this.pagesToLoad
+    );
+
+    categoriesToLoad.forEach((category) => {
+      this.productsService
+        .getProducts({ categoryIds: [category._id] })
+        .subscribe((data) => {
+          const productsInCategory = data.products;
+          if (productsInCategory.length > 0) {
+            this.products = [...this.products, ...productsInCategory]; // Додаємо продукти до вже існуючих
+            this.extractFirstProductByCategory(); // Оновлюємо перші продукти для кожної категорії
+          }
+        });
     });
+
+    this.currentCategoryIndex += this.pagesToLoad; // Оновлюємо індекс для наступних категорій
+
+    if (this.currentCategoryIndex >= this.categories.length) {
+      this.allLoaded = true; // Якщо всі категорії завантажено, припиняємо завантаження
+    }
   }
 
+  // Завантажуємо категорії
   loadCategories() {
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data;
-      this.extractFirstProductsByCategory();
+      this.loadProducts(); // Завантажуємо продукти для перших категорій
     });
   }
 
-  extractFirstProductsByCategory() {
+  // Обробка перших продуктів для кожної категорії
+  extractFirstProductByCategory() {
     if (this.products.length && this.categories.length) {
-      // Очистимо список перед заповненням
-      this.firstProductsByCategory = this.categories.map((category) => {
-        // Фільтруємо продукти для поточної категорії
-        const productsInCategory = this.products.filter(
-          (product) => product.category._id === category._id
-        );
+      // Оновлюємо перші продукти для кожної категорії
+      this.firstProductsByCategory = this.categories
+        .slice(0, this.currentCategoryIndex) // Беремо стільки категорій, скільки вже завантажено
+        .map((category) => {
+          const productsInCategory = this.products.filter(
+            (product) => product.category._id === category._id
+          );
 
-        // Сортуємо продукти в категорії за датою створення (за зростанням)
-        const sortedProducts = productsInCategory.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
+          const sortedProducts = productsInCategory.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
 
-        // Беремо перший продукт після сортування
-        const firstProduct = sortedProducts[0] || null;
+          const firstProduct = sortedProducts[0] || null;
 
-        console.log(firstProduct);
-
-        return {
-          category: category.label,
-          product: firstProduct, // Повертаємо null, якщо продуктів немає
-        };
-      });
+          return {
+            category: category.label,
+            product: firstProduct,
+          };
+        });
     }
+  }
+
+  // Завантажуємо більше категорій при натисканні кнопки
+  loadMore() {
+    this.loadProducts(); // Завантажуємо наступні категорії
+  }
+
+  // Перевірка, чи потрібно показувати кнопку "Load More"
+  shouldShowLoadMore(): boolean {
+    return (
+      !this.allLoaded && this.currentCategoryIndex < this.categories.length
+    );
+  }
+
+  // Метод trackBy для оптимізації рендерингу списків
+  trackByFn(index: number, item: any): string {
+    return item.product?._id || index.toString(); // Використовуємо унікальний ідентифікатор або індекс
   }
 }

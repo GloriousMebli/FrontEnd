@@ -12,9 +12,13 @@
   <div class="container-main">
     <h1 class="title-main">ВСІ ТОВАРИ</h1>
     <div class="container-catalog">
-      <ul class="list-catalog">
-        @for (item of firstProductsByCategory; track $index) {
+      <ng-template #noProducts>
+        <p class="text-catalog">Зачекайте, будь ласка.</p>
+      </ng-template>
+      <ul class="list-catalog" *ngIf="products.length > 0; else noProducts">
+        <!-- Перебір перших продуктів з trackBy -->
         <li
+          *ngFor="let item of firstProductsByCategory; trackBy: trackByFn"
           class="item-catalog"
           [routerLink]="['/catalog-use', item.product?.category._id]"
         >
@@ -31,9 +35,15 @@
           />
           <h2 class="title-catalog">{{ item.category.toLocaleUpperCase() }}</h2>
         </li>
-        }
       </ul>
     </div>
+    <button
+      class="load-more-btn"
+      *ngIf="shouldShowLoadMore()"
+      (click)="loadMore()"
+    >
+      Load More
+    </button>
   </div>
 </div>
 <div class="footer">
